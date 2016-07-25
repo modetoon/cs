@@ -1,0 +1,377 @@
+/* RELAUNCH CSS */
+.size-col-d font{font-family:Arial,Helvetica,sans-serif;}
+
+.clear {clear: both;}
+.floatleft{float:left;} 
+.button {float:left;}
+.button a {white-space:nowrap;display:block;height:24px;padding:6px 15px 0 15px;background-color:#0090C5;color:#FFF;text-align:center;font-weight:bold;}
+input.button{white-space:nowrap;display:block;height:24px;border:0;padding:6px 15px 6px 15px;background-color:#0090C5;color:#FFF;text-align:center;font-weight:bold;}
+
+.fs10{font-size:10px;}
+.fs11{font-size:11px;}
+.fs12{font-size:12px;}
+
+.marginDelimiterLine{display:none;}
+#BayNewsDownloadCenterInfo{display:inline;}
+
+
+.mlnk .green a{background-position:0 -401px;color:#339900;}
+.mlnk a{padding:0 0 0 7px;background-position:-2px -202px;}
+.mlnk .marginBarContent .margin-image{margin:0;background:none;padding:0;}
+.mlnk .marginBarContent .margin-image img{margin-left:0;margin-right:0;}
+
+.contnt .margi div:last-child{margin-bottom:0 !important;}
+.contnt .margi{padding-bottom:35px;}
+
+div.topline{font-size:12px;}
+h2.h1{color:#339900;}
+
+.margi {background:none repeat scroll 0 0 #F3F3F3;}
+
+a, a:visited, a:active{text-decoration:none;}
+
+.navLinks{margin:20px 0 12px 0;}
+.navLinks .delimiter{}
+
+.navLinks a{color:#333;padding:0 8px;}
+.navLinks a b{color:#390;font-weight:bold;}
+
+.size-col-d .BiographieContent,
+.size-col-d .BiographieContent font{color:#333;}
+
+.DetailTopline,
+.DetailTopline font{color:#333;}
+
+.presskitHeaderText{color:#0090C5;font-size:12px;font-weight:bold;margin:0 10px;}
+.presskitHeaderHR{margin:2px 10px 10px 10px;}
+.presskitLink{float:right;margin-right:10px;}
+.presskitLink .link{color:#333;}
+.presskitLink .link img{margin-right:5px}
+
+.newsdetailimgwidth{width:auto;overflow:visible;}
+
+.Content .MoreLink {color:#0090C5;text-decoration:none;font-size:12px;background:url('') no-repeat scroll 8px 0px transparent;padding-right:10px;}
+.HTTP .Content .MoreLink {background-image:url("http://www.bayer.com/img/sys/sprite.png");}
+.HTTPS .Content .MoreLink {background-image:url("https://secure.bayer.com/bayer-group/getSource.aspx?url=http://www.bayer.com/img/sys/sprite.png");}
+
+
+.Content .NewsViewEntryDate {color:#333;font-size:12px;line-height:16px;}
+.Content .NewsViewEntryTopline {color:#339900;font-size:12px;font-weight:normal;line-height:16px;}
+.Content .NewsViewEntryHeadline {font-size:12px;color:#339900;font-weight:bold;line-height:16px;}
+.Content .NewsViewEntryHeadline a,
+.Content .NewsViewEntryHeadline b,
+.Content .NewsViewEntryHeadline strong,
+.Content .NewsViewEntryHeadline font {color:#339900;font-weight:bold;}
+.Content .NewsViewEntryUnderline{color:#333;font-size:12px;line-height:16px;}
+.Content .NewsViewEntryLine{border:0em solid white;padding:0;margin:0;font-size:1em;line-height:0;border-bottom:1px solid #DCDCDC;height:0;clear:both;margin:15px 0 12px 0;}
+.Content .picLink{float:left;padding:2px 15px 12px 0;}
+.Content .picLinkQ{position:relative;}
+.Content .picLinkH{width:110px;}
+.Content .textcontainer .mlnk{clear:none;} 
+.Content .textcontainerQ{margin-left:185px;}
+.Content .textcontainerH{margin-left:125px;}
+.Content .NewsViewEntryImg{}
+
+.Content .DetailPictureText{line-height:16px;}
+.plntxt{line-height:16px;}
+
+.entry .text{color:#333;}
+.entry .text .mlnk{margin:0;}
+.foto-container{width:185px;padding:2px 0 15px 0;}
+
+.unit .media .img{margin:0;}
+.unit .media .img img{margin:3px 20px 0 0;}
+.unit figure img{width:auto;}
+.unit .DetailPictureText {margin-right:20px;}
+
+
+.newsdetailimgwidth{max-width:260px;}
+
+
+.download-icon {display:block; border:0; text-indent:-999em; overflow:hidden; background-color:transparent; background-repeat:no-repeat; text-align:left; direction:ltr; *line-height:0;
+  background-image:url(download.png);cursor:pointer;height:22px;margin-right:20px;margin-top:-22px;position:absolute;right:0;width:22px;}
+
+.more-icon {display:block; border:0; text-indent:-999em; overflow:hidden; background-color:transparent; background-repeat:no-repeat; text-align:left; direction:ltr; *line-height:0;
+  background-image:url(morepictures.png);cursor:pointer;height:22px;margin-right:40px;margin-top:-22px;position:absolute;right:0;width:22px;}
+  
+
+/**  MEDIABAR **/
+.MediaBar {background-color:#ecf7fc;margin:10px 0;padding:10px 5px 16px 5px;}
+.MediaBar a img{border:0;}
+.viewList .MediaBar {background-color:#ecf7fc;margin:5px 0;}
+.MediaBarTitle {cursor:pointer;margin-bottom:10px;}
+.MediaBarTitleInner {color:#0090C5;font-weight:700;height:16px;overflow:hidden;width:140px;font-size:12px;font-family:Arial;vertical-align:middle;padding:0 5px;}
+.MediaBarTitleInner span {height:16px;display:block;float:left;}
+.MediaBarContent {margin:0;padding:0;height:auto;display:inline;overflow:hidden;}
+.MediaSlide {padding:0 5px;}
+.MediaBarItem {margin-right:10px;cursor:pointer;width:60px;height:50px;}
+
+.tip-wrap {display:none;opacity:0.9;filter:alpha(opacity=90);position:absolute;}
+.tip { width:300px; font-family:arial; background-color:#808080;  background-color:#1A478A;font-size:11px;} /* :url(bubble.gif) left top repeat-y */
+.tip-top {  background:url(../files/Mediabar/$file/bubble_darkblue_top.gif) 0 0 no-repeat; width:300px; height:8px; overflow:hidden; } /* background:url(bubble.gif) top left no-repeat;  */
+.tip-title { color:#FFF; font-weight:bold; margin:0 10px 0 10px; font-size:11px; }
+.tip-text { color:#FFF; padding:5px 10px; }
+.tip-bottom { background:url(../files/Mediabar/$file/bubble_darkblue_bottom.gif) 0 0 no-repeat; width:300px; height:16px; }
+
+
+/** DOWNLAOD CENTER **/
+
+.displaynone{display:none;}
+.clearboth {clear:both;}
+
+.clnk a {background:url('') no-repeat -2px -200px; padding:1px 0 1px 7px; line-height:16px; display:block; color:#333;}
+.HTTP .clnk a {background-image:url("http://www.bayer.com/img/sys/sprite.png");}
+.HTTPS .clnk a {background-image:url("https://secure.bayer.com/bayer-group/getSource.aspx?url=http://www.bayer.com/img/sys/sprite.png");}
+
+
+div.HeadlineHR {margin-bottom:0em;display:block;}
+
+.downloadList {list-style:none;font-size:12px;margin:0em;padding:0em;}
+
+.downloadHeader {display:block;margin:22px 0 12px 0;padding-bottom:10px;border-bottom:2px solid #0090C5;overflow:hidden;}
+.downloadHeader div {}
+.downloadHeader span {font-size:12px;color:#333;font-weight:bold;}
+
+.downloadEntry{padding:3px 0;width:100%;border-bottom:1px solid #CCC;}
+.downloadInfo {width:80%;display:block;float:left;}
+.downloadHeadline {display:inline;font-size:12px;color:#333;font-weight:bold;}
+.downloadHeadline a {color:#333;font-weight:bold;display:inline;}
+.downloadFilename{padding-left:7px;font-size:12px;color:#333;font-weight:normal;}
+.downloadDeleteContainer {width:19%;float:left;color:#333;display:block;}
+.downloadDeleteLink{float:right;}
+.downloadDeleteLink span {font-size:12px;color:#333;}
+
+.downloadZipArrow {margin-right:5px;vertical-align:middle;}
+.downloadZipIcon {margin-right:5px;vertical-align:middle;}
+.downloadZIPLink {text-align:right;margin:10px 0 0 0;display:block;clear:both;float:right;}
+.downloadZIPLink a {display:block;height:24px;background-color:#0090C5;color:#FFF;text-align:center;font-weight:bold;}
+.downloadZIPLink span{padding:5px 20px;display:block;}
+
+.emptyMessage {margin-left:13px;}
+#delayMessage {border:3px solid red;padding:20px;background-color:#F5F8FD; font-weight:bold;position:absolute;left:300px;top:250px;display:none;width:250px;z-index:999;}
+#delayMessage a {display:block; margin-top:20px;}
+#delayMessage a span {color:#0090C5;font-weight:bold;}
+
+.mlnk .contactPerson a {display:inline;}
+
+/** BEGIN PRESS CONTACT **/
+
+
+.headline_wrap {margin-bottom:24px;position:relative;}
+.headline_inner_text {font: bold 24px Arial, Helvetica, sans-serif; color: #0090C5;bottom: 0;}
+
+/* register */
+
+ul.pressContent_register {padding: 0px; margin: 0px;}
+
+.l1 {width: 100%; border-top: 1px solid #D1D1D1; list-style-type: none; display: table;}
+.l1first {}
+.l1last {border-bottom: 1px solid #D1D1D1;}
+
+.span-wrap {height: 26px; line-height: 26px;}
+
+/* ********** un-/ selected ********** */
+
+.li_sel, .li_unsel {cursor: default;}
+.span_sel {font: bold 12px Arial, Helvetica, sans-serif; color: #339900; padding-left: 24px; background: url(arrowUp.jpg) no-repeat 4px 50%; cursor: pointer;}
+.span_unsel {font: bold 12px Arial, Helvetica, sans-serif; color: #0090C5; padding-left: 24px; background: url(arrowDown.jpg) no-repeat 4px 50%; cursor: pointer;}
+.cont_sel {border-top: 1px solid #D1D1D1; display: block;}
+.cont_unsel {}
+
+/* ********** Profile ********** */
+
+.profile_sub_category{color:#0090C5;font-size:16px;font-weight:bold;margin:20px 0 0 10px;}
+
+.cont_padding_TopBottom {padding: 3px 0 13px;}
+.profile_wrapper {border-top: 1px solid #D1D1D1;}
+div.profile_wrapper_first {border-top: none;}
+.profile {width:100%; padding: 12px 0; margin: 0;}
+.profile-photo {width:18%; min-width: 95px; float: left;}
+.photo-wrapper {width: 95px; padding: 0 20px 15px 0;}
+.photo-wrapper img {width:95px;}
+.profile-adress {float:left; padding: 0; margin: 0; width:80%;}
+.profile_adress_name {font: bold 12px Arial, Helvetica, sans-serif; color: #0090C5;}
+.profile-contact {float: left; padding: 0; margin: 20px 0 0 0; width:100%;}
+.contact-wrapper{float: left; width:50%;}
+.adress-wrapper{float: right; width:50%;}
+
+/** END PRESS CONTACT **/
+
+
+/**  PRESS OVERVIEW **/
+.icontextbox {height:15px;padding:0 0 8px 0;}
+.icontext {font-familiy:Arial;font-weight:bold;font-size:9px;letter-spacing:1px;display:inline;padding:2px 15px 2px 15px;color:#0090C5;background-color:#ecf7fc;}
+
+.press-cat-nav{background-color:#f3f3f3;min-height:50px;overvlow:visible;}
+
+.press-cat-nav .subgroup{width:33%;}
+.press-cat-nav .topic{width:30%;}
+.press-cat-nav .search{width:30%;min-width:126px;}
+.press-cat-nav .box{float:left;margin-left:10px;margin-top:15px;}
+.press-cat-nav .box .select,
+.press-cat-nav .box .input{color:#333;font-size:12px;border:1px solid #d1d1d1;vertical-align:middle;font-size:11px;}
+.press-cat-nav .box .select{width:100%;height:22px;vertical-align:middle;}
+
+.press-cat-nav .box .input,
+.press-cat-nav .btn,
+.press-cat-nav .btn {font-size:11px; padding-top:1px; padding-bottom:2px;margin:0;}
+.press-cat-nav .box .input {border-right:0; -webkit-border-radius:0; height:17px; width:75%;}
+.press-cat-nav .btn,
+.press-cat-nav .btn {border-left:0; background:#FFF url('') no-repeat -18px 2px; overflow:hidden; text-indent:-999em; width:20px; box-shadow:none;}
+.HTTP .press-cat-nav .btn {background-image:url("http://www.bayer.com/img/sys/sprite.png");}
+.HTTPS .press-cat-nav .btn {background-image:url("https://secure.bayer.com/bayer-group/getSource.aspx?url=http://www.bayer.com/img/sys/sprite.png");}
+
+.press-cat-nav .btn {background-position:5px -200px; border-color:#d1d1d1; height:22px; padding:0; margin-top:0;}
+.press-cat-nav .btn {padding-right:0; padding-left:0; margin-top:0; margin-left:-3px;vertical-align:middle;}
+
+.press-cat-nav .validationError{background-color:#ffa7a7;border:1px solid #ff0000;}
+
+
+
+.SLEEventsOverview form{margin:0;padding:0;display:inline;}
+.SLEEventsOverview .eventhead {height:20px;2px solid #0090C5;display:block;margin:22px 0 12px;overflow:hidden;padding-bottom:10px;}
+.SLEEventsOverview .eventhead .eventheadinner {padding-left:10px;clear:both;}
+.SLEEventsOverview .eventhead span {color:#333;float:left;font-size:12px;font-weight:bold;}
+
+.SLEEventsOverview table.remindereventstable{clear:both;}
+.SLEEventsOverview table.remindereventstable td{padding:3px 10px 3px 0px;vertical-align:top;border-bottom:1px solid #CCCCCC;}
+.SLEEventsOverview table.remindereventstable td span.FS {font-size:12px;}
+.SLEEventsOverview table.remindereventstable td a {color:#0090C5;}
+.SLEEventsOverview table.remindereventstable td a img{margin-right:4px;}
+
+.SLEEventsOverview table.remindereventstable .coldate{color:#333; font-weight:normal; padding-left:10px;}
+.SLEEventsOverview table.remindereventstable .colheadline{color:#333; font-weight:normal;}
+.SLEEventsOverview table.remindereventstable .colcontact{color:#333; font-weight:normal;}
+.SLEEventsOverview table.remindereventstable .colreminder{color:#333; width:80px;text-align:right;}
+.SLEEventsOverview table.remindereventstable .colreminder a{color:#333;}
+
+.SLEEventsOverview div.right{text-align:right;float:right;padding-right:10px;white-space:nowrap;}
+.SLEEventsOverview div.right a img{margin-right:4px;}
+.SLEEventsOverview div.right a span.FS{font-size:12px;color:#333;}
+
+
+/* EVENT REMINDER BEGIN */
+.ReminderOuterBox{font-size:12px;}
+.ReminderOuterBox span.FS{font-size:12px;}
+.ReminderOuterBox label{display:block;float:left;}
+.ReminderOuterBoxDE label{width:185px;}
+.ReminderOuterBoxEN label{width:220px;}
+.ReminderOuterBox form{display:inline;margin:0;padding:0;}
+.ReminderTitle{padding-left:10px;}
+.ReminderTitle h5{font-size:1em;padding-top:3px;margin:0;}
+.ReminderTitle h5 span.FS{font-size:12px;color:#333;font-weight:bold;}
+.ReminderInnerBox{padding:5px 10px 10px 10px;}
+.ReminderInnerBox h2{font-size:1em;margin:0;}
+.ReminderInnerBox h2 span.FS{font-size:12px;margin:0;}
+.ReminderEventInfo{margin:10 0px;}
+.ReminderEventInfo h2 span.FS{font-size:14px;color:#333;}
+.ReminderDaysBox{margin:5 0px;clear:left;}
+.ReminderDaysBox{margin:5 0px;}
+.ReminderDaysBox span.FS{font-size:12px;}
+.ReminderRecipientBox{margin:5 0px;clear:left;}
+.ReminderRecipientBox span.FS{font-size:12px;}
+.ReminderCancel{margin-right:10px;}
+.ReminderCancel a{background-color:#999;}
+.ReminderButtonBoxOuter{margin:10px 0px 0px 0px;height:20px;}
+.ReminderButtonBox{float:right;width:220px;}
+
+.ReminderInnerBox .EventOverviewLink{color:#0090C5;}
+.ReminderInnerBox .EventOverviewLink img{margin-right:4px;}
+/* EVENT REMINDER END */
+
+
+/** PICTURE POPUP **/
+body.HTTPS{background-color:#FFF;padding:0 20px;}
+.topic-without-framework {max-width:680px;margin:0 auto;position:relative;}
+.topic-without-framework .lt-ie9 #headerPresse{height:70px !important;}
+.topic-without-framework .PopUpContent{margin-top:30px;}
+.topic-without-framework .PopUpContent .headline{margin-left:0;}
+.PopUpContainer {margin:0 20px;}
+.popupheader{width:100%;height:70px;}
+.popupheader .title{}
+.PopUpHeaderTable {}
+.PopUpContent table{width:100%;margin:0;padding:0;}
+.PopUpContent {font-size:12px;font-family:Arial,Helvetica,sans-serif;width:100%}
+.PopUpContent font {font-family:Arial,Helvetica,sans-serif;}
+.PopUpContent .NewsViewEntryDate{color:#333;font-size:12px;line-height:16px;}
+.PopUpContent .NewsViewEntryTopline{color:#339900;font-size:12px;line-height:16px;}
+.PopUpContent .NewsViewEntryHeadline{color:#339900;font-weight:700;font-size:12px;line-height:16px;}
+.PopUpContent .NewsViewEntryUnderline{color:#333;font-size:12px;line-height:16px;}
+.PopUpHeaderTable h1.headline{font-size:16px;color:#0090C5;margin:20px 0 0 0;}
+.PopUpContent .HeadlineHR {border-bottom:1px solid #DCDCDC;height:0;margin:16px 0 24px 0;}
+.PopUpDelimiterCell {background-color:#FFFFFF;}
+.PopUpPictureNotice {font-size:12px;color:#333333}
+.PopUpImageBG {background-color:#E8F1F5;margin:0;padding:0;}
+.PopUpImageBG p {padding:0;margin:0;display:inline;}
+.PopUpPictureText {font-size:11px;color:#333333;}
+.PopUpPictureTextContainer {margin:10px 20px;line-height:16px;}
+.PopUpPictureTextContainer font{font-size:11px;line-height:16px;}
+.PopUpPictureTextContainer .mlnk{margin:0;font-size:12px;}
+.PopUpPictureTextContainer .DownloadContainer{margin-top:10px;} 
+.PopUpViewTitle {color:#339900;font-weight:bold;}
+.PopUpPictureDetailsTitle {background-color:#FFFFFF;font-size:12px;color:#339900;font-weight:bold;}
+.PopUpPictureDetailsTitle div {font-size:12px;color:#339900;}
+.PopUpPictureDetailsTitle div font {font-size:12px;color:#339900;font-weight:bold;}
+.PopUpPictureDetailsText {background-color:#FFFFFF;padding:10px 0 0 0;font-size:12px;color:#339900;line-height:16px;}
+.PopUpPictureDetailsText div {font-size:12px;color:#333;line-height:16px;}
+.PopUpPictureDetailsText div font {font-size:12px;color:#333;line-height:16px;}
+.PopUpPictureDetailsTextCus {background-color:#FFFFFF;padding:10px 0;font-size:12px;color:#333;line-height:16px;}
+.PopUpPictureDetailsTextCus font {font-size:12px;color:#333;line-height:16px;}
+.PopUpMoreImages {width:100%;overflow:hidden;}
+.PopUpMoreImages table {width:100%;overflow:hidden;line-height:16px;}
+.PopUpMoreImages table font {font-size:12px;line-height:16px;}
+.PopUpFooterTextCell{background-color:#FFF;}
+.PopUpFooterTextCell .MediaPopUpFooterText{color:#333;font-size:12px;}
+	
+/* NEWSLETTER BEGIN */
+.topic-without-framework .subtitle{color:#0090C5;font-weight:bold;margin-bottom:15px;}
+.topic-without-framework .mandatory-hint{margin:10px 0;}
+.topic-without-framework .newsletter-box{background-color:#f3f3f3;}
+.topic-without-framework .newsletter-form{padding:12px 0;}
+.topic-without-framework .newsletter-error{font-weight:700;margin:5px 10px 10px 10px;}
+.topic-without-framework .newsletter-box .categories{padding:0 0px;}
+.topic-without-framework .newsletter-box .w33{width:30%;margin-right:3%}
+.topic-without-framework .newsletter-box .row{clear:both;padding:4px 0px;}
+.topic-without-framework .newsletter-box .border{border-bottom:1px solid #FFF;}
+.topic-without-framework .newsletter-box .hint{margin:10px 0;}
+.topic-without-framework .newsletter-box .label{margin:8px 0 0 0;}
+.topic-without-framework .newsletter-box .choice .label{float:left;margin:2px 20px 0 0;}
+.topic-without-framework .newsletter-box .categories{margin:0px 10px;}
+.topic-without-framework .newsletter-box .categories .label{margin:1px 0 5px 20px;}
+.topic-without-framework .newsletter-box .text{margin:0;width:95%;height:24px;}
+.topic-without-framework .newsletter-box .checkbox{float:left;margin:0 3px 0 0;}
+.topic-without-framework .newsletter-box .radio{float:left;margin:0 3px 0 0;}
+.topic-without-framework .newsletter-box .col1{float:left;width:170px;}
+.topic-without-framework .newsletter-box .col2{float:right;width:68%;}
+.topic-without-framework .newsletter-box .indent{padding-left:15px;clear:both;}
+.topic-without-framework .newsletter-box .submit-container{float:right;margin:15px 20px 20px 0;}
+.topic-without-framework .newsletter-box .submit-container .submit{color:#FFF;padding:4px 25px 4px 15px;border:0;background-color:#0090c5;background:url(http://www.bayer.com/img/sys/sprite.png) #0090c5  110% -600px no-repeat;}
+.topic-without-framework .NewsletterFormBox .label{float:left;padding-top:3px;}
+.topic-without-framework .NewsletterFormBox .w120{width:120px;}
+/* NEWSLETTER END */
+
+
+
+@media (-webkit-min-device-pixel-ratio:2), (min-resolution:192dpi) {
+.Content .MoreLink,
+.clnk a,
+.press-cat-nav .btn{background-image:url(); -webkit-background-size:32px 3000px; background-size:32px 3000px;}
+.HTTP .Content .MoreLink,
+.HTTP .clnk a,
+.HTTP .press-cat-nav .btn{background-image:url("http://www.bayer.com/img/sys/sprite_new_retina.png");}
+.HTTPS .Content .MoreLink,
+.HTTPS .clnk a,
+.HTTPS .press-cat-nav .btn{background-image:url("https://secure.bayer.com/bayer-group/getSource.aspx?url=http://www.bayer.com/img/sys/sprite_new_retina.png");}
+
+}
+
+
+@media only screen and (max-width:767px) {
+/** iPhone portrait **/
+.navLinks a{padding:0 6px;}
+.press-cat-nav .box{margin-left:2px;margin-top:10px;}
+.press-cat-nav .subgroup{width:29%;}
+.press-cat-nav .search{min-width:80px;width:37%;}
+.press-cat-nav .box .input{width:62%;}
+
+}

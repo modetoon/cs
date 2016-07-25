@@ -1,0 +1,26 @@
+callback(
+    [
+    {
+    "text":"Pharmaceuticals",
+    "link":"http:\/\/pharma.bayer.com",
+    "target":""
+    }
+  ,
+    {
+    "text":"Consumer Health",
+    "link":"http:\/\/consumerhealth.bayer.com",
+    "target":""
+    }
+  ,
+    {
+    "text":"Crop Science",
+    "link":"http:\/\/www.cropscience.bayer.com",
+    "target":""
+    }
+  ,
+    {
+    "text":"Animal Health",
+    "link":"http:\/\/animalhealth.bayer.com",
+    "target":""
+    }
+  ]);
