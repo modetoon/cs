@@ -4,7 +4,8 @@
 	session_start();
 	//mysql_connect("localhost","root","");
 	//mysql_select_db("bayer");
-	mysql_connect("wh-db51.csloxinfo.com","bayer2","?fc804Ui");
+	//mysql_connect("wh-db51.csloxinfo.com","bayer2","?fc804Ui");
+	mysql_connect("localhost","root","");
 	mysql_select_db("bayerdb2");
 	//include "../config/connect.php";
 	
