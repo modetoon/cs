@@ -9,4 +9,5 @@
 	$sql72="UPDATE tb_press set view_count='$view_count' where id_press='$call_arti' ";
 	$result72=mysql_db_query($dbname,$sql72) or die(mysql_error());
 	mysql_close();
+	echo '';
 ?>
