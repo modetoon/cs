@@ -23,6 +23,8 @@ class Menu extends CI_Controller {
         // Call the Model constructor
         parent::__construct();
 		$this->load->helper('url');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
 		$this->load->model('Menu_model');
 
     }
@@ -32,29 +34,47 @@ class Menu extends CI_Controller {
 		$data = array('title'=> 'Listing');
 
 		$this->load->view('header', $data);
-		$this->load->view('menu/listing');
+		$this->load->view('menu/lists');
 	}
 
-	public function listing()
+	public function lists()
 	{
-		$data['title'] = 'Listing';
+		$data['title'] = 'Menu List';
 
 		$res = $this->Menu_model->get_menu();
 		$data['result'] = $res;
 
 		$this->load->view('header', $data);
-		$this->load->view('menu/listing', $data);
+		$this->load->view('menu/lists', $data);
 	}
 
 	public function add()
 	{
 		$data['title'] = 'Add Menu';
 
-		$res = $this->Menu_model->get_menu();
-		$data['result'] = $res;
+		$this->form_validation->set_rules('menuname_en', 'Menu Name (TH)', 'required');
+		$this->form_validation->set_rules('menuname_th', 'Menu Name (EN)', 'required');
 
-		$this->load->view('header', $data);
-		$this->load->view('menu/add', $data);
+		if ($this->form_validation->run() === FALSE)
+		{
+
+			$res = $this->Menu_model->get_menu_parent(0);
+			$data['menu_parent'] = $res;
+
+			$this->load->view('header', $data);
+			$this->load->view('menu/add', $data);
+
+		}
+		else
+		{
+			$data['title'] = 'Menu List';
+			$res = $this->Menu_model->get_menu();
+			$data['result'] = $res;
+
+			$this->load->view('header', $data);
+			$this->load->view('menu/lists', $data);
+		}
+
 	}	
 
 }

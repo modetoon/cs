@@ -38,7 +38,7 @@
 |
 */
 
-$route['menu/listing'] = 'menu/listing';
+$route['menu/edit/(:any)'] = 'menu/add/$1';
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';

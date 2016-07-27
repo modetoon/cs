@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            DataTables Advanced Tables
+                           <?php echo $title;?>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -31,11 +31,11 @@
                                         foreach($result as $r){
                                             echo '<tr>
                                                 <td><input type="checkbox" value="'.$r->MenuID.'"></td>
-                                                <td>Parent</td>
-                                                <td>'.$r->MenuNameEN.'</td>
+                                                <td>'.$r->ParentMenuName.'</td>
+                                                <td>'.$r->MenuName.'</td>
                                                 <td class="center">
-                                                    <button type="button" class="btn btn-warning btn-xs">Edit</button>&nbsp;
-                                                    <button type="button" class="btn btn-danger btn-xs">Delete</button>
+                                                    <a href="menu/edit/'.$r->MenuID.'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
+                                                    <a href="menu/delete/'.$r->MenuID.'" class="btn btn-danger btn-xs">Delete</a>
                                                 </td>
                                             </tr>';                                       
                                         }
