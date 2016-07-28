@@ -33,4 +33,14 @@ $(function() {
     if (element.is('li')) {
         element.addClass('active');
     }
+
+        $( "a.btn-danger" ).click(function() {
+            if(confirm('Do you want to delete this item?'))
+            {
+                return true;
+            }else{
+                return false;
+            }
+        });
+    
 });

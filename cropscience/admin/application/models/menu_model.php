@@ -27,10 +27,69 @@ class Menu_model extends CI_Model {
 
         $sql = "SELECT * FROM ".$this->table_name." WHERE Parent = ? AND Status = 1"; 
         $query = $this->db->query($sql, array($parent));
-
         //$query = $this->db->get_where($this->table_name, array($this->parent_key => $parent))->row();
         return $query->result();
     } 
+    
+    function get_level($menuid)
+    {
+
+        $this->db->where('MenuID', $menuid);
+        $this->db->limit(1);
+        return $this->db->get($this->table_name)->row();
+    } 
+
+    function delete_menu($id){
+
+        $this->db->where('MenuID', $id);
+        $this->db->delete($this->table_name);
+    }
+
+    function get_menu_structure($selected=''){
+        //$this->db->where('parent',$parent);
+        $this->db->order_by('Position','asc');
+        $this->db->select('*')->from('menu');
+        $q=$this->db->get();
+        foreach($q->result() as $r){
+            
+            $data[$r->Parent][] = $r;
+        }
+        $menu=$this->build_menu($data, 0,$selected); // From Parent ID 1
+        return $menu;
+    } 
+    
+    
+    function build_menu($category, $parent,$selected=0){
+        static $i = 1;
+        $path = '';
+        if (array_key_exists($parent, $category)) {
+            $menu = ($parent != 0) ? '': '<select class="form-control" name="Parent"><option value="">Please select';
+            $i++;
+            foreach ($category[$parent] as $r) {
+                $child = $this->build_menu($category, $r->MenuID);
+                $level_str = "";
+                if($parent != 0){
+                    $level_str = str_repeat("&nbsp;&nbsp;",$r->Level);
+                    $level_str .= "|--";
+                }
+                $cls = ($selected == $r->MenuID) ? 'selected': '';
+                $menu .= '<option value="'.$r->MenuID.'" '.$cls.'>'.$level_str.$r->MenuNameEN;
+                if ($child) {
+                    $i--;
+                    $menu .= $child;
+                }
+                $menu .= '</option>';
+            }
+            $menu .= ($parent != 0) ? '': '</select>';
+            return $menu;
+        } else {
+            return false;
+        }
+    }
+
+    function insert_menu($data){
+        $this->db->insert($this->table_name, $data);
+    }
 
 
 }

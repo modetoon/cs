@@ -2,22 +2,6 @@
 
 class Menu extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-
     function __construct()
     {
         // Call the Model constructor
@@ -52,14 +36,17 @@ class Menu extends CI_Controller {
 	{
 		$data['title'] = 'Add Menu';
 
-		$this->form_validation->set_rules('menuname_en', 'Menu Name (TH)', 'required');
-		$this->form_validation->set_rules('menuname_th', 'Menu Name (EN)', 'required');
+		$main_menu = $this->Menu_model->get_menu_structure(0);
+		$data['menu_dropdownlist'] = $main_menu;	
+
+		$this->form_validation->set_rules('Parent', 'Parent Menu', 'required');
+		$this->form_validation->set_rules('MenuNameTH', 'Menu Name (TH)', 'required|min_length[1]');
+		$this->form_validation->set_rules('MenuNameEN', 'Menu Name (EN)', 'required|min_length[1]');
+		$this->form_validation->set_rules('Position', 'Position', 'required|numeric');
+		
 
 		if ($this->form_validation->run() === FALSE)
 		{
-
-			$res = $this->Menu_model->get_menu_parent(0);
-			$data['menu_parent'] = $res;
 
 			$this->load->view('header', $data);
 			$this->load->view('menu/add', $data);
@@ -67,14 +54,33 @@ class Menu extends CI_Controller {
 		}
 		else
 		{
+
 			$data['title'] = 'Menu List';
 			$res = $this->Menu_model->get_menu();
 			$data['result'] = $res;
 
-			$this->load->view('header', $data);
-			$this->load->view('menu/lists', $data);
+			$menu_data = $this->Menu_model->get_level($this->input->post('Parent'));
+			$next_level = $menu_data->Level + 1;
+			$data_insert = array(
+				'Parent' => $this->input->post('Parent'),
+				'Level' => $next_level,
+				'MenuNameEN' => $this->input->post('MenuNameEN'),
+				'MenuNameTH' => $this->input->post('MenuNameTH'),
+				'Position' => $this->input->post('Position'),
+				'Status' => $this->input->post('Status')
+			);
+			$main_menu = $this->Menu_model->insert_menu($data_insert);
+
+			redirect(site_url('menu/lists'), 'refresh');
 		}
 
 	}	
+
+	public function delete($id='')
+	{
+		$this->Menu_model->delete_menu($id);
+		redirect(site_url('menu/lists'), 'refresh');
+
+	}
 
 }

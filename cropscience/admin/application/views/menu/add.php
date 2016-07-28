@@ -29,48 +29,42 @@
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Menu Parent</label></div>
                                                 <div class="col-lg-9">
-                                                    <select class="form-control">
-                                                        <?php
-                                                        foreach($menu_parent as $parent){
-                                                            echo '<option value="'.$parent->MenuID.'">'.$parent->MenuNameEN;
-                                                        }
-                                                        ?>
-                                                    </select>
+                                                    <?php echo $menu_dropdownlist;?>
                                                 </div>
                                             </div>
                                         </div>                                    
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Menu Name (EN)</label></div>
-                                                <div class="col-lg-9"><input class="form-control" name="menuname_en" value="<?php echo set_value('menuname_en'); ?>"></div>
+                                                <div class="col-lg-9"><input class="form-control" name="MenuNameEN" value="<?php echo set_value('MenuNameEN'); ?>"><?php //echo form_error('menuname_en'); ?></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Menu Name (TH)</label></div>
-                                                <div class="col-lg-9"><input class="form-control" name="menuname_th" value="<?php echo set_value('menuname_th'); ?>"></div>
+                                                <div class="col-lg-9"><input class="form-control" name="MenuNameTH" value="<?php echo set_value('MenuNameTH'); ?>"></div>
                                             </div>
                                         </div> 
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-lg-3"><label>Text area</label></div>
-                                                <div class="col-lg-9"><textarea class="form-control" rows="3" cols="50"></textarea></div>
+                                                <div class="col-lg-3"><label>Position</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="Position" value="<?php echo set_value('Position'); ?>"></div>
                                             </div>
-                                        </div>
+                                        </div> 
 
                                         <div class="form-group">
                                             <label>Status</label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked>Active
+                                                <input type="radio" name="Status" id="Status1" value="1" checked>Active
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" value="option2">UnActive
+                                                <input type="radio" name="Status" id="Status2" value="0">UnActive
                                             </label>
                                         </div>
 
                                         <button type="submit" class="btn btn-primary">Save</button>
                                         <button type="reset" class="btn btn-default">Reset</button>
-                                    </form>
+                                    <?php echo form_close(); ?>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                                 
