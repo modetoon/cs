@@ -124,10 +124,10 @@
                             <a href="#"><i class="fa fa-tags"></i> Product Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Add Category</a>
+                                    <a href="<?php echo site_url('category/add') ?>">Add Category</a>
                                 </li>
                                 <li>
-                                    <a href="#">Category List</a>
+                                    <a href="<?php echo site_url('category/lists') ?>">Category List</a>
                                 </li>
                                 <li>
                                     <a href="#">Add Product</a>

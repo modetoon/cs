@@ -21,8 +21,9 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Main Menu</th>
-                                            <th>Menu Name</th>
+                                            <th>Main Category</th>
+                                            <th>Category Name (EN)</th>
+                                            <th>Category Name (TH)</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -30,12 +31,13 @@
                                     <?php
                                         foreach($result as $r){
                                             echo '<tr>
-                                                <td><input type="checkbox" value="'.$r->MenuID.'"></td>
-                                                <td>'.$r->ParentMenuName.'</td>
-                                                <td>'.$r->MenuName.'</td>
+                                                <td><input type="checkbox" value="'.$r->CategoryID.'"></td>
+                                                <td>'.$r->ParentCategoryName.'</td>
+                                                <td>'.$r->CategoryNameEN.'</td>
+                                                <td>'.$r->CategoryNameTH.'</td>
                                                 <td class="center">
-                                                    <a href="'.site_url("menu/edit/$r->MenuID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
-                                                    <a href="'.site_url("menu/delete/$r->MenuID").'" class="btn btn-danger btn-xs">Delete</a>
+                                                    <a href="'.site_url("category/edit/$r->CategoryID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
+                                                    <a href="'.site_url("category/delete/$r->CategoryID").'" class="btn btn-danger btn-xs">Delete</a>
                                                 </td>
                                             </tr>';                                       
                                         }

@@ -24,35 +24,34 @@
                                         ?>
 
 
-                                        <?php echo form_open('menu/add') ?>
+                                        <?php echo form_open('category/add') ?>
 
-                                        <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->MenuID: ''; ?>">
-                                        
+                                        <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->CategoryID: ''; ?>">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-lg-3"><label>Menu Parent</label></div>
+                                                <div class="col-lg-3"><label>Main Category</label></div>
                                                 <div class="col-lg-9">
                                                     <?php echo $menu_dropdownlist;?>
                                                 </div>
                                             </div>
-                                        </div>          
-
+                                        </div>                                    
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-lg-3"><label>Menu Name (EN)</label></div>
-                                                <div class="col-lg-9"><input class="form-control" name="MenuNameEN" value="<?php echo (isset($result)) ? $result->MenuNameEN: set_value('MenuNameEN'); ?>"></div>
+                                                <div class="col-lg-3"><label>Category Name (EN)</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="CategoryNameEN" value="<?php echo (isset($result)) ? $result->CategoryNameEN: set_value('CategoryNameEN'); ?>"><?php //echo form_error('menuname_en'); ?></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-lg-3"><label>Menu Name (TH)</label></div>
-                                                <div class="col-lg-9"><input class="form-control" name="MenuNameTH" value="<?php echo (isset($result)) ? $result->MenuNameTH: set_value('MenuNameTH'); ?>"></div>
+                                                <div class="col-lg-3"><label>Category Name (TH)</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="CategoryNameTH" value="<?php echo (isset($result)) ? $result->CategoryNameTH: set_value('CategoryNameTH'); ?>"></div>
                                             </div>
                                         </div> 
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Position</label></div>
-                                                <div class="col-lg-9"><input class="form-control" name="Position" value="<?php echo (isset($result)) ? $result->Position: set_value('Position'); ?>"></div>
+                                                <div class="col-lg-9"><input class="form-control" name="Position" value="<?php 
+                                                    echo (isset($result)) ? $result->Position: set_value('Position'); ?>"></div>
                                             </div>
                                         </div> 
 
