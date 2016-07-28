@@ -130,10 +130,10 @@
                                     <a href="<?php echo site_url('category/lists') ?>">Category List</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Product</a>
+                                    <a href="<?php echo site_url('product/add') ?>">Add Product</a>
                                 </li>
                                 <li>
-                                    <a href="#">Product List</a>
+                                    <a href="<?php echo site_url('product/lists') ?>">Product List</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
