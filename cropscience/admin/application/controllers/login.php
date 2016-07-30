@@ -6,7 +6,6 @@ class Login extends CI_Controller {
     {
         // Call the Model constructor
         parent::__construct();
-		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('Login_model');
@@ -20,74 +19,44 @@ class Login extends CI_Controller {
 		$this->load->view('login');
 	}
 
-	public function lists()
+
+	public function check()
 	{
-		$data['title'] = 'Menu List';
 
-		$res = $this->Menu_model->get_menu();
-		$data['result'] = $res;
-
-		$this->load->view('header', $data);
-		$this->load->view('menu/lists', $data);
-	}
-
-	public function add($id='')
-	{
-		$data['title'] = 'Add Menu';
-
-		$selected = '';
-		if($id!=''){
-			$result = $this->Menu_model->get_data($id);
-			$data['result'] = $result;
-			$selected = $result->Parent;
-		}
-		$main_menu = $this->Menu_model->get_menu_structure($selected);
-		$data['menu_dropdownlist'] = $main_menu;	
-
-		$this->form_validation->set_rules('Parent', 'Menu Parent', 'required');
-		$this->form_validation->set_rules('MenuNameTH', 'Menu Name (TH)', 'required|min_length[1]');
-		$this->form_validation->set_rules('MenuNameEN', 'Menu Name (EN)', 'required|min_length[1]');
-		$this->form_validation->set_rules('Position', 'Position', 'required|numeric');	
+		$this->form_validation->set_rules('Username', 'Username', 'required');
+		$this->form_validation->set_rules('Password', 'Password', 'required|min_length[1]');
 
 		if ($this->form_validation->run() === FALSE)
 		{
-
-			$this->load->view('header', $data);
-			$this->load->view('menu/add', $data);
-
+			$this->load->view('login');
 		}
 		else
 		{
-
-			$_data = $this->Menu_model->get_data($this->input->post('Parent'));
-			$next_level = $_data->Level + 1;
-			$data_insert = array(
-				'Parent' => $this->input->post('Parent'),
-				'Level' => $next_level,
-				'MenuNameEN' => $this->input->post('MenuNameEN'),
-				'MenuNameTH' => $this->input->post('MenuNameTH'),
-				'Position' => $this->input->post('Position'),
-				'Status' => $this->input->post('Status')
-			);
-			if($this->input->post('ID') == '')
-			{
-				$main_menu = $this->Menu_model->insert_data($data_insert);
+			$_data = $this->Login_model->get_data($this->input->post('Username'));
+			if(count($_data) > 0){
+				if($_data->UserID != ''){
+						if($_data->Password == $this->input->post('Password')){
+							   $data = array(
+												   'user_id'  => $_data->UserID,
+												   'user_name'  => $_data->UserName,
+												   'email'     => $_data->Email,
+												   'logged_in' => TRUE
+											   );
+							  $this->session->set_userdata($data);
+							  redirect(site_url('home'), 'refresh');
+						}else{
+							redirect(site_url('login'), 'refresh');
+						}
+				}else{
+						redirect(site_url('login'), 'refresh');
+				}
+			}else{
+						redirect(site_url('login'), 'refresh');
 			}
-			else
-			{
-				$main_menu = $this->Menu_model->update_data($data_insert,$this->input->post('ID'));
-			}
 
-			redirect(site_url('menu/lists'), 'refresh');
 		}
 
 	}	
 
-	public function delete($id='')
-	{
-		$this->Menu_model->delete_menu($id);
-		redirect(site_url('menu/lists'), 'refresh');
-
-	}
 
 }
