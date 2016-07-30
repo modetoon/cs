@@ -47,6 +47,21 @@
                                                 <div class="col-lg-9"><input class="form-control" name="CategoryNameTH" value="<?php echo (isset($result)) ? $result->CategoryNameTH: set_value('CategoryNameTH'); ?>"></div>
                                             </div>
                                         </div> 
+                                        <!-- <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-9"><label>Detail</label></div>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+														<div id="editor">
+															<h1>Hello world!</h1>
+															<p>I'm an instance of <a href="http://ckeditor.com">CKEditor</a>.</p>
+														</div>												
+												</div>
+                                            </div>
+                                        </div>  -->
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Position</label></div>
@@ -101,6 +116,14 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url();?>resource/dist/js/sb-admin-2.js"></script>
+
+	<!-- CKEditor -->
+	<!-- <script src="<?php echo base_url();?>resource/ckeditor/ckeditor.js"></script>
+	<script src="<?php echo base_url();?>resource/ckeditor/samples/js/sample.js"></script>
+	<script>
+		initSample();
+	</script> -->
+	<!-- CKEditor -->
 
 
 </body>
