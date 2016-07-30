@@ -16,6 +16,7 @@ class Logoff extends CI_Controller {
 		   $data = array(
 							   'user_id'  => '',
 							   'user_name'  => '',
+							   'user_fullname'  => '',
 							   'email'     => '',
 							   'logged_in' => FALSE
 						   );

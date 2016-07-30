@@ -9,6 +9,8 @@ class Product extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('Product_model');
+
+		is_logged_in();
     }
 
 	public function index()

@@ -39,6 +39,7 @@ class Login extends CI_Controller {
 							   $data = array(
 												   'user_id'  => $_data->UserID,
 												   'user_name'  => $_data->UserName,
+												   'user_fullname'  => $_data->FullName,
 												   'email'     => $_data->Email,
 												   'logged_in' => TRUE
 											   );
