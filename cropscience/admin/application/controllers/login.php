@@ -1,17 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Menu extends CI_Controller {
+class Login extends CI_Controller {
 
     function __construct()
     {
         // Call the Model constructor
         parent::__construct();
-
+		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->model('Menu_model');
-
-        is_logged_in();
+		$this->load->model('Login_model');
 
     }
 
@@ -19,8 +17,7 @@ class Menu extends CI_Controller {
 	{
 		$data = array('title'=> 'Listing');
 
-		$this->load->view('header', $data);
-		$this->load->view('menu/lists');
+		$this->load->view('login');
 	}
 
 	public function lists()

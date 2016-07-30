@@ -6,10 +6,12 @@ class Category extends CI_Controller {
     {
         // Call the Model constructor
         parent::__construct();
-		$this->load->helper('url');
+
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('Category_model');
+
+		is_logged_in();
 
     }
 
