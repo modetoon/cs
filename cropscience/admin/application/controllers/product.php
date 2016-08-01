@@ -62,17 +62,49 @@ class Product extends CI_Controller {
 		}
 		else
 		{
+			
+			/* ---------------- Upload Image ------------------- */
+			$config['upload_path'] = 'upload/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size']	= '100';
 
-			$data_insert = array(
-				'CategoryID' => $this->input->post('Parent'),
-				'TradeName' => $this->input->post('TradeName'),
-				'CommonName' => $this->input->post('CommonName'),
-				'Formula' => $this->input->post('Formula'),
-				'Detail' => $this->input->post('Detail'),
-				'Contain' => $this->input->post('Contain'),
-				'Suggestion' => $this->input->post('Suggestion'),
-				'Status' => $this->input->post('Status')
-			);
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload('image'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$Image = $data['upload_data']['file_name'];
+			}
+			/* ---------------- Upload Image ------------------- */
+			if((isset($Image)) && ($Image != '')){
+				$data_insert = array(
+					'CategoryID' => $this->input->post('Parent'),
+					'TradeName' => $this->input->post('TradeName'),
+					'CommonName' => $this->input->post('CommonName'),
+					'Formula' => $this->input->post('Formula'),
+					'Detail' => $this->input->post('Detail'),
+					'Contain' => $this->input->post('Contain'),
+					'Suggestion' => $this->input->post('Suggestion'),
+					'Image' => $Image,
+					'Status' => $this->input->post('Status')
+				);
+			}else{
+				$data_insert = array(
+					'CategoryID' => $this->input->post('Parent'),
+					'TradeName' => $this->input->post('TradeName'),
+					'CommonName' => $this->input->post('CommonName'),
+					'Formula' => $this->input->post('Formula'),
+					'Detail' => $this->input->post('Detail'),
+					'Contain' => $this->input->post('Contain'),
+					'Suggestion' => $this->input->post('Suggestion'),
+					'Status' => $this->input->post('Status')
+				);
+			}
+
 			if($this->input->post('ID') == '')
 			{
 				$main_menu = $this->Product_model->insert_data($data_insert);

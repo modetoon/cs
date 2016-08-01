@@ -1,10 +1,11 @@
 <?php
 
-class Menu_model extends CI_Model {
+class Content_model extends CI_Model {
 	
-	protected $table_name = 'menu';
-	protected $primary_key = 'MenuID';
-    protected $parent_key = 'Parent';
+	protected $table_name = 'content';
+	protected $primary_key = 'ContentID';
+    protected $table_menu_name = 'menu';
+    protected $primary_menu_key = 'MenuID'; 
 
     function __construct()
     {
@@ -16,7 +17,7 @@ class Menu_model extends CI_Model {
     
     function get_menu()
     {
-        $sql = "SELECT M2.MenuNameEN as ParentMenuName, M1.MenuID, M1.Parent, M1.MenuNameEN as MenuName FROM ".$this->table_name." M1 LEFT JOIN ".$this->table_name." M2 ON M1.Parent = M2.MenuID ORDER BY M1.Parent, M1.Position"; 
+        $sql = "SELECT M2.MenuNameEN as ParentMenuName, M1.MenuID, M1.Parent, M1.MenuNameEN as MenuName FROM ".$this->table_menu_name." M1 LEFT JOIN ".$this->table_menu_name." M2 ON M1.Parent = M2.MenuID ORDER BY M1.Parent, M1.Position"; 
         $query = $this->db->query($sql);        
         return $query->result();
     }
@@ -24,11 +25,17 @@ class Menu_model extends CI_Model {
     function get_menu_parent($parent=0)
     {
 
-        $sql = "SELECT * FROM ".$this->table_name." WHERE Parent = ? AND Status = 1"; 
+        $sql = "SELECT * FROM ".$this->table_menu_name." WHERE Parent = ? AND Status = 1"; 
         $query = $this->db->query($sql, array($parent));
-        //$query = $this->db->get_where($this->table_name, array($this->parent_key => $parent))->row();
         return $query->result();
     } 
+
+    function get_list()
+    {
+        $sql = "SELECT * FROM ".$this->table_name." ORDER BY ContentID"; 
+        $query = $this->db->query($sql);        
+        return $query->result();
+    }  
     
     function get_data($id)
     {
@@ -38,16 +45,15 @@ class Menu_model extends CI_Model {
         return $this->db->get($this->table_name)->row();
     } 
 
-    function delete_menu($id){
+    function delete_data($id){
 
-        $this->db->where('MenuID', $id);
+        $this->db->where($this->primary_key, $id);
         $this->db->delete($this->table_name);
     }
 
     function get_menu_structure($selected=''){
-        //$this->db->where('parent',$parent);
         $this->db->order_by('Position','asc');
-        $this->db->select('*')->from($this->table_name);
+        $this->db->select('*')->from($this->table_menu_name);
         $q=$this->db->get();
         foreach($q->result() as $r){
             
@@ -58,14 +64,14 @@ class Menu_model extends CI_Model {
     } 
     
     
-    function build_menu($category, $parent,$selected=0){
+    function build_menu($category, $parent,$selected){
         static $i = 1;
         $path = '';
         if (array_key_exists($parent, $category)) {
-            $menu = ($parent != 0) ? '': '<select class="form-control" name="Parent"><option value="">Please select';
+            $menu = ($parent != 0) ? '': '<select class="form-control" name="MenuID"><option value="">Please select';
             $i++;
             foreach ($category[$parent] as $r) {
-                $child = $this->build_menu($category, $r->MenuID);
+                $child = $this->build_menu($category, $r->MenuID, $selected);
                 $level_str = "";
                 if($parent != 0){
                     $level_str = str_repeat("&nbsp;&nbsp;",$r->Level);
@@ -84,6 +90,20 @@ class Menu_model extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    function get_template_dropdownlist($template=''){
+        $menu = '';
+        $sql = "SELECT * FROM template ORDER BY TemplateID"; 
+        $query = $this->db->query($sql);        
+        $row = $query->result();
+        $menu .= '<select class="form-control" name="TemplateID"><option value="">Please select';
+        foreach($row as $r){
+            $cls = ($r->TemplateID == $template) ? 'selected': '';
+            $menu .= '<option value="'.$r->TemplateID.'" '.$cls.'>'.$r->TemplateName;
+        }
+        $menu .= '</select>';
+        return $menu;
     }
 
     function insert_data($data){

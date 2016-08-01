@@ -21,22 +21,23 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Main Menu</th>
-                                            <th>Menu Name</th>
+                                            <th>Menu</th>
+                                            <th>Content Name (EN)</th>
+                                            <th>Page Title (EN)</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                         foreach($result as $r){
-                                            $Parent_Menu = ($r->Parent == 0) ? '= Main Menu =': $r->ParentMenuName;
                                             echo '<tr>
                                                 <td><input type="checkbox" value="'.$r->MenuID.'"></td>
-                                                <td>'.$Parent_Menu.'</td>
-                                                <td>'.$r->MenuName.'</td>
+                                                <td>'.$r->MenuID.'</td>
+                                                <td>'.$r->ContentNameEN.'</td>
+                                                <td>'.$r->PageTitleEN.'</td>
                                                 <td class="center">
-                                                    <a href="'.site_url("menu/edit/$r->MenuID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
-                                                    <a href="'.site_url("menu/delete/$r->MenuID").'" class="btn btn-danger btn-xs">Delete</a>
+                                                    <a href="'.site_url("content/edit/$r->ContentID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
+                                                    <a href="'.site_url("content/delete/$r->ContentID").'" class="btn btn-danger btn-xs">Delete</a>
                                                 </td>
                                             </tr>';                                       
                                         }

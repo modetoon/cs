@@ -116,10 +116,10 @@
                             <a href="#"><i class="fa fa-file-o"></i> Content Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Add Content</a>
+                                    <a href="<?php echo site_url('content/add') ?>">Add Content</a>
                                 </li>
                                 <li>
-                                    <a href="#">Content List</a>
+                                    <a href="<?php echo site_url('content/lists') ?>">Content List</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

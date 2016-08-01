@@ -39,10 +39,9 @@
 */
 
 $route['menu/edit/(:any)'] = 'menu/add/$1';
-//$route['menu/delete/(:any)'] = 'menu/delete/$1';
-
 $route['category/edit/(:any)'] = 'category/add/$1';
 $route['product/edit/(:any)'] = 'product/add/$1';
+$route['content/edit/(:any)'] = 'content/add/$1';
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
