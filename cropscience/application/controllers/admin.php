@@ -295,10 +295,10 @@ class Admin extends CI_Controller {
 
 	public function content_lists()
 	{
-		$this->load->model('Content_model');
+		$this->load->model('User_model');
 		$data['title'] = 'Content List';
 
-		$res = $this->Content_model->get_list();
+		$res = $this->User_model->get_list();
 		$data['result'] = $res;
 
 		$this->load->view('header', $data);
@@ -307,22 +307,22 @@ class Admin extends CI_Controller {
 
 	public function content_add($id='')
 	{
-		$this->load->model('Content_model');
+		$this->load->model('User_model');
 		$data['title'] = 'Add Content';
 
 		$selected = '';
 		$selected2 = '';
 		if($id!=''){
-			$result = $this->Content_model->get_data($id);
+			$result = $this->User_model->get_data($id);
 			$data['result'] = $result;
 			$selected = $result->MenuID;
 			$selected2 = $result->TemplateID;
 		}
 
-		$main_menu = $this->Content_model->get_menu_structure($selected);
+		$main_menu = $this->User_model->get_menu_structure($selected);
 		$data['menu_dropdownlist'] = $main_menu;	
 
-		$template = $this->Content_model->get_template_dropdownlist($selected2);
+		$template = $this->User_model->get_template_dropdownlist($selected2);
 		$data['template_dropdownlist'] = $template;
 
 		$this->form_validation->set_rules('MenuID', 'Menu', 'required');
@@ -370,11 +370,11 @@ class Admin extends CI_Controller {
 			);
 			if($this->input->post('ID') == '')
 			{
-				$main_menu = $this->Content_model->insert_data($data_insert);
+				$main_menu = $this->User_model->insert_data($data_insert);
 			}
 			else
 			{
-				$main_menu = $this->Content_model->update_data($data_insert,$this->input->post('ID'));
+				$main_menu = $this->User_model->update_data($data_insert,$this->input->post('ID'));
 			}
 
 			redirect(site_url('admin/content_lists'), 'refresh');
@@ -384,9 +384,91 @@ class Admin extends CI_Controller {
 
 	public function content_delete($id='')
 	{
-		$this->load->model('Content_model');
-		$this->Content_model->delete_data($id);
+		$this->load->model('User_model');
+		$this->User_model->delete_data($id);
 		redirect(site_url('admin/content_lists'), 'refresh');
+
+	}
+
+	// ---------------------- User Controller -------------------------- //
+
+	public function user_lists()
+	{
+		$this->load->model('User_model');
+		$data['title'] = 'User List';
+
+		$res = $this->User_model->get_lists();
+		$data['result'] = $res;
+
+		$this->load->view('header', $data);
+		$this->load->view('admin/user/lists', $data);
+	}
+
+	public function user_add($id='')
+	{
+		$this->load->model('User_model');
+		$data['title'] = 'Add User';
+
+		$selected = '';
+		$selected2 = '';
+		if($id !=''){
+			$result = $this->User_model->get_data($id);
+			$data['result'] = $result;
+		}
+
+		$this->form_validation->set_rules('UserType', 'User Type', 'required');
+
+		if($this->input->post('ID') !=''){
+			$this->form_validation->set_rules('UserName', 'UserName', 'required|min_length[4]');
+		}else{
+			$this->form_validation->set_rules('UserName', 'UserName', 'required|min_length[4]|is_unique[user.UserName]');
+		}
+		$this->form_validation->set_rules('Password', 'Password', 'required|min_length[6]');	
+		$this->form_validation->set_rules('FullName', 'FullName', 'required|min_length[1]');
+		$this->form_validation->set_rules('Email', 'Email', 'required|valid_email|min_length[1]');										
+
+		if ($this->form_validation->run() === FALSE)
+		{
+
+			$this->load->view('header', $data);
+			$this->load->view('admin/user/add', $data);
+
+		}
+		else
+		{
+
+			$data_insert = array(
+				'UserType' => $this->input->post('UserType'),
+				'UserName' => $this->input->post('UserName'),
+				'Password' => $this->input->post('Password'),
+				'FullName' => $this->input->post('FullName'),
+				'Email' => $this->input->post('Email'),
+				'Status' => $this->input->post('Status')
+			);
+			if($this->input->post('ID') == '')
+			{
+				$result = $this->User_model->insert_data($data_insert);
+				/*if(!$result){
+					$data['message_display'] = 'This user exists in system.';
+					$this->load->view('header', $data);
+					$this->load->view('admin/user/add', $data);
+				}*/
+			}
+			else
+			{
+				$result = $this->User_model->update_data($data_insert,$this->input->post('ID'));
+			}
+
+			redirect(site_url('admin/user_lists'), 'refresh');
+		}
+
+	}	
+
+	public function user_delete($id='')
+	{
+		$this->load->model('User_model');
+		$this->User_model->delete($id);
+		redirect(site_url('admin/user_lists'), 'refresh');
 
 	}
 

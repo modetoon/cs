@@ -144,6 +144,19 @@
                             <!-- /.nav-second-level -->
                         </li>
 
+                        <li class="active">
+                            <a href="#"><i class="fa fa-user"></i> User Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo site_url('admin/user_add') ?>">Add User</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('admin/user_lists') ?>">User List</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
