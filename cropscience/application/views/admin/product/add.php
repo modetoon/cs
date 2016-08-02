@@ -27,7 +27,7 @@
                                         ?>
 
 
-										<?php echo form_open_multipart('product/add');?>
+										<?php echo form_open_multipart('admin/product_add');?>
 
                                         <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->ProductID: ''; ?>">
                                         <div class="form-group">

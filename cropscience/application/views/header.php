@@ -71,7 +71,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo site_url('logoff');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="<?php echo site_url('admin/logoff');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -103,10 +103,10 @@
                             <a href="#"><i class="fa fa-tasks"></i> Menu Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo site_url('menu/add') ?>">Add Menu</a>
+                                    <a href="<?php echo site_url('admin/menu_add') ?>">Add Menu</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo site_url('menu/lists') ?>">Menu List</a>
+                                    <a href="<?php echo site_url('admin/menu_lists') ?>">Menu List</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -116,10 +116,10 @@
                             <a href="#"><i class="fa fa-file-o"></i> Content Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo site_url('content/add') ?>">Add Content</a>
+                                    <a href="<?php echo site_url('admin/content_add') ?>">Add Content</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo site_url('content/lists') ?>">Content List</a>
+                                    <a href="<?php echo site_url('admin/content_lists') ?>">Content List</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -129,16 +129,16 @@
                             <a href="#"><i class="fa fa-tags"></i> Product Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo site_url('category/add') ?>">Add Category</a>
+                                    <a href="<?php echo site_url('admin/category_add') ?>">Add Category</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo site_url('category/lists') ?>">Category List</a>
+                                    <a href="<?php echo site_url('admin/category_lists') ?>">Category List</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo site_url('product/add') ?>">Add Product</a>
+                                    <a href="<?php echo site_url('admin/product_add') ?>">Add Product</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo site_url('product/lists') ?>">Product List</a>
+                                    <a href="<?php echo site_url('admin/product_lists') ?>">Product List</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

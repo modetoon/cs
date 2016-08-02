@@ -24,7 +24,7 @@
                                         ?>
 
 
-                                        <?php echo form_open('menu/add') ?>
+                                        <?php echo form_open('admin/menu_add') ?>
 
                                         <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->MenuID: ''; ?>">
                                         

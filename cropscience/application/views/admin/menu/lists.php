@@ -35,8 +35,8 @@
                                                 <td>'.$Parent_Menu.'</td>
                                                 <td>'.$r->MenuName.'</td>
                                                 <td class="center">
-                                                    <a href="'.site_url("menu/edit/$r->MenuID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
-                                                    <a href="'.site_url("menu/delete/$r->MenuID").'" class="btn btn-danger btn-xs">Delete</a>
+                                                    <a href="'.site_url("admin/menu/edit/$r->MenuID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
+                                                    <a href="'.site_url("admin/menu/delete/$r->MenuID").'" class="btn btn-danger btn-xs">Delete</a>
                                                 </td>
                                             </tr>';                                       
                                         }

@@ -24,7 +24,7 @@
                                         ?>
 
 
-                                        <?php echo form_open('category/add') ?>
+                                        <?php echo form_open('admin/category_add') ?>
 
                                         <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->CategoryID: ''; ?>">
                                         <div class="form-group">

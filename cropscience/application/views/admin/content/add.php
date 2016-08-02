@@ -24,7 +24,7 @@
                                         ?>
 
 
-                                        <?php echo form_open('content/add') ?>
+                                        <?php echo form_open('admin/content_add') ?>
 
                                         <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->ContentID: ''; ?>">
                                         

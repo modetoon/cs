@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 												   'logged_in' => TRUE
 											   );
 							  $this->session->set_userdata($data);
-							  redirect(site_url('home'), 'refresh');
+							  redirect(site_url('admin'), 'refresh');
 						}else{
 							redirect(site_url('login'), 'refresh');
 						}

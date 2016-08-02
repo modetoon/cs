@@ -38,10 +38,17 @@
 |
 */
 
-$route['menu/edit/(:any)'] = 'menu/add/$1';
-$route['category/edit/(:any)'] = 'category/add/$1';
-$route['product/edit/(:any)'] = 'product/add/$1';
-$route['content/edit/(:any)'] = 'content/add/$1';
+$route['admin/menu/edit/(:any)'] = 'admin/menu_add/$1';
+$route['admin/menu/delete/(:any)'] = 'admin/menu_delete/$1';
+
+$route['admin/category/edit/(:any)'] = 'admin/category_add/$1';
+$route['admin/category/delete/(:any)'] = 'admin/category_delete/$1';
+
+$route['admin/product/edit/(:any)'] = 'admin/product_add/$1';
+$route['admin/product/delete/(:any)'] = 'admin/product_delete/$1';
+
+$route['admin/content/edit/(:any)'] = 'admin/content_add/$1';
+$route['admin/content/delete/(:any)'] = 'admin/content_delete/$1';
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';

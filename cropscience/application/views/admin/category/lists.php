@@ -36,8 +36,8 @@
                                                 <td>'.$r->CategoryNameEN.'</td>
                                                 <td>'.$r->CategoryNameTH.'</td>
                                                 <td class="center">
-                                                    <a href="'.site_url("category/edit/$r->CategoryID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
-                                                    <a href="'.site_url("category/delete/$r->CategoryID").'" class="btn btn-danger btn-xs">Delete</a>
+                                                    <a href="'.site_url("admin/category/edit/$r->CategoryID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
+                                                    <a href="'.site_url("admin/category/delete/$r->CategoryID").'" class="btn btn-danger btn-xs">Delete</a>
                                                 </td>
                                             </tr>';                                       
                                         }

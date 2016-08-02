@@ -68,7 +68,7 @@ CKEDITOR.editorConfig = function( config ) {
 		'undo,' +
 		'wysiwygarea';
 	// %REMOVE_END%
-
+	//config.extraPlugins = 'imageuploader';
 	config.toolbarGroups = [
 		
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },

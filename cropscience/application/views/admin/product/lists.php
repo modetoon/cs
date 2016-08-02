@@ -21,9 +21,9 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Menu</th>
-                                            <th>Content Name (EN)</th>
-                                            <th>Page Title (EN)</th>
+                                            <th>Category</th>
+                                            <th>Trade Name (TH)</th>
+                                            <th>Common Name (TH)</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -31,13 +31,13 @@
                                     <?php
                                         foreach($result as $r){
                                             echo '<tr>
-                                                <td><input type="checkbox" value="'.$r->MenuID.'"></td>
-                                                <td>'.$r->MenuID.'</td>
-                                                <td>'.$r->ContentNameEN.'</td>
-                                                <td>'.$r->PageTitleEN.'</td>
+                                                <td><input type="checkbox" value="'.$r->CategoryID.'"></td>
+                                                <td>'.$r->CategoryName.'</td>
+                                                <td>'.$r->TradeName.'</td>
+                                                <td>'.$r->CommonName.'</td>
                                                 <td class="center">
-                                                    <a href="'.site_url("content/edit/$r->ContentID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
-                                                    <a href="'.site_url("content/delete/$r->ContentID").'" class="btn btn-danger btn-xs">Delete</a>
+                                                    <a href="'.site_url("admin/product/edit/$r->ProductID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
+                                                    <a href="'.site_url("admin/product/delete/$r->ProductID").'" class="btn btn-danger btn-xs">Delete</a>
                                                 </td>
                                             </tr>';                                       
                                         }

@@ -12,7 +12,6 @@ class Product_model extends CI_Model {
         // Call the Model constructor
         parent::__construct();
 		$this->load->database();
-
     }
     
     function get_category()
@@ -93,6 +92,11 @@ class Product_model extends CI_Model {
     function update_data($data,$id){
         $this->db->where($this->primary_key,$id);
         $this->db->update($this->table_name, $data);     
+    }
+
+    function delete_menu($id){
+        $this->db->where('MenuID', $id);
+        $this->db->delete($this->table_name);
     }
 
 

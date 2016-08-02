@@ -9,7 +9,7 @@ class Menu extends CI_Controller {
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->load->model('Menu_model');
+		
 
         is_logged_in();
 
@@ -90,7 +90,6 @@ class Menu extends CI_Controller {
 	{
 		$this->Menu_model->delete_menu($id);
 		redirect(site_url('menu/lists'), 'refresh');
-
 	}
 
 }
