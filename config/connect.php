@@ -6,7 +6,7 @@ $host="localhost";
 $user="root";
 $pw="";
 $dbname="bayerdb2";
-$c=mysql_connect($host,$user,$pw);
+$c=@mysql_connect($host,$user,$pw);
 mysql_set_charset('utf8', $c);
 	if(!$c) {
 		echo"Cannot connect into database";

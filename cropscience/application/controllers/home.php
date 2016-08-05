@@ -7,16 +7,15 @@ class Home extends CI_Controller {
         // Call the Model constructor
         parent::__construct();
 
-		is_logged_in();
-
     }
 
 	public function index()
 	{
 		$this->load->helper('url');
-		$data = array('title'=> 'Home');
-		$this->load->view('header', $data);
-		$this->load->view('dashboard');
+		$data['page_title'] = 'Homepage - Bayer';
+		$data['top_menu'] = top_menu();
+		$this->load->view('header_front',$data);
+		$this->load->view('home');
 	}
 }
 
