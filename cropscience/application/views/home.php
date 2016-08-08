@@ -19,21 +19,9 @@
             </div>
           </div>          
           <!--##nosearch##-->
-          <nav id="lefthand" class="unit size-col-a lfthnd">
 
-              <ul class="lfthndnavi">
+          <?php echo $left_menu_home;?>
 
-              <?php //include "left_menu.php"; ?>
-
-                <li class="selected"><a href="index.php" class="selected"> Overview</a></li>
-                <li class="haschildren"><a href="crp-content.php"> Business Operations</a></li>
-                <li class="haschildren"><a href="crp-product-list.php"> Products</a></li>
-                <li class="haschildren"><a href="crp-calendar-list.php"> Crop Calendar</a></li>         
-                <li class="haschildren"><a href="crp-research-list.php"> Production & Research</a></li>         
-
-              </ul>            
-
-          </nav>
           <!--##/nosearch##-->       
 		  
           <div class="unit size-col-d">
@@ -165,11 +153,14 @@
   <div class="modalbody"></div>
   <a class="close-reveal-modal">close<span class="close">×</span></a>
 </div>
-
-<script src="../js_b/bayer.js"></script>
-<script src="../js_b/custom.js"></script>
-<script src="../js_b/bayerworldwide.js"></script>
-<script src="../js_b/placeholder.js"></script>
+<?php
+$base_url = base_url();
+$base_url = str_replace('/cropscience','',$base_url);
+?>
+<script src="<?php echo $base_url;?>js_b/bayer.js"></script>
+<script src="<?php echo $base_url;?>js_b/custom.js"></script>
+<script src="<?php echo $base_url;?>js_b/bayerworldwide.js"></script>
+<script src="<?php echo $base_url;?>js_b/placeholder.js"></script>
 <!--<script src="../scripts/search.js"></script>
 <script src="../scripts/jquery.jquery-ui.min.js"></script>
 <script src="../js_b/bayerworldwide.js"></script>-->

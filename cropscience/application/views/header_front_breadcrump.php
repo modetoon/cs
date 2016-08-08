@@ -21,16 +21,16 @@ $base_url = str_replace('/cropscience','',$base_url);
 <title><?php echo $page_title;?></title>
 
 <link rel="stylesheet" type="text/css" href="//shared.bayer.com/api/402/bayer.css"/>
-<link rel="stylesheet" type="text/css" href="../styles/custom.css"/>
+<link rel="stylesheet" type="text/css" href="<?php echo $base_url;?>styles/custom.css"/>
 <script src="//shared.bayer.com/js/modernizr.js"></script>
-<link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" /> 
+<link rel="icon" type="image/vnd.microsoft.icon" href="<?php echo $base_url;?>favicon.ico" /> 
 </head>
 
 <!--[if lt IE 9]>
-<body class="homepage en lt-ie9"> 
+<body class="subhm en lt-ie9"> 
 <![endif]-->
 <!--[if gt IE 8]><!-->
-<body class="homepage crop en">
+<body class="contnt crop en">
 <!--<![endif]-->
 
 <!--##nosearch##-->
@@ -39,7 +39,7 @@ $base_url = str_replace('/cropscience','',$base_url);
     <header id="header">
       <!--[if lt IE 9]><img src="../img/header/naming-area.png" alt="Bayer: Science For A Better Life" class="namingarea"/><![endif]-->
       <!--[if gt IE 8]><!-->
-      <img src="../img/header/naming-area.svg" class="namingarea" alt="Bayer: Science For A Better Life"/>
+      <img src="<?php echo $base_url;?>img/header/naming-area.svg" class="namingarea" alt="Bayer: Science For A Better Life"/>
       <!--<![endif]-->
 
       <a href="http://www.bayer.com" title="To the Bayer Group Portal" class="logo">
@@ -49,19 +49,21 @@ $base_url = str_replace('/cropscience','',$base_url);
         <!--<![endif]-->
       </a>
     </header>
-
+   
 	<?php echo $top_menu;?>
 
-	<!--##/nosearch##-->
-    <div role="main" class="main">
-      <div class="service">
-        <ul class="breadcrumb">
-          <li class="last"><a title="Home" href="../index.php">Home</a></li>
-        </ul>
-        <nav class="servicenav">
-          <ul class="nobulls">
-            <li><a href="#print">Print</a></li>
-            <li><a href="#share" class="last">Share</a></li>
+    <!--##/nosearch##-->
+      <div role="main" class="main">
+        <div class="service">
+          <ul class="breadcrumb">
+				<li><a href="index.php">Home</a></li>
+				<li><a title="" href="#">Business Operations</a></li>
+				<li class="last"><a title="" href="#">Crop Protections</a></li>            
           </ul>
-        </nav>
-      </div>
+          <nav class="servicenav">
+            <ul class="nobulls">
+              <li><a href="#print">Print</a></li>
+              <li><a href="#share" class="last">Share</a></li>
+            </ul>
+          </nav>
+        </div>

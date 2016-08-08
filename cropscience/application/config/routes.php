@@ -53,6 +53,8 @@ $route['admin/content/delete/(:any)'] = 'admin/content_delete/$1';
 $route['admin/user/edit/(:any)'] = 'admin/user_add/$1';
 $route['admin/user/delete/(:any)'] = 'admin/user_delete/$1';
 
+$route['content/(:any)'] = 'home/content/$1';
+
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 

@@ -295,10 +295,10 @@ class Admin extends CI_Controller {
 
 	public function content_lists()
 	{
-		$this->load->model('User_model');
+		$this->load->model('Content_model');
 		$data['title'] = 'Content List';
 
-		$res = $this->User_model->get_list();
+		$res = $this->Content_model->get_list();
 		$data['result'] = $res;
 
 		$this->load->view('header', $data);
@@ -307,24 +307,24 @@ class Admin extends CI_Controller {
 
 	public function content_add($id='')
 	{
-		$this->load->model('User_model');
+		$this->load->model('Content_model');
 		$data['title'] = 'Add Content';
 
 		$selected = '';
 		$selected2 = '';
 		if($id!=''){
-			$result = $this->User_model->get_data($id);
+			$result = $this->Content_model->get_data($id);
 			$data['result'] = $result;
 			$selected = $result->MenuID;
 			$selected2 = $result->TemplateID;
 		}
 
-		$main_menu = $this->User_model->get_menu_structure($selected);
+		$main_menu = $this->Content_model->get_menu_structure($selected);
 		$data['menu_dropdownlist'] = $main_menu;	
 
-		$template = $this->User_model->get_template_dropdownlist($selected2);
+		$template = $this->Content_model->get_template_dropdownlist($selected2);
 		$data['template_dropdownlist'] = $template;
-
+		
 		$this->form_validation->set_rules('MenuID', 'Menu', 'required');
 		$this->form_validation->set_rules('TemplateID', 'Template', 'required');
 		$this->form_validation->set_rules('ContentNameTH', 'Content Name (TH)', 'required|min_length[1]');
@@ -370,11 +370,11 @@ class Admin extends CI_Controller {
 			);
 			if($this->input->post('ID') == '')
 			{
-				$main_menu = $this->User_model->insert_data($data_insert);
+				$main_menu = $this->Content_model->insert_data($data_insert);
 			}
 			else
 			{
-				$main_menu = $this->User_model->update_data($data_insert,$this->input->post('ID'));
+				$main_menu = $this->Content_model->update_data($data_insert,$this->input->post('ID'));
 			}
 
 			redirect(site_url('admin/content_lists'), 'refresh');
