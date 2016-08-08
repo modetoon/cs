@@ -37,11 +37,15 @@ class Home extends CI_Controller {
 		}
 		
 		$content_data = $this->Frontcontent_model->get_content($menu_data->MenuID);
+		$data['meta_keyword'] = $content_data->MetaKeywordEN;
+		$data['meta_description'] = $content_data->MetaDescriptionEN;
 		$data['page_title'] = 'Bayer - '.$content_data->PageTitleEN;
 		$data['page_headline'] = $content_data->PageHeadlineEN;
 		$data['content'] = $content_data->ContentEN;
+		$view_data = $this->Frontcontent_model->get_view($content_data->TemplateID);
+
 		$this->load->view('header_front_breadcrump',$data);
-		$this->load->view('content');
+		$this->load->view($view_data->ViewName);
 	}
 
 

@@ -16,7 +16,7 @@ class Menu_model extends CI_Model {
     
     function get_menu()
     {
-        $sql = "SELECT M2.MenuNameEN as ParentMenuName, M1.MenuID, M1.Parent, M1.MenuNameEN as MenuName FROM ".$this->table_name." M1 LEFT JOIN ".$this->table_name." M2 ON M1.Parent = M2.MenuID ORDER BY M1.Parent, M1.Position"; 
+        $sql = "SELECT M2.MenuNameEN as ParentMenuName, M1.MenuID, M1.Parent, M1.MenuNameEN as MenuName, M1.Slug FROM ".$this->table_name." M1 LEFT JOIN ".$this->table_name." M2 ON M1.Parent = M2.MenuID ORDER BY M1.Parent, M1.Position"; 
         $query = $this->db->query($sql);        
         return $query->result();
     }

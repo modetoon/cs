@@ -21,7 +21,7 @@ if ( ! function_exists('top_menu')){
 			$cls = ($menu_slug == 'home') ? 'class="selected"': '';
 			$html .= '		<li class="n1"><a href="'.site_url("/").'" '.$cls.'>Home</a></li>';
 
-					$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '0' ORDER BY Position");
+					$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '0' AND Status = '1' ORDER BY Position");
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
 							   $cls = (($menu_slug == $row->Slug) && ($row->Slug != '')) ? ' selected': '';
@@ -35,12 +35,12 @@ if ( ! function_exists('top_menu')){
 																				<div class="lnk"><a href="crp-content.php">Overview</a></div>
 																			  </li>';
 
-																			  $query2 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row->MenuID."' ORDER BY Position");
+																			  $query2 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row->MenuID."' AND Status = '1' ORDER BY Position");
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<li class="newlevel2">';
 																						$html .= '	<ul>';
 																						foreach ($query2->result() as $row2){
-																							$query3 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row2->MenuID."' ORDER BY Position");
+																							$query3 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row2->MenuID."' AND Status = '1' ORDER BY Position");
 																							$cls = ($query3->num_rows() > 0) ? ' class="haschild"': '';
 																							$html .= '	<li '.$cls.'><a href="'.site_url("content/".$row2->Slug).'">'.$row2->MenuNameEN.'</a>';
 																							if ($query3->num_rows() > 0){
@@ -124,13 +124,13 @@ if ( ! function_exists('left_menu_content')){
 			}
 					$menu_id = ($menu_id == '') ? 0: $menu_id;
 					if($level == 1){
-						$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$menu_id."' ORDER BY Position");
+						$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$menu_id."' AND Status = '1' ORDER BY Position");
 					}else{
-						$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$parent."' ORDER BY Position");
+						$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$parent."' AND Status = '1'  ORDER BY Position");
 					}
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
-								$query2 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row->MenuID."' ORDER BY Position");
+								$query2 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row->MenuID."' AND Status = '1'  ORDER BY Position");
 								$cls = array();
 								$cls[] = ($query2->num_rows() > 0) ? 'haschildren': '';
 								$cls[] = ($menu_id == $row->MenuID) ? 'selected': '';

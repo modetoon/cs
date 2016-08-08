@@ -65,6 +65,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('Parent', 'Menu Parent', 'required');
 		$this->form_validation->set_rules('MenuNameTH', 'Menu Name (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('MenuNameEN', 'Menu Name (EN)', 'required|min_length[1]');
+		$this->form_validation->set_rules('Slug', 'Menu Slug', 'required|min_length[1]');
 		$this->form_validation->set_rules('Position', 'Position', 'required|numeric');	
 
 		if ($this->form_validation->run() === FALSE)
@@ -85,6 +86,7 @@ class Admin extends CI_Controller {
 				'MenuNameEN' => $this->input->post('MenuNameEN'),
 				'MenuNameTH' => $this->input->post('MenuNameTH'),
 				'Position' => $this->input->post('Position'),
+				'Slug' => $this->input->post('Slug'),
 				'Status' => $this->input->post('Status')
 			);
 			if($this->input->post('ID') == '')

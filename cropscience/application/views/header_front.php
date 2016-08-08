@@ -6,11 +6,11 @@ $base_url = str_replace('/cropscience','',$base_url);
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
-<meta name="description" content="">
+<meta name="description" content="<?php echo $meta_description;?>">
 <meta property="og:title" content="">
 <meta property="og:description" content="">
 <meta property="og:image" content="">
-<meta name="keywords" content="">
+<meta name="keywords" content="<?php echo $meta_keyword;?>">
 <meta name="abstract" content="">
 <meta name="author" content="">
 <meta name="publisher" content="">

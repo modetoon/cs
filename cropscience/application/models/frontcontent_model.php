@@ -40,6 +40,13 @@ class Frontcontent_model extends CI_Model {
         $this->db->limit(1);
         return $this->db->get('content')->row();
     } 
+	
+    function get_view($view_id='')
+    {
+        $this->db->where("TemplateID", $view_id);
+        $this->db->limit(1);
+        return $this->db->get('template')->row();
+    } 
 
     function get_template_dropdownlist($template=''){
         $menu = '';
