@@ -65,7 +65,6 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('Parent', 'Menu Parent', 'required');
 		$this->form_validation->set_rules('MenuNameTH', 'Menu Name (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('MenuNameEN', 'Menu Name (EN)', 'required|min_length[1]');
-		$this->form_validation->set_rules('Slug', 'Menu Slug', 'required|min_length[1]');
 		$this->form_validation->set_rules('Position', 'Position', 'required|numeric');	
 
 		if ($this->form_validation->run() === FALSE)
@@ -86,7 +85,6 @@ class Admin extends CI_Controller {
 				'MenuNameEN' => $this->input->post('MenuNameEN'),
 				'MenuNameTH' => $this->input->post('MenuNameTH'),
 				'Position' => $this->input->post('Position'),
-				'Slug' => $this->input->post('Slug'),
 				'Status' => $this->input->post('Status')
 			);
 			if($this->input->post('ID') == '')
@@ -335,12 +333,15 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('PageTitleEN', 'Page Title (EN)', 'required|min_length[1]');
 		$this->form_validation->set_rules('PageHeadlineTH', 'Page Headline (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('PageHeadlineEN', 'Page eadline (EN)', 'required|min_length[1]');
-		$this->form_validation->set_rules('ContentTH', 'Content (TH)', 'required|min_length[1]');
-		$this->form_validation->set_rules('ContentEN', 'Content (EN)', 'required|min_length[1]');
+		//$this->form_validation->set_rules('ContentTH', 'Content (TH)', 'required|min_length[1]');
+		//$this->form_validation->set_rules('ContentEN', 'Content (EN)', 'required|min_length[1]');
 		$this->form_validation->set_rules('MetaKeywordTH', 'Meta Keyword (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('MetaKeywordEN', 'Meta Keyword (EN)', 'required|min_length[1]');	
 		$this->form_validation->set_rules('MetaDescriptionTH', 'Meta Description (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('MetaDescriptionEN', 'Meta Description (EN)', 'required|min_length[1]');										
+		//$this->form_validation->set_rules('Slug', 'Slug', 'required|min_length[1]|is_unique[content.Slug]');										
+		$this->form_validation->set_rules('Slug', 'Slug', 'required|min_length[1]');										
+		//$this->form_validation->set_rules('Url', 'Url', 'required|min_length[1]');										
 
 		if ($this->form_validation->run() === FALSE)
 		{
@@ -351,7 +352,9 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-
+			
+			$template_data = $this->Content_model->get_template_data($this->input->post('TemplateID'));
+			$url = $template_data->ViewName.'/'.$this->input->post('Slug');
 			$data_insert = array(
 				'MenuID' => $this->input->post('MenuID'),
 				'TemplateID' => $this->input->post('TemplateID'),
@@ -367,6 +370,8 @@ class Admin extends CI_Controller {
 				'MetaKeywordEN' => $this->input->post('MetaKeywordEN'),
 				'MetaDescriptionTH' => $this->input->post('MetaDescriptionTH'),
 				'MetaDescriptionEN' => $this->input->post('MetaDescriptionEN'),
+				'Slug' => $this->input->post('Slug'),
+				'Url' => $url,
 				'ShowLeftMenu' => $this->input->post('ShowLeftMenu'),
 				'Status' => $this->input->post('Status')
 			);

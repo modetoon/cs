@@ -32,7 +32,7 @@ class Content_model extends CI_Model {
 
     function get_list()
     {
-        $sql = "SELECT * FROM ".$this->table_name." ORDER BY ContentID"; 
+        $sql = "SELECT C.*, M.MenuNameEN as MenuName FROM ".$this->table_name." C LEFT JOIN ".$this->table_menu_name." M ON C.MenuID = M.MenuID ORDER BY C.ContentID"; 
         $query = $this->db->query($sql);        
         return $query->result();
     }  
@@ -105,6 +105,13 @@ class Content_model extends CI_Model {
         $menu .= '</select>';
         return $menu;
     }
+
+    function get_template_data($template_id='')
+    {
+        $this->db->where('TemplateID', $template_id);
+        $this->db->limit(1);
+        return $this->db->get('template')->row();
+    } 
 
     function insert_data($data){
         $this->db->insert($this->table_name, $data);

@@ -21,12 +21,12 @@ if ( ! function_exists('top_menu')){
 			$cls = ($menu_slug == 'home') ? 'class="selected"': '';
 			$html .= '		<li class="n1"><a href="'.site_url("/").'" '.$cls.'>Home</a></li>';
 
-					$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '0' AND Status = '1' ORDER BY Position");
+					$query = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '0' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
 							   $cls = (($menu_slug == $row->Slug) && ($row->Slug != '')) ? ' selected': '';
 							   $html .= '		<li class="n2">
-																  <a class="haschild '.$cls.'" href="'.site_url("content/".$row->Slug).'">'.$row->MenuNameEN.'</a>
+																  <a class="haschild '.$cls.'" href="'.site_url($row->Url).'">'.$row->MenuNameEN.'</a>
 																  <ul class="newsub">
 																			<li class="megaTsrBx">
 																			  <h2 class="thdln">'.$row->MenuNameEN.'</h2>
@@ -35,14 +35,14 @@ if ( ! function_exists('top_menu')){
 																				<div class="lnk"><a href="crp-content.php">Overview</a></div>
 																			  </li>';
 
-																			  $query2 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row->MenuID."' AND Status = '1' ORDER BY Position");
+																			  $query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1'  AND C.Status = '1' ORDER BY M.Position");
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<li class="newlevel2">';
 																						$html .= '	<ul>';
 																						foreach ($query2->result() as $row2){
-																							$query3 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row2->MenuID."' AND Status = '1' ORDER BY Position");
+																							$query3 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row2->MenuID."' AND M.Status = '1' AND C.Status = '1'  ORDER BY M.Position");
 																							$cls = ($query3->num_rows() > 0) ? ' class="haschild"': '';
-																							$html .= '	<li '.$cls.'><a href="'.site_url("content/".$row2->Slug).'">'.$row2->MenuNameEN.'</a>';
+																							$html .= '	<li '.$cls.'><a href="'.site_url($row2->Url).'">'.$row2->MenuNameEN.'</a>';
 																							if ($query3->num_rows() > 0){
 																										$html .= '	<ul>';
 																										foreach ($query3->result() as $row3){
@@ -83,17 +83,17 @@ if ( ! function_exists('left_menu_home')){
 			$html .= '<ul class="lfthndnavi">';
 			$html .= '<li class="selected"><a class="selected" href="#">Overview</a></li>';
 
-					$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '0' ORDER BY Position");
+					$query = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '0' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
-								$query2 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row->MenuID."' ORDER BY Position");
+								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 								$cls = ($query2->num_rows() > 0) ? 'class="haschildren"': '';
 							    $html .= '		<li '.$cls.'><a href="index.php"> '.$row->MenuNameEN.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
 																						foreach ($query2->result() as $row2){
-																							$html .= '	<li><a href="crp-content.php">'.$row2->MenuNameEN.'</a></li>';
+																							$html .= '	<li><a href="'.$row2->Url.'">'.$row2->MenuNameEN.'</a></li>';
 																						}
 																						$html .= '</ul>';
 																			  }
@@ -124,24 +124,24 @@ if ( ! function_exists('left_menu_content')){
 			}
 					$menu_id = ($menu_id == '') ? 0: $menu_id;
 					if($level == 1){
-						$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$menu_id."' AND Status = '1' ORDER BY Position");
+						$query = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$menu_id."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 					}else{
-						$query = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$parent."' AND Status = '1'  ORDER BY Position");
+						$query = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$parent."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 					}
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
-								$query2 = $ci->db->query("SELECT * FROM menu WHERE Parent = '".$row->MenuID."' AND Status = '1'  ORDER BY Position");
+								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 								$cls = array();
 								$cls[] = ($query2->num_rows() > 0) ? 'haschildren': '';
 								$cls[] = ($menu_id == $row->MenuID) ? 'selected': '';
 								$cls_str = implode(" ",$cls);
 								$cls_str = 'class="'.$cls_str.'"';
-							    $html .= '		<li><a href="'.site_url("content/".$row->Slug).'" '.$cls_str.'> '.$row->MenuNameEN.'</a>';
+							    $html .= '		<li><a href="'.site_url($row->Url).'" '.$cls_str.'> '.$row->MenuNameEN.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
 																						foreach ($query2->result() as $row2){
-																							$html .= '	<li><a href="'.site_url("content/".$row2->Slug).'">'.$row2->MenuNameEN.'</a></li>';
+																							$html .= '	<li><a href="'.site_url($row2->Url).'">'.$row2->MenuNameEN.'</a></li>';
 																						}
 																						$html .= '</ul>';
 																			  }

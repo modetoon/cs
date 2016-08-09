@@ -49,12 +49,12 @@
                                                 <div class="col-lg-9"><input class="form-control" name="MenuNameTH" value="<?php echo (isset($result)) ? $result->MenuNameTH: set_value('MenuNameTH'); ?>"></div>
                                             </div>
                                         </div> 
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Menu Slug</label></div>
                                                 <div class="col-lg-9"><input class="form-control" name="Slug" value="<?php echo (isset($result)) ? $result->Slug: set_value('Slug'); ?>"></div>
                                             </div>
-                                        </div> 
+                                        </div>  -->
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Position</label></div>

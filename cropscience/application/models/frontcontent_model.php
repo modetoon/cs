@@ -20,19 +20,27 @@ class Frontcontent_model extends CI_Model {
         return $query->result();
     }  
     
-    function get_menudata($slug)
+    function get_menudata($slug='')
     {
-        $this->db->where("Slug", $slug);
-        $this->db->limit(1);
-        return $this->db->get($this->menu_table_name)->row();
+        $sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE C.Slug = '".$slug."' LIMIT 0,1"; 
+        $query = $this->db->query($sql);        
+        $arr =  $query->result();
+		return $arr[0];
     } 
 
-    function get_menu($menu_id)
+    function get_menu($menu_id='')
     {
-        $this->db->where("MenuID", $menu_id);
-        $this->db->limit(1);
-        return $this->db->get('menu')->row();
-    } 
+        $sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.MenuID = '".$menu_id."' LIMIT 0,1"; 
+		
+        $query = $this->db->query($sql);        
+        $arr =  $query->result();
+		//print_r($arr);die;
+		if(count( $arr) > 0){
+			return $arr[0];
+		}else{
+			return array();
+		}
+    }	
 	
     function get_content($menu_id='')
     {

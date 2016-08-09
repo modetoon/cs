@@ -23,7 +23,6 @@
                                             <th>#</th>
                                             <th>Main Menu</th>
                                             <th>Menu Name</th>
-                                            <th>Slug</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -35,7 +34,6 @@
                                                 <td><input type="checkbox" value="'.$r->MenuID.'"></td>
                                                 <td>'.$Parent_Menu.'</td>
                                                 <td>'.$r->MenuName.'</td>
-                                                <td>'.$r->Slug.'</td>
                                                 <td class="center">
                                                     <a href="'.site_url("admin/menu/edit/$r->MenuID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
                                                     <a href="'.site_url("admin/menu/delete/$r->MenuID").'" class="btn btn-danger btn-xs">Delete</a>

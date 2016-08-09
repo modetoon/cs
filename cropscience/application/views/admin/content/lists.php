@@ -20,11 +20,12 @@
                                 <table class="table table-striped table-bordered table-hover" id="ListTable">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Menu</th>
-                                            <th>Content Name (EN)</th>
-                                            <th>Page Title (EN)</th>
-                                            <th>Action</th>
+                                            <th style="width:4%;"></th>
+                                            <th style="width:17%;">Menu</th>
+                                            <th style="width:21%;">Content Name (EN)</th>
+                                            <th style="width:21%;">Page Title (EN)</th>
+                                            <th>URL</th>
+                                            <th style="width:12%;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -32,9 +33,10 @@
                                         foreach($result as $r){
                                             echo '<tr>
                                                 <td><input type="checkbox" value="'.$r->MenuID.'"></td>
-                                                <td>'.$r->MenuID.'</td>
+                                                <td>'.$r->MenuName.'</td>
                                                 <td>'.$r->ContentNameEN.'</td>
                                                 <td>'.$r->PageTitleEN.'</td>
+                                                <td>'.$r->Url.'</td>
                                                 <td class="center">
                                                     <a href="'.site_url("admin/content/edit/$r->ContentID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
                                                     <a href="'.site_url("admin/content/delete/$r->ContentID").'" class="btn btn-danger btn-xs">Delete</a>

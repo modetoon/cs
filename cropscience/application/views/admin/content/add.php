@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
+                        <div class="alert alert-info">
                             <?php echo $title;?>
                         </div>
                         <div class="panel-body">
@@ -57,6 +57,19 @@
                                                 <div class="col-lg-9"><input class="form-control" name="ContentNameTH" value="<?php echo (isset($result)) ? $result->ContentNameTH: set_value('ContentNameTH'); ?>"></div>
                                             </div>
                                         </div> 
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Slug</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="Slug" value="<?php echo (isset($result)) ? $result->Slug: set_value('Slug'); ?>"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Url</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="Url" value="<?php echo (isset($result)) ? $result->Url: set_value('Url'); ?>" readonly></div>
+                                            </div>
+                                        </div> 
+
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Page Title Name (EN)</label></div>
