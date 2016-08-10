@@ -31,10 +31,8 @@ class Frontcontent_model extends CI_Model {
     function get_menu($menu_id='')
     {
         $sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.MenuID = '".$menu_id."' LIMIT 0,1"; 
-		
         $query = $this->db->query($sql);        
         $arr =  $query->result();
-		//print_r($arr);die;
 		if(count( $arr) > 0){
 			return $arr[0];
 		}else{
@@ -47,6 +45,60 @@ class Frontcontent_model extends CI_Model {
         $this->db->where("MenuID", $menu_id);
         $this->db->limit(1);
         return $this->db->get('content')->row();
+    } 
+
+    function get_content_product_ul($menu_id='',$parent='')
+    {
+		$html = '';
+        if($parent == 0){
+
+			$sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$menu_id."' ORDER BY M.Position"; 
+			$query = $this->db->query($sql);        
+			$arr =  $query->result();
+			foreach($arr as $row){
+				$html .= '<h2>'.$row->MenuNameEN.'</h2> 
+								<hr>';
+
+								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.Position"; 
+								$query_sub = $this->db->query($sql_sub);        
+								$arr_sub =  $query_sub->result();
+								if ($query_sub->num_rows() > 0){
+									$html .= '<ul class="prd-list">';
+									foreach($arr_sub as $row_sub){
+										$html .= '<li><a href="'.$row_sub->Url.'">'.$row_sub->MenuNameEN.'</a></li>';
+									}
+									$html .= '</ul>';
+									$html .= '	<div class="spacer">&nbsp;</div>';
+								}
+
+			}
+			return  $html;
+
+		}else{
+
+			$sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.MenuID = '".$menu_id."' ORDER BY M.Position"; 
+			$query = $this->db->query($sql);        
+			$arr =  $query->result();
+			foreach($arr as $row){
+				$html .= '<h2>'.$row->MenuNameEN.'</h2> 
+								<hr>';
+
+								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.Position"; 
+								$query_sub = $this->db->query($sql_sub);        
+								$arr_sub =  $query_sub->result();
+								if ($query_sub->num_rows() > 0){
+									$html .= '<ul class="prd-list">';
+									foreach($arr_sub as $row_sub){
+										$html .= '<li><a href="'.site_url($row_sub->Url).'">'.$row_sub->MenuNameEN.'</a></li>';
+									}
+									$html .= '</ul>';
+									$html .= '	<div class="spacer">&nbsp;</div>';
+								}
+
+			}
+			return  $html;
+			
+		}
     } 
 	
     function get_view($view_id='')

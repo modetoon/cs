@@ -1,19 +1,6 @@
             
             <!--##/center##--> 
             <div class="unit size-col-d">
-               <?php
-        				//include "../config/connect.php";
-        		
-        				//$sql="SELECT *  FROM `tb_article` WHERE menu_article='$call_arti'";
-        				//$result=mysql_db_query($dbname,$sql);
-        				//while($rs=mysql_fetch_array($result)) {
-        				//$content_article=$rs[content_article];
-        				//$show_rmenu=$rs[show_rmenu];
-        				//$position_rmenu=$rs[position_rmenu];
-        				//}
-        				//echo $content_article; 
-        				//mysql_close();
-			         ?>
 
               <!-- <div class="topline">Products</div> -->
 
@@ -21,68 +8,14 @@
 
               <div class="spacer">&nbsp;</div>
 
-                <h2>Fungicides</h2> 
-                <hr>
-                <ul class="prd-list">
-                  <li><a href="crp-product-details.php">Luna Experience</a></li>
-                  <li><a href="crp-product-details.php">Luna Sensation</a></li>
-                  <li><a href="crp-product-details.php">Antracol</a></li>
-                  <li><a href="crp-product-details.php">Nativo 75 WG</a></li>
-                  <li><a href="crp-product-details.php">Profiler</a></li>
-                  <li><a href="crp-product-details.php">Flint</a></li>
-                  <li><a href="crp-product-details.php">Folicur 250 EW</a></li>
-                  <li><a href="crp-product-details.php">Folicur 430 SC</a></li>
-                  <li><a href="crp-product-details.php">Invento 66.8 WP</a></li>
-                  <li><a href="crp-product-details.php">Aliette 80 WG</a></li>
-                  <li><a href="crp-product-details.php">Ethrel 48 PGR</a></li>
-                  <li><a href="crp-product-details.php">Ethrel 10 LS</a></li>
-                </ul>
 
-                <div class="spacer">&nbsp;</div>
 
-                <h2>Herbicides</h2> 
-                <hr>
-                <ul class="prd-list">
-                  <li><a href="crp-product-details.php">Ronstar</a></li>
-                  <li><a href="crp-product-details.php">Basta X</a></li>
-                  <li><a href="crp-product-details.php">Tiller</a></li>
-                  <li><a href="crp-product-details.php">Ricestar</a></li>
-                  <li><a href="crp-product-details.php">Whip 7.5</a></li>
-                  <li><a href="crp-product-details.php">Sunrice</a></li>
-                  <li><a href="crp-product-details.php">Sencor</a></li>
-                  <li><a href="crp-product-details.php">Balance flexx</a></li>
-                  <li><a href="crp-product-details.php">Alion</a></li>
-                </ul>
 
-                <div class="spacer">&nbsp;</div>
+                <?php echo $content;?>
 
-                <h2>Insecticides</h2> 
-                <hr>
-                <ul class="prd-list">
-                  <li><a href="crp-product-details.php">Belt Expert</a></li>
-                  <li><a href="crp-product-details.php">Alanto</a></li>
-                  <li><a href="crp-product-details.php">Curbix</a></li>
-                  <li><a href="crp-product-details.php">Provado</a></li>
-                  <li><a href="crp-product-details.php">Decis</a></li>
-                  <li><a href="crp-product-details.php">Politec 025 EC</a></li>
-                  <li><a href="crp-product-details.php">Oberon</a></li>
-                </ul>
 
-                <div class="spacer">&nbsp;</div>
 
-                <h2>Seeds</h2> 
-                <hr>
-                <ul class="prd-list">
-                  <li><a href="crp-product-details.php">Gaucho 70 WS</a></li>
-                </ul>
 
-                <div class="spacer">&nbsp;</div>
-
-                <h2>Compendium</h2>
-                <hr>
-                <ul class="prd-list">
-                  <li><a href="crp-product-details.php">Compendium</a></li>
-                </ul>
 
             </div>
             

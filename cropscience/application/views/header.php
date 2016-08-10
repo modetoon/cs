@@ -96,46 +96,20 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="<?php echo base_url();?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
+
                         <li class="active">
-                            <a href="#"><i class="fa fa-tasks"></i> Menu Management<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo site_url('admin/menu_add') ?>">Add Menu</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('admin/menu_lists') ?>">Menu List</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="<?php echo site_url('admin/menu_lists') ?>"><i class="fa fa-tasks"></i> Menu Management</a>
                         </li>
 						
                         <li class="active">
-                            <a href="#"><i class="fa fa-file-o"></i> Content Management<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo site_url('admin/content_add') ?>">Add Content</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('admin/content_lists') ?>">Content List</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="<?php echo site_url('admin/content_lists') ?>"><i class="fa fa-file-o"></i> Content Management</a>
                         </li>
 
                         <li class="active">
                             <a href="#"><i class="fa fa-tags"></i> Product Management<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo site_url('admin/category_add') ?>">Add Category</a>
-                                </li>
-                                <li>
                                     <a href="<?php echo site_url('admin/category_lists') ?>">Category List</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('admin/product_add') ?>">Add Product</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo site_url('admin/product_lists') ?>">Product List</a>
@@ -145,16 +119,7 @@
                         </li>
 
                         <li class="active">
-                            <a href="#"><i class="fa fa-user"></i> User Management<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo site_url('admin/user_add') ?>">Add User</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('admin/user_lists') ?>">User List</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="<?php echo site_url('admin/user_lists') ?>"><i class="fa fa-user"></i> User Management</a>
                         </li>
 
                     </ul>

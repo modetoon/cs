@@ -6,6 +6,12 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <div class="row">
+                <div class="col-lg-12 right">
+                    <p class="text-right"><button type="button" class="btn btn-success text-right" onclick="window.location.href='<?php echo site_url('admin/category_add');?>';">Add Category</button></p>
+                </div>
+            </div>
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">

@@ -46,7 +46,7 @@ if ( ! function_exists('top_menu')){
 																							if ($query3->num_rows() > 0){
 																										$html .= '	<ul>';
 																										foreach ($query3->result() as $row3){
-																																$html .= '<li><a href="crp-product-details.php">'.$row3->MenuNameEN.'</a></li>';
+																																$html .= '<li><a href="'.site_url($row3->Url).'">'.$row3->MenuNameEN.'</a></li>';
 																										}
 																										$html .= '	</ul>';
 																							}
@@ -136,7 +136,7 @@ if ( ! function_exists('left_menu_content')){
 								$cls[] = ($menu_id == $row->MenuID) ? 'selected': '';
 								$cls_str = implode(" ",$cls);
 								$cls_str = 'class="'.$cls_str.'"';
-							    $html .= '		<li><a href="'.site_url($row->Url).'" '.$cls_str.'> '.$row->MenuNameEN.'</a>';
+							    $html .= '		<li '.$cls_str.'><a href="'.site_url($row->Url).'"> '.$row->MenuNameEN.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
@@ -148,6 +148,7 @@ if ( ! function_exists('left_menu_content')){
 
 								  $html .= '		</li>';
 							}
+							
 					}
 
 			$html .= '</ul>';
