@@ -89,9 +89,10 @@ class Home extends CI_Controller {
 	{
 		$this->load->helper('url');
 		$menu_data = $this->Frontcontent_model->get_menudata($menu_slug);
-
+		$parent_menu_data = $this->Frontcontent_model->get_parentdata($menu_data->Parent);
+		//echo $parent_menu_data->MenuID;
 		
-		$data['left_menu_content'] = left_menu_content($menu_data->MenuID,$menu_data->Level,$menu_data->Parent);
+		$data['left_menu_content'] = left_menu_productdetail($menu_data->MenuID,$menu_data->Parent,$parent_menu_data->MenuID);
 		$parent_data = $this->Frontcontent_model->get_content($menu_data->Parent);
 		$parent_menu_data = $this->Frontcontent_model->get_menu($menu_data->Parent);
 		$data['page_parent_headline'] = '';

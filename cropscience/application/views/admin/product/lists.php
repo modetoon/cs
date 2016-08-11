@@ -27,7 +27,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="ListTable">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th></th>
                                             <!-- <th>Category</th> -->
                                             <th>Trade Name (TH)</th>
                                             <th>Common Name (TH)</th>

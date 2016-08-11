@@ -115,7 +115,8 @@ if ( ! function_exists('left_menu_content')){
 		function left_menu_content($menu_id='',$level='',$parent='') {
 			$ci =& get_instance();
 			$ci->load->database();
-
+			
+			$product_detail_level = false;
 			$html = '';
 			$html .= '<nav id="lefthand" class="unit size-col-a lfthnd">';
 			$html .= '<ul class="lfthndnavi">';
@@ -159,5 +160,57 @@ if ( ! function_exists('left_menu_content')){
 
 }
 
+if ( ! function_exists('left_menu_productdetail')){
+		function left_menu_productdetail($menu_id='',$parent='',$top_parent='') {
+			$ci =& get_instance();
+			$ci->load->database();
+
+			$product_detail_level = false;
+			$html = '';
+			$html .= '<nav id="lefthand" class="unit size-col-a lfthnd">';
+			$html .= '<ul class="lfthndnavi">';
+			$html .= '<li class="selected"><a class="selected" href="#">Overview</a></li>';
+
+
+					$menu_id = ($menu_id == '') ? 0: $menu_id;
+					$query = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$top_parent."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
+
+					if ($query->num_rows() > 0){
+							foreach ($query->result() as $row){
+								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
+								$arrSubMenu = array();
+								foreach ($query2->result() as $row_sub){
+										$arrSubMenu[] = $row_sub->MenuID;
+								}
+								$cls = array();
+								$cls[] = ($query2->num_rows() > 0) ? 'haschildren': '';
+								$cls[] = (in_array($menu_id, $arrSubMenu)) ? 'selected': '';
+								$cls_str = implode(" ",$cls);
+								$cls_str = 'class="'.$cls_str.'"';
+
+								$cls_link = ($parent == $row->MenuID) ? 'class="selected"': '';
+							    $html .= '		<li '.$cls_str.'><a href="'.site_url($row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
+																			  
+																			  if ($query2->num_rows() > 0){
+																						$html .= '<ul>';
+																						foreach ($query2->result() as $row2){
+																							$cls_link = ($menu_id == $row2->MenuID) ? 'class="selected"': '';
+																							$html .= '	<li><a href="'.site_url($row2->Url).'" '.$cls_link.'>'.$row2->MenuNameEN.'</a></li>';
+																						}
+																						$html .= '</ul>';
+																			  }
+
+								  $html .= '		</li>';
+							}
+							
+					}
+
+			$html .= '</ul>';
+			$html .= '</nav>';
+			return $html;
+
+		}
+
+}
 
 ?>  

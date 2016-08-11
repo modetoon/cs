@@ -27,7 +27,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="ListTable">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th></th>
                                             <th>Main Menu</th>
                                             <th>Menu Name</th>
                                             <th>Action</th>

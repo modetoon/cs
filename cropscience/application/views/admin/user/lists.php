@@ -27,7 +27,7 @@
                                 <table class="table table-striped table-bordered table-hover" id="ListTable">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th></th>
                                             <th>Role</th>
                                             <th>UserName</th>
                                             <th>FullName</th>
