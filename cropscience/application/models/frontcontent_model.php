@@ -33,11 +33,15 @@ class Frontcontent_model extends CI_Model {
         $sql = "SELECT * FROM menu WHERE MenuID = '".$menu_id."' LIMIT 0,1"; 
         $query = $this->db->query($sql);        
         $arr =  $query->result();
-
-        $sql = "SELECT * FROM menu WHERE MenuID = '".$arr[0]->Parent."' LIMIT 0,1"; 
-        $query = $this->db->query($sql);        
-        $arr2 =  $query->result();
-		return $arr2[0];
+		
+		if($arr[0]->Parent != 0){
+			$sql = "SELECT * FROM menu WHERE MenuID = '".$arr[0]->Parent."' LIMIT 0,1"; 
+			$query = $this->db->query($sql);        
+			$arr2 =  $query->result();
+			return $arr2[0];
+		}else{
+			return $arr[0];
+		}
     } 
 	
     function get_product_data($product_id='')

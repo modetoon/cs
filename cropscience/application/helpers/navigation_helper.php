@@ -4,6 +4,13 @@ if ( ! function_exists('top_menu')){
 		function top_menu($menu_slug='') {
 			$ci =& get_instance();
 			$ci->load->database();
+			
+			$top_menu = 0;
+			if($menu_slug != 'home'){
+				$menu_data = $ci->Frontcontent_model->get_menudata($menu_slug);
+				$parent_menu_data = $ci->Frontcontent_model->get_parentdata($menu_data->MenuID);
+				$top_menu = $parent_menu_data->MenuID;
+			}
 
 			$html = '';
 			$html .= '<nav class="mobilenav">
@@ -24,7 +31,7 @@ if ( ! function_exists('top_menu')){
 					$query = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '0' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
-							   $cls = (($menu_slug == $row->Slug) && ($row->Slug != '')) ? ' selected': '';
+							   $cls = ((($menu_slug == $row->Slug) && ($row->Slug != '')) || ($top_menu == $row->MenuID)) ? ' selected': '';
 							   $html .= '		<li class="n2">
 																  <a class="haschild '.$cls.'" href="'.site_url($row->Url).'">'.$row->MenuNameEN.'</a>
 																  <ul class="newsub">
@@ -137,7 +144,9 @@ if ( ! function_exists('left_menu_content')){
 								$cls[] = ($menu_id == $row->MenuID) ? 'selected': '';
 								$cls_str = implode(" ",$cls);
 								$cls_str = 'class="'.$cls_str.'"';
-							    $html .= '		<li '.$cls_str.'><a href="'.site_url($row->Url).'"> '.$row->MenuNameEN.'</a>';
+
+								$cls_link = ($menu_id == $row->MenuID) ? 'class="selected"': '';
+							    $html .= '		<li '.$cls_str.'><a href="'.site_url($row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
