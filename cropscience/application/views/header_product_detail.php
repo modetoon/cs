@@ -56,7 +56,6 @@ $base_url = str_replace('/cropscience','',$base_url);
         <div class="service">
           <ul class="breadcrumb">
              
-            <?php //include"top_sup_menu.php";?>
 
             <li><a href="index.php">Home</a></li>
             <li><a title="Products" href="crp-product-list.php">Products</a></li>

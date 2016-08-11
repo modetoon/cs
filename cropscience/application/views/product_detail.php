@@ -5,27 +5,14 @@ $base_url = str_replace('/cropscience','',$base_url);
             
             <!--##/center##--> 
             <div class="unit size-col-d">
-               <?php
-        				//include "../config/connect.php";
-        		
-        				//$sql="SELECT *  FROM `tb_article` WHERE menu_article='$call_arti'";
-        				//$result=mysql_db_query($dbname,$sql);
-        				//while($rs=mysql_fetch_array($result)) {
-        				//$content_article=$rs[content_article];
-        				//$show_rmenu=$rs[show_rmenu];
-        				//$position_rmenu=$rs[position_rmenu];
-        				//}
-        				//echo $content_article; 
-        				//mysql_close();
-			         ?> 
               
-              <div class="topline">Fungicides</div>
-              <h1>Luna Experience</h1>
+              <div class="topline"><?php echo $Category;?></div>
+              <h1><?php echo $TradeName;?></h1>
 				
               <div class="media">
                   <figure class="img standardwidth-prod">
-                    <img alt="Luna Experience" src="<?php echo $base_url;?>img/content/Luna-Experience-BT.jpg" title="Luna Experience">
-                    <img alt="Luna Experience" src="<?php echo $base_url;?>img/content/Luna-Experience-500-ml.gif" title="Luna Experience" class="prod-package">
+                    <img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$BrandImage);?>" title="<?php echo $TradeName;?>">
+                    <img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$Image);?>" title="<?php echo $TradeName;?>" class="prod-package">
                   </figure>
 
                   <table class="table-prod">
@@ -34,41 +21,37 @@ $base_url = str_replace('/cropscience','',$base_url);
                     <tbody>
                       <tr>
                         <td ><strong>ชื่อการค้า:</strong></td>
-                        <td>ลูน่า® เอ็กซ์พีเรียนซ์ (Luna® Experience)</td>
+                        <td><?php echo $TradeName;?></td>
                       </tr>
                       <tr>
                         <td><strong>ชื่อสามัญ:</strong></td>
-                        <td>ฟลูโอไพแรม + ทีบูโคนาโซล (fluopyram + tebuconazole)  </td>
+                        <td><?php echo $CommonName;?></td>
                       </tr>
                       <tr>
                         <td><strong>สูตร:</strong></td>
-                        <td>20% + 20% W/V SC</td>
+                        <td><?php echo $Formula;?></td>
                       </tr> 
                       <tr>
                         <td><strong>คุณสมบัติ:</strong></td>
                         <td>
-                          <ul>
-                            <li>สูตรครีม สีขาวนวล ใช้สะดวก ละลายน้ำง่าย ไม่อุดตันหัวฉีด</li>
-                            <li>ออกฤทธิ์แบบดูดซึม และแทรกซึม เพื่อขัดขวางการหายใจ และยับยั้งการสร้างผนังเซลล์ของเชื้อราสาเหตุ</li>
-                            <li>เป็นสารกลุ่มใหม่ ใช้ป้องกัน-กำจัดโรคเมล็ดด่างในนาข้าว</li>
-                            <li>ทำให้ต้นข้าวแข็งแรง, ใบเขียวสวย , เต็มรวงดี</li>
-                            <li>มีระยะปลอดฝนสั้น เพียง 2 - 3 ชั่วโมง</li>
-                            <li>ด้วยการฉีดพ่นเพียง 2 ครั้งต่อฤดู ช่วยทำให้ได้ผลผลิตเพิ่มมากกว่า 10%</li>
-                          </ul>
+                          <?php echo $Detail;?>
                         </td>
                       </tr>
                       <tr>
                         <td><strong>ขนาดบรรจุ:</strong></td>
-                        <td>500 ซีซี </td>
+                        <td><?php echo $Contain;?></td>
                       </tr> 
-                      <tr>
+                      <!-- <tr>
                         <td><strong>คำแนะนำ:</strong></td>
                         <td><em>(Keep it for some product)</em></td>
-                      </tr>
+                      </tr> -->
+					  <?php if($Warning != ''){?>
                       <tr>
                         <td class="warning"><strong>คำเตือน:</strong></td>
                         <td class="warning"><em>(Keep it for some product)</em></td>
                       </tr>
+					  <?php }?>
+
                     </tbody>
                   </table>
 
@@ -78,39 +61,13 @@ $base_url = str_replace('/cropscience','',$base_url);
               </div>
 
               <div class="spacer"></div>              
-
-                  <table class="table kborder">
-                    <thead>
-                      <tr>
-                        <th width="100">พืช</th>
-                        <th width="120">ประโยชน์</th>
-                        <th>อัตราการใช้ ต่อน้ำ 20 ลิตร</th>
-                        <th>วิธีใช้</th>
-                      </tr>
-                    </thead>                  
-                 
-                    <tbody>
-                      <tr>
-                        <td><strong>ข้าว</strong></td>
-                        <td>ใช้ป้องกัน-กำจัดโรคเมล็ดด่าง</td>
-                        <td>- 25 ซีซี (50 ซีซีต่อไร่)</td>
-                        <td>
-                          <ul>
-                            <li>สูตรครีม สีขาวนวล ใช้สะดวก ละลายน้ำง่าย ไม่อุดตันหัวฉีด</li>
-                            <li>ออกฤทธิ์แบบดูดซึม และแทรกซึม เพื่อขัดขวางการหายใจ และยับยั้งการสร้างผนังเซลล์ของเชื้อราสาเหตุ</li>
-                            <li>เป็นสารกลุ่มใหม่ ใช้ป้องกัน-กำจัดโรคเมล็ดด่างในนาข้าว</li>
-                            <li>ทำให้ต้นข้าวแข็งแรง, ใบเขียวสวย , เต็มรวงดี</li>
-                            <li>มีระยะปลอดฝนสั้น เพียง 2 - 3 ชั่วโมง</li>
-                            <li>ด้วยการฉีดพ่นเพียง 2 ครั้งต่อฤดู ช่วยทำให้ได้ผลผลิตเพิ่มมากกว่า 10%</li>
-                          </ul>                          
-                        </td>
-                      </tr>                                                                                                             
-                    </tbody>
-                  </table>                            
+				  <p><b>คำแนะนำ</b></p>
+				  <div id="suggestion"><?php echo $Suggestion;?></div>
     
               <div class="spacer"></div>
-
-              <h2 class="warning"><strong>ทะเบียนวัตถุอันตรายเลขที่: 0000/0000</strong></h2>
+			  <?php if($DangerousNo != ''){?>
+              <h2 class="warning"><strong><?php echo $DangerousNo;?></strong></h2>
+			  <?php }?>
 
               <div class="spacer"></div>
 
@@ -207,5 +164,6 @@ $base_url = str_replace('/cropscience','',$base_url);
 <script>
 	//add page specific JS here
 </script>
+
 </body>
 </html>

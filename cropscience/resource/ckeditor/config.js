@@ -9,6 +9,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
 	// %REMOVE_START%
 	config.height = 300;
+	config.allowedContent = true;
 	config.plugins =
 		//'about,' +
 		//'a11yhelp,' +

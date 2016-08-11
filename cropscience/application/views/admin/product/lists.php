@@ -28,7 +28,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Category</th>
+                                            <!-- <th>Category</th> -->
                                             <th>Trade Name (TH)</th>
                                             <th>Common Name (TH)</th>
                                             <th>Action</th>
@@ -38,9 +38,9 @@
                                     <?php
                                         foreach($result as $r){
                                             echo '<tr>
-                                                <td><input type="checkbox" value="'.$r->CategoryID.'"></td>
-                                                <td>'.$r->CategoryName.'</td>
-                                                <td>'.$r->TradeName.'</td>
+                                                <td><input type="checkbox" value="'.$r->CategoryID.'"></td>';
+                                                //<td>'.$r->CategoryName.'</td>
+                                            echo '      <td>'.$r->TradeName.'</td>
                                                 <td>'.$r->CommonName.'</td>
                                                 <td class="center">
                                                     <a href="'.site_url("admin/product/edit/$r->ProductID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;

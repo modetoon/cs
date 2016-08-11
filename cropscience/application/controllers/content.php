@@ -81,6 +81,7 @@ class Content extends CI_Controller {
 			$data_insert = array(
 				'MenuID' => $this->input->post('MenuID'),
 				'TemplateID' => $this->input->post('TemplateID'),
+				'ProductID' => $this->input->post('ProductID'),
 				'ContentNameTH' => $this->input->post('ContentNameTH'),
 				'ContentNameEN' => $this->input->post('ContentNameEN'),
 				'PageTitleTH' => $this->input->post('PageTitleTH'),

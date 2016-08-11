@@ -30,14 +30,15 @@
 										<?php echo form_open_multipart('admin/product_add');?>
 
                                         <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->ProductID: ''; ?>">
-                                        <div class="form-group">
+                                        
+										<!-- <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Main Category</label></div>
                                                 <div class="col-lg-9">
                                                     <?php echo $menu_dropdownlist;?>
                                                 </div>
                                             </div>
-                                        </div>  
+                                        </div>   -->
                                                                        
 
                                         <div class="form-group">
@@ -88,19 +89,50 @@
                                                     echo (isset($result)) ? $result->Contain: set_value('Contain'); ?>"></div>
                                             </div>
                                         </div> 
+										
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-lg-3"><label>Suggestion</label></div>
-                                                <div class="col-lg-9"><textarea class="form-control" name="Suggestion" rows="5"><?php 
-                                                    echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?></textarea></div>
+                                                <div class="col-lg-3"><label>Dangerous No</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="DangerousNo" value="<?php 
+                                                    echo (isset($result)) ? $result->DangerousNo: set_value('DangerousNo'); ?>"></div>
+                                            </div>
+                                        </div> 
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-9"><label>Suggestion</label></div>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+													<!-- <textarea class="form-control" name="Suggestion" rows="5"><?php 
+                                                    echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?></textarea> -->
+														<textarea name="content" class="editor" id="editor2"><?php echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?></textarea>
+														<input type="hidden" name="Suggestion" id="Suggestion">
+											</div>
                                             </div>
                                         </div>         
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Warning</label></div>
+                                                <div class="col-lg-9"><textarea class="form-control" name="Warning" rows="5"><?php 
+                                                    echo (isset($result)) ? $result->Warning: set_value('Warning'); ?></textarea></div>
+                                            </div>
+                                        </div>       
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Product Image</label></div>
                                                 <div class="col-lg-9"><input type="file" name="image" size="20" /></div>
                                             </div>
-                                        </div> 										
+                                        </div> 		
+										
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Brand Image</label></div>
+                                                <div class="col-lg-9"><input type="file" name="brandimage" size="20" /></div>
+                                            </div>
+                                        </div> 			
 
                                         <div class="form-group">
                                             <label>Status</label>
@@ -157,11 +189,14 @@
 
 	$("#btn-save").click(function(e) {
 		var myContent = CKEDITOR.instances.editor.getData();
+		var myContent2 = CKEDITOR.instances.editor2.getData();
 		$('#Detail').val(myContent);
+		$('#Suggestion').val(myContent2);
 	});
 
 		initSample();
 		var data = CKEDITOR.instances.editor.getData();
+		var data2 = CKEDITOR.instances.editor2.getData();
 	</script>
 	<!-- CKEditor -->
 

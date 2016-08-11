@@ -27,6 +27,14 @@ class Frontcontent_model extends CI_Model {
         $arr =  $query->result();
 		return $arr[0];
     } 
+	
+    function get_product_data($product_id='')
+    {
+        $sql = "SELECT * FROM product WHERE ProductID = '".$product_id."' LIMIT 0,1"; 
+        $query = $this->db->query($sql);        
+        $arr =  $query->result();
+		return $arr[0];
+    } 
 
     function get_menu($menu_id='')
     {

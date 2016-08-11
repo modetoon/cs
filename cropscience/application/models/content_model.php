@@ -97,7 +97,7 @@ class Content_model extends CI_Model {
         $sql = "SELECT * FROM template ORDER BY TemplateID"; 
         $query = $this->db->query($sql);        
         $row = $query->result();
-        $menu .= '<select class="form-control" name="TemplateID"><option value="">Please select';
+        $menu .= '<select class="form-control" name="TemplateID" id="TemplateID"><option value="">Please select';
         foreach($row as $r){
             $cls = ($r->TemplateID == $template) ? 'selected': '';
             $menu .= '<option value="'.$r->TemplateID.'" '.$cls.'>'.$r->TemplateName;
@@ -112,6 +112,20 @@ class Content_model extends CI_Model {
         $this->db->limit(1);
         return $this->db->get('template')->row();
     } 
+
+    function get_product_dropdownlist($product=''){
+        $menu = '';
+        $sql = "SELECT * FROM product ORDER BY TradeName"; 
+        $query = $this->db->query($sql);        
+        $row = $query->result();
+        $menu .= '<select class="form-control" name="ProductID"><option value="">Please select';
+        foreach($row as $r){
+            $cls = ($r->ProductID == $product) ? 'selected': '';
+            $menu .= '<option value="'.$r->ProductID.'" '.$cls.'>'.$r->TradeName;
+        }
+        $menu .= '</select>';
+        return $menu;
+    }
 
     function insert_data($data){
         $this->db->insert($this->table_name, $data);

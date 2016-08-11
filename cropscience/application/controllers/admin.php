@@ -77,6 +77,27 @@ class Admin extends CI_Controller {
 		else
 		{
 
+			/* ---------------- Upload Image ------------------- */
+
+			$config['upload_path'] = 'upload/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size']	= '500';
+
+			$this->load->library('upload', $config);
+
+			/* ---------------- Upload Image ------------------- */
+			if ( ! $this->upload->do_upload('image'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+
+				$data = array('upload_data' => $this->upload->data());
+				$Image = $data['upload_data']['file_name'];
+			}
+
+
 			$_data = $this->Menu_model->get_data($this->input->post('Parent'));
 			$next_level = (count($_data) > 0) ? $_data->Level + 1: 1;
 			$data_insert = array(
@@ -84,6 +105,8 @@ class Admin extends CI_Controller {
 				'Level' => $next_level,
 				'MenuNameEN' => $this->input->post('MenuNameEN'),
 				'MenuNameTH' => $this->input->post('MenuNameTH'),
+				'Image' => $Image,
+				'ImageCaption' => $this->input->post('ImageCaption'),
 				'Position' => $this->input->post('Position'),
 				'Status' => $this->input->post('Status')
 			);
@@ -210,7 +233,7 @@ class Admin extends CI_Controller {
 		$main_menu = $this->Product_model->get_menu_structure($selected);
 		$data['menu_dropdownlist'] = $main_menu;	
 
-		$this->form_validation->set_rules('Parent', 'Category', 'required');
+		//$this->form_validation->set_rules('Parent', 'Category', 'required');
 		$this->form_validation->set_rules('TradeName', 'Trade Name (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('CommonName', 'Common Name (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('Formula', 'Formula', 'required|min_length[1]');
@@ -229,53 +252,75 @@ class Admin extends CI_Controller {
 		{
 			
 			/* ---------------- Upload Image ------------------- */
+
 			$config['upload_path'] = 'upload/';
 			$config['allowed_types'] = 'jpg|png';
 			$config['max_size']	= '500';
 
 			$this->load->library('upload', $config);
 
+			/* ---------------- Upload Image ------------------- */
 			if ( ! $this->upload->do_upload('image'))
 			{
 				$error = array('upload_error' => $this->upload->display_errors());
 			}
 			else
 			{
+
 				$data = array('upload_data' => $this->upload->data());
 				$Image = $data['upload_data']['file_name'];
 			}
-			/* ---------------- Upload Image ------------------- */
-			if((isset($Image)) && ($Image != '')){
-				$data_insert = array(
-					'CategoryID' => $this->input->post('Parent'),
-					'TradeName' => $this->input->post('TradeName'),
-					'CommonName' => $this->input->post('CommonName'),
-					'Formula' => $this->input->post('Formula'),
-					'Detail' => $this->input->post('Detail'),
-					'Contain' => $this->input->post('Contain'),
-					'Suggestion' => $this->input->post('Suggestion'),
-					'Image' => $Image,
-					'Status' => $this->input->post('Status')
-				);
-			}else{
-				$data_insert = array(
-					'CategoryID' => $this->input->post('Parent'),
-					'TradeName' => $this->input->post('TradeName'),
-					'CommonName' => $this->input->post('CommonName'),
-					'Formula' => $this->input->post('Formula'),
-					'Detail' => $this->input->post('Detail'),
-					'Contain' => $this->input->post('Contain'),
-					'Suggestion' => $this->input->post('Suggestion'),
-					'Status' => $this->input->post('Status')
-				);
+			
+			/* ---------------- Upload Brand Image ------------------- */
+			if ( ! $this->upload->do_upload('brandimage'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+				$data = array('upload_data2' => $this->upload->data());
+				$BrandImage = $data['upload_data2']['file_name'];
 			}
 
 			if($this->input->post('ID') == '')
 			{
+				$data_insert = array(
+					//'CategoryID' => $this->input->post('Parent'),
+					'TradeName' => $this->input->post('TradeName'),
+					'CommonName' => $this->input->post('CommonName'),
+					'Formula' => $this->input->post('Formula'),
+					'Detail' => $this->input->post('Detail'),
+					'Contain' => $this->input->post('Contain'),
+					'Suggestion' => $this->input->post('Suggestion'),
+					'Warning' => $this->input->post('Warning'),
+					'DangerousNo' => $this->input->post('DangerousNo'),
+					'Image' => $Image,
+					'BrandImage' => $BrandImage,
+					'Status' => $this->input->post('Status')
+				);
 				$main_menu = $this->Product_model->insert_data($data_insert);
 			}
 			else
 			{
+				$data_insert = array(
+					//'CategoryID' => $this->input->post('Parent'),
+					'TradeName' => $this->input->post('TradeName'),
+					'CommonName' => $this->input->post('CommonName'),
+					'Formula' => $this->input->post('Formula'),
+					'Detail' => $this->input->post('Detail'),
+					'Contain' => $this->input->post('Contain'),
+					'Suggestion' => $this->input->post('Suggestion'),
+					'Warning' => $this->input->post('Warning'),
+					'DangerousNo' => $this->input->post('DangerousNo'),
+					'Status' => $this->input->post('Status')
+				);
+				if((isset($Image)) && ($Image != '')){
+					$data_insert['Image'] = $Image;
+				}
+				if((isset($BrandImage)) && ($BrandImage != '')){
+					$data_insert['BrandImage'] = $BrandImage;
+				}
+				
 				$main_menu = $this->Product_model->update_data($data_insert,$this->input->post('ID'));
 			}
 			redirect(site_url('admin/product_lists'), 'refresh');
@@ -312,11 +357,13 @@ class Admin extends CI_Controller {
 
 		$selected = '';
 		$selected2 = '';
+		$selected3 = '';
 		if($id!=''){
 			$result = $this->Content_model->get_data($id);
 			$data['result'] = $result;
 			$selected = $result->MenuID;
 			$selected2 = $result->TemplateID;
+			$selected3 = $result->ProductID;
 		}
 
 		$main_menu = $this->Content_model->get_menu_structure($selected);
@@ -324,6 +371,9 @@ class Admin extends CI_Controller {
 
 		$template = $this->Content_model->get_template_dropdownlist($selected2);
 		$data['template_dropdownlist'] = $template;
+
+		$product = $this->Content_model->get_product_dropdownlist($selected3);
+		$data['product_dropdownlist'] = $product;
 		
 		$this->form_validation->set_rules('MenuID', 'Menu', 'required');
 		$this->form_validation->set_rules('TemplateID', 'Template', 'required');
@@ -358,6 +408,7 @@ class Admin extends CI_Controller {
 			$data_insert = array(
 				'MenuID' => $this->input->post('MenuID'),
 				'TemplateID' => $this->input->post('TemplateID'),
+				'ProductID' => $this->input->post('ProductID'),
 				'ContentNameTH' => $this->input->post('ContentNameTH'),
 				'ContentNameEN' => $this->input->post('ContentNameEN'),
 				'PageTitleTH' => $this->input->post('PageTitleTH'),

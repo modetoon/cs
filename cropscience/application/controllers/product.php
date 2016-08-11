@@ -45,7 +45,7 @@ class Product extends CI_Controller {
 		$main_menu = $this->Product_model->get_menu_structure($selected);
 		$data['menu_dropdownlist'] = $main_menu;	
 
-		$this->form_validation->set_rules('Parent', 'Category', 'required');
+		//$this->form_validation->set_rules('Parent', 'Category', 'required');
 		$this->form_validation->set_rules('TradeName', 'Trade Name (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('CommonName', 'Common Name (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('Formula', 'Formula', 'required|min_length[1]');
@@ -69,7 +69,8 @@ class Product extends CI_Controller {
 			$config['max_size']	= '100';
 
 			$this->load->library('upload', $config);
-
+			
+			/* ---------------- Upload Image ------------------- */
 			if ( ! $this->upload->do_upload('image'))
 			{
 				$error = array('upload_error' => $this->upload->display_errors());
@@ -79,10 +80,23 @@ class Product extends CI_Controller {
 				$data = array('upload_data' => $this->upload->data());
 				$Image = $data['upload_data']['file_name'];
 			}
-			/* ---------------- Upload Image ------------------- */
+			
+			/* ---------------- Upload Brand Image ------------------- */
+			if ( ! $this->upload->do_upload('brandimage'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+				$data = array('upload_data2' => $this->upload->data());
+				$BrandImage = $data['upload_data2']['file_name'];
+			}
+
+			echo $Image.'-'.$BrandImage;die;
+
 			if((isset($Image)) && ($Image != '')){
 				$data_insert = array(
-					'CategoryID' => $this->input->post('Parent'),
+					//'CategoryID' => $this->input->post('Parent'),
 					'TradeName' => $this->input->post('TradeName'),
 					'CommonName' => $this->input->post('CommonName'),
 					'Formula' => $this->input->post('Formula'),
@@ -90,6 +104,7 @@ class Product extends CI_Controller {
 					'Contain' => $this->input->post('Contain'),
 					'Suggestion' => $this->input->post('Suggestion'),
 					'Image' => $Image,
+					'BrandImage' => $BrandImage,
 					'Status' => $this->input->post('Status')
 				);
 			}else{

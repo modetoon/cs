@@ -106,15 +106,15 @@
                         </li>
 
                         <li class="active">
-                            <a href="#"><i class="fa fa-tags"></i> Product Management<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
+                            <a href="<?php echo site_url('admin/product_lists') ?>"><i class="fa fa-tags"></i> Product Management<!-- <span class="fa arrow"></span> --></a>
+                            <!-- <ul class="nav nav-second-level">
                                 <li>
                                     <a href="<?php echo site_url('admin/category_lists') ?>">Category List</a>
                                 </li>
                                 <li>
                                     <a href="<?php echo site_url('admin/product_lists') ?>">Product List</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <!-- /.nav-second-level -->
                         </li>
 

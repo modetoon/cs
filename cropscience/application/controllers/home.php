@@ -89,6 +89,7 @@ class Home extends CI_Controller {
 	{
 		$this->load->helper('url');
 		$menu_data = $this->Frontcontent_model->get_menudata($menu_slug);
+
 		
 		$data['left_menu_content'] = left_menu_content($menu_data->MenuID,$menu_data->Level,$menu_data->Parent);
 		$parent_data = $this->Frontcontent_model->get_content($menu_data->Parent);
@@ -106,14 +107,26 @@ class Home extends CI_Controller {
 		}
 		
 		$content_data = $this->Frontcontent_model->get_content($menu_data->MenuID);
+
 		$data['meta_keyword'] = $content_data->MetaKeywordEN;
 		$data['meta_description'] = $content_data->MetaDescriptionEN;
 		$data['page_title'] = 'Bayer - '.$content_data->PageTitleEN;
 		$data['page_headline'] = $content_data->PageHeadlineEN;
 		$view_data = $this->Frontcontent_model->get_view($content_data->TemplateID);
-
-		$data['content'] = $this->Frontcontent_model->get_content_product_ul($menu_data->MenuID,$menu_data->Parent);
 		
+		$product_data = $this->Frontcontent_model->get_product_data($content_data->ProductID);
+		$data['Category'] = $parent_data->ContentNameEN;
+		$data['TradeName'] = $product_data->TradeName;
+		$data['CommonName'] = $product_data->CommonName;
+		$data['Formula'] = $product_data->Formula;
+		$data['Detail'] = $product_data->Detail;
+		$data['Contain'] = $product_data->Contain;
+		$data['Suggestion'] = $product_data->Suggestion;
+		$data['Warning'] = $product_data->Warning;
+		$data['DangerousNo'] = $product_data->DangerousNo;
+		$data['Image'] = $product_data->Image;
+		$data['BrandImage'] = $product_data->BrandImage;
+
 		$this->load->view('header_product_detail.php',$data);
 		$this->load->view($view_data->ViewName);
 	}

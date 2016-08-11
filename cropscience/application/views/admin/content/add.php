@@ -47,6 +47,15 @@
                                             </div>
                                         </div>    
 
+                                        <div class="form-group" id="product" style="display:none;">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Select Product</label></div>
+                                                <div class="col-lg-9">
+														<?php echo $product_dropdownlist;?>
+                                                </div>
+                                            </div>
+                                        </div>    
+
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Content Name (EN)</label></div>
@@ -225,6 +234,20 @@
         var myContent2 = CKEDITOR.instances.editor2.getData();
         $('#ContentEN').val(myContent);
         $('#ContentTH').val(myContent2);
+    });
+
+		var template = $('#TemplateID').val();
+		if(template == 3){
+				$('#product').show();
+		}
+
+    $("#TemplateID").change(function(e) {
+
+        if(this.value == 3 || template == 3){
+			$('#product').show();
+		}else{
+			$('#product').hide();
+		}
     });
 
         initSample();

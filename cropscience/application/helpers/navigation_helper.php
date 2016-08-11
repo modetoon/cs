@@ -30,9 +30,9 @@ if ( ! function_exists('top_menu')){
 																  <ul class="newsub">
 																			<li class="megaTsrBx">
 																			  <h2 class="thdln">'.$row->MenuNameEN.'</h2>
-																			  <a href="#"><img width="170" height="100" data-original="../img/top_menu/image_ar2015_284.jpg" alt="" src="../img/top_menu/image_ar2015_284.jpg" class="lazy"></a>
-																				<p>The activities of Bayer Thai are concentrated in three business subgroups: Bayer HealthCare (BHC), Bayer CropScience (BCS). Moreover, Bayer Thai also take care of an agency business representing third parties.</p>
-																				<div class="lnk"><a href="crp-content.php">Overview</a></div>
+																			  <a href="'.site_url($row->Url).'"><img width="170" height="100" data-original="'.site_url('upload/'.$row->Image).'" alt="'.$row->MenuNameEN.'" src="'.site_url('upload/'.$row->Image).'" class="lazy"></a>
+																				<p>'.$row->ImageCaption.'</p>
+																				<div class="lnk"><a href="'.site_url($row->Url).'">Overview</a></div>
 																			  </li>';
 
 																			  $query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1'  AND C.Status = '1' ORDER BY M.Position");
@@ -62,7 +62,7 @@ if ( ! function_exists('top_menu')){
 					}
 
 			$html .= '	</ul>
-								<ul class="nobulls extra-nav "><!-- change V4 -->
+								<ul class="nobulls extra-nav ">
             						<li><a href="search_content.php" class="ir icon-search">Search</a></li>
         						</ul>';
 			$html .= '</nav>';

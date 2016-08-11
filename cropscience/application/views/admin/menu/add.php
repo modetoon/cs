@@ -24,7 +24,7 @@
                                         ?>
 
 
-                                        <?php echo form_open('admin/menu_add') ?>
+                                        <?php echo form_open_multipart('admin/menu_add') ?>
 
                                         <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->MenuID: ''; ?>">
                                         
@@ -55,6 +55,22 @@
                                                 <div class="col-lg-9"><input class="form-control" name="Slug" value="<?php echo (isset($result)) ? $result->Slug: set_value('Slug'); ?>"></div>
                                             </div>
                                         </div>  -->
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Image</label></div>
+                                                <div class="col-lg-9"><input type="file" name="image" size="20" /></div>
+                                            </div>
+                                        </div> 		
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Image Caption</label></div>
+                                                <div class="col-lg-9"><textarea class="form-control" name="ImageCaption" rows="5"><?php 
+                                                    echo (isset($result)) ? $result->ImageCaption: set_value('ImageCaption'); ?></textarea></div>
+                                            </div>
+                                        </div>   
+
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Position</label></div>
