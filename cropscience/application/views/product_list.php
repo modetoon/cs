@@ -8,14 +8,7 @@
 
               <div class="spacer">&nbsp;</div>
 
-
-
-
                 <?php echo $content;?>
-
-
-
-
 
             </div>
             

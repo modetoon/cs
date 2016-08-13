@@ -53,6 +53,9 @@ $route['admin/content/delete/(:any)'] = 'admin/content_delete/$1';
 $route['admin/user/edit/(:any)'] = 'admin/user_add/$1';
 $route['admin/user/delete/(:any)'] = 'admin/user_delete/$1';
 
+$route['admin/slider/edit/(:any)'] = 'admin/slider_add/$1';
+$route['admin/slider/delete/(:any)'] = 'admin/slider_delete/$1';
+
 $route['content/(:any)'] = 'home/content/$1';
 $route['product_list/(:any)'] = 'home/product_list/$1';
 $route['product_detail/(:any)'] = 'home/product_detail/$1';

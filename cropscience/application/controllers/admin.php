@@ -448,7 +448,111 @@ class Admin extends CI_Controller {
 
 	}
 
+
+		// ---------------------- Slider Controller -------------------------- //
+
+	public function slider_lists()
+	{
+		$this->load->model('Slider_model');
+		$data['title'] = 'Slider List';
+
+		$res = $this->Slider_model->get_lists();
+		$data['result'] = $res;
+
+		$this->load->view('header', $data);
+		$this->load->view('admin/slider/lists', $data);
+	}
+
+	public function slider_add($id='')
+	{
+		$this->load->model('Slider_model');
+		$data['title'] = 'Add Slider';
+
+		$selected = '';
+		if($id!=''){
+			$result = $this->Slider_model->get_data($id);
+			$data['result'] = $result;
+		}
+
+		$this->form_validation->set_rules('SliderTopLine', 'Slider Topline', 'required|min_length[5]');
+		$this->form_validation->set_rules('SliderHeadLine', 'Slider Headline', 'required|min_length[5]');
+		$this->form_validation->set_rules('SliderDetail', 'Slider Detail', 'required|min_length[10]');
+		$this->form_validation->set_rules('SliderLink', 'Slider Link', 'required|min_length[1]');
+
+		if ($this->form_validation->run() === FALSE)
+		{
+
+			$this->load->view('header', $data);
+			$this->load->view('admin/slider/add', $data);
+
+		}
+		else
+		{
+			
+			/* ---------------- Upload Image ------------------- */
+
+			$config['upload_path'] = 'upload/banner/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size']	= '500';
+
+			$this->load->library('upload', $config);
+
+			/* ---------------- Upload Image ------------------- */
+			if ( ! $this->upload->do_upload('sliderimage'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$SliderImage = $data['upload_data']['file_name'];
+			}
+			
+			if($this->input->post('ID') == '')
+			{
+				$data_insert = array(
+					'SliderTopLine' => $this->input->post('SliderTopLine'),
+					'SliderHeadLine' => $this->input->post('SliderHeadLine'),
+					'SliderDetail' => $this->input->post('SliderDetail'),
+					'SliderLink' => $this->input->post('SliderLink'),
+					'Status' => $this->input->post('Status')
+				);
+				if((isset($SliderImage)) && ($SliderImage != '')){
+					$data_insert['SliderImage'] = $SliderImage;
+				}
+				$main_menu = $this->Slider_model->insert_data($data_insert);
+			}
+			else
+			{
+				$data_insert = array(
+					'SliderTopLine' => $this->input->post('SliderTopLine'),
+					'SliderHeadLine' => $this->input->post('SliderHeadLine'),
+					'SliderDetail' => $this->input->post('SliderDetail'),
+					'SliderLink' => $this->input->post('SliderLink'),
+					'Status' => $this->input->post('Status')
+				);
+				if((isset($SliderImage)) && ($SliderImage != '')){
+					$data_insert['SliderImage'] = $SliderImage;
+				}
+				
+				$main_menu = $this->Slider_model->update_data($data_insert,$this->input->post('ID'));
+			}
+			redirect(site_url('admin/slider_lists'), 'refresh');
+		}
+
+	}	
+
+	public function slider_delete($id='')
+	{
+		$this->load->model('Slider_model');
+		$this->Product_model->delete($id);
+		redirect(site_url('admin/slider_lists'), 'refresh');
+
+	}
+
+
 	// ---------------------- User Controller -------------------------- //
+
 
 	public function user_lists()
 	{

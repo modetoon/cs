@@ -4,17 +4,16 @@
           <div class="stage01">
             <div id="slider" class="flexslider">
               <ul class="slides">
-                <li style="display: list-item;">
-                      <div style="width:275px;" class="stagetext stageright ">
-                          <div class="stagetopline">Crop Science</div>
-                          <h1 class="stagehdln">Crop Protection and Seeds</h1>
-                        <div>
-                          <p>Crop protection products should act selectively in the smallest possible amounts and then quickly decompose into neutral substances.</p>
-                          <a href="crp-content.php" class="more">more</a></div>
-                        </div>
-                      <img src="../img/stage/buehne_cs_995.jpg" alt=""> 
-                </li>              
-
+					<li style="display: list-item;">
+						  <div style="width:275px;" class="stagetext stageright ">
+							  <div class="stagetopline">Crop Science</div>
+							  <h1 class="stagehdln">Crop Protection and Seeds</h1>
+							<div>
+							  <p>Crop protection products should act selectively in the smallest possible amounts and then quickly decompose into neutral substances.</p>
+							  <a href="crp-content.php" class="more">more</a></div>
+							</div>
+						  <img src="../img/stage/buehne_cs_995.jpg" alt=""> 
+					</li>              
               </ul>
             </div>
           </div>          

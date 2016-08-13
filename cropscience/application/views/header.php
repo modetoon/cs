@@ -100,24 +100,15 @@
                         <li class="active">
                             <a href="<?php echo site_url('admin/menu_lists') ?>"><i class="fa fa-tasks"></i> Menu Management</a>
                         </li>
-						
                         <li class="active">
                             <a href="<?php echo site_url('admin/content_lists') ?>"><i class="fa fa-file-o"></i> Content Management</a>
                         </li>
-
                         <li class="active">
                             <a href="<?php echo site_url('admin/product_lists') ?>"><i class="fa fa-tags"></i> Product Management<!-- <span class="fa arrow"></span> --></a>
-                            <!-- <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo site_url('admin/category_lists') ?>">Category List</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('admin/product_lists') ?>">Product List</a>
-                                </li>
-                            </ul> -->
-                            <!-- /.nav-second-level -->
                         </li>
-
+                        <li class="active">
+                            <a href="<?php echo site_url('admin/slider_lists') ?>"><i class="fa fa-image"></i> Slider Management</a>
+                        </li>
                         <li class="active">
                             <a href="<?php echo site_url('admin/user_lists') ?>"><i class="fa fa-user"></i> User Management</a>
                         </li>
