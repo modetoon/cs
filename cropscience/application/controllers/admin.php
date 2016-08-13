@@ -358,12 +358,14 @@ class Admin extends CI_Controller {
 		$selected = '';
 		$selected2 = '';
 		$selected3 = '';
+		$selected4 = '';
 		if($id!=''){
 			$result = $this->Content_model->get_data($id);
 			$data['result'] = $result;
 			$selected = $result->MenuID;
 			$selected2 = $result->TemplateID;
 			$selected3 = $result->ProductID;
+			$selected4 = $result->SliderID;
 		}
 
 		$main_menu = $this->Content_model->get_menu_structure($selected);
@@ -374,9 +376,13 @@ class Admin extends CI_Controller {
 
 		$product = $this->Content_model->get_product_dropdownlist($selected3);
 		$data['product_dropdownlist'] = $product;
+
+		$slider = $this->Content_model->get_slider_dropdownlist($selected4);
+		$data['slider_dropdownlist'] = $slider;
 		
 		$this->form_validation->set_rules('MenuID', 'Menu', 'required');
 		$this->form_validation->set_rules('TemplateID', 'Template', 'required');
+		//$this->form_validation->set_rules('SliderID', 'Slider', 'required');
 		$this->form_validation->set_rules('ContentNameTH', 'Content Name (TH)', 'required|min_length[1]');
 		$this->form_validation->set_rules('ContentNameEN', 'Content Name (EN)', 'required|min_length[1]');	
 		$this->form_validation->set_rules('PageTitleTH', 'Page Title (TH)', 'required|min_length[1]');
@@ -409,6 +415,7 @@ class Admin extends CI_Controller {
 				'MenuID' => $this->input->post('MenuID'),
 				'TemplateID' => $this->input->post('TemplateID'),
 				'ProductID' => $this->input->post('ProductID'),
+				'SliderID' => $this->input->post('SliderID'),
 				'ContentNameTH' => $this->input->post('ContentNameTH'),
 				'ContentNameEN' => $this->input->post('ContentNameEN'),
 				'PageTitleTH' => $this->input->post('PageTitleTH'),
@@ -515,6 +522,7 @@ class Admin extends CI_Controller {
 					'SliderHeadLine' => $this->input->post('SliderHeadLine'),
 					'SliderDetail' => $this->input->post('SliderDetail'),
 					'SliderLink' => $this->input->post('SliderLink'),
+					'ShowHome' => $this->input->post('ShowHome'),
 					'Status' => $this->input->post('Status')
 				);
 				if((isset($SliderImage)) && ($SliderImage != '')){
@@ -529,6 +537,7 @@ class Admin extends CI_Controller {
 					'SliderHeadLine' => $this->input->post('SliderHeadLine'),
 					'SliderDetail' => $this->input->post('SliderDetail'),
 					'SliderLink' => $this->input->post('SliderLink'),
+					'ShowHome' => $this->input->post('ShowHome'),
 					'Status' => $this->input->post('Status')
 				);
 				if((isset($SliderImage)) && ($SliderImage != '')){

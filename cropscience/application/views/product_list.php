@@ -4,7 +4,7 @@
 
               <!-- <div class="topline">Products</div> -->
 
-              <p>(Sample Text) Crop Science, a division of Bayer, plant fungicides provide outstanding control of a broad spectrum of crop diseases, leading to healthier plants and higher yields. Our products offer a wide variety of fungicidal benefits, with multiple modes of action that protect crops from leaf surface to plant core. New formulations make our fungicides easier to handle, require lower use rates and provide tankmix compatibility with a wide range of crop protection products. </p>
+              <p><?php echo $content_abstract;?></p>
 
               <div class="spacer">&nbsp;</div>
 

@@ -16,11 +16,13 @@ class Home extends CI_Controller {
 		$data['page_title'] = 'Homepage - Bayer';
 		$data['top_menu'] = top_menu('home');
 		$data['left_menu_home'] = left_menu_home();
+		$data['slider'] = slider('home');
+
 		$data['meta_keyword'] = '';
 		$data['meta_description'] = '';
 
 		$this->load->view('header_front',$data);
-		$this->load->view('home');
+		$this->load->view('home',$data);
 	}
 	
 	public function content($menu_slug='')
@@ -57,6 +59,8 @@ class Home extends CI_Controller {
 		$menu_data = $this->Frontcontent_model->get_menudata($menu_slug);
 		
 		$data['left_menu_content'] = left_menu_content($menu_data->MenuID,$menu_data->Level,$menu_data->Parent);
+		$data['slider'] = slider($menu_slug);
+		
 		$parent_data = $this->Frontcontent_model->get_content($menu_data->Parent);
 		$parent_menu_data = $this->Frontcontent_model->get_menu($menu_data->Parent);
 		$data['page_parent_headline'] = '';
@@ -78,6 +82,7 @@ class Home extends CI_Controller {
 		$data['page_headline'] = $content_data->PageHeadlineEN;
 		$view_data = $this->Frontcontent_model->get_view($content_data->TemplateID);
 
+		$data['content_abstract'] = $content_data->ContentEN;
 		$data['content'] = $this->Frontcontent_model->get_content_product_ul($menu_data->MenuID,$menu_data->Parent);
 		
 		$this->load->view('header_product_list.php',$data);

@@ -1,7 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if ( ! function_exists('top_menu')){
-		function top_menu($menu_slug='') {
+function top_menu($menu_slug='') {
 			$ci =& get_instance();
 			$ci->load->database();
 			
@@ -28,7 +27,7 @@ if ( ! function_exists('top_menu')){
 			$cls = ($menu_slug == 'home') ? 'class="selected"': '';
 			$html .= '		<li class="n1"><a href="'.site_url("/").'" '.$cls.'>Home</a></li>';
 
-					$query = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '0' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
+					$query = $ci->db->query("SELECT DISTINCT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '0' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
 							   $cls = ((($menu_slug == $row->Slug) && ($row->Slug != '')) || ($top_menu == $row->MenuID)) ? ' selected': '';
@@ -75,9 +74,48 @@ if ( ! function_exists('top_menu')){
 			$html .= '</nav>';
 			return $html;
 
-		}
-
 }
+     
+
+if ( ! function_exists('slider')){
+		function slider($page='') {
+			$ci =& get_instance();
+			$ci->load->database();
+
+			$html = '';
+
+					if($page == 'home'){
+						$query = $ci->db->query("SELECT * FROM slider WHERE Status = '1' AND ShowHome = '1' ORDER BY SliderID");
+					}else{
+						$query = $ci->db->query("SELECT S.* FROM slider S LEFT JOIN content C ON S.SliderID = C.SliderID WHERE C.Slug = '".$page."' AND S.Status = '1' ORDER BY S.SliderID");
+					}
+					$total = $query->num_rows();
+
+					if ($total > 0){
+							$html .= '<div class="stage01">';
+							$html .= '<div id="slider" class="flexslider">';
+							$html .= '<ul class="slides">';
+							foreach ($query->result() as $row){
+							    $html .= '<li style="display: list-item;">
+															  <div style="width:275px;" class="stagetext stageright ">
+																  <div class="stagetopline">'.$row->SliderTopLine.'</div>
+																  <h1 class="stagehdln">'.$row->SliderHeadLine.'</h1>
+																<div><p>'.$row->SliderDetail.'</p><a href="'.site_url($row->SliderLink).'" class="more">more</a></div></div>
+															   <img src="'.site_url('upload/banner/'.$row->SliderImage).'" alt="'.$row->SliderHeadLine.'"> 
+												</li>  ';
+							}
+							$html .= '</ul>';
+							$html .= '</div>';
+							$html .= '</div>';
+					}
+
+			return $html;
+
+		}
+}
+
+
+
 
 
 if ( ! function_exists('left_menu_home')){

@@ -127,6 +127,20 @@ class Content_model extends CI_Model {
         return $menu;
     }
 
+    function get_slider_dropdownlist($slider_id=''){
+        $menu = '';
+        $sql = "SELECT * FROM slider ORDER BY SliderID"; 
+        $query = $this->db->query($sql);        
+        $row = $query->result();
+        $menu .= '<select class="form-control" name="SliderID"><option value="">Please select';
+        foreach($row as $r){
+            $cls = ($r->SliderID == $slider_id) ? 'selected': '';
+            $menu .= '<option value="'.$r->SliderID.'" '.$cls.'>'.$r->SliderHeadLine;
+        }
+        $menu .= '</select>';
+        return $menu;
+    }
+
     function insert_data($data){
         $this->db->insert($this->table_name, $data);
     }

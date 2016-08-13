@@ -72,22 +72,9 @@ $base_url = str_replace('/cropscience','',$base_url);
         </div>
         <section>
 			 <!--Slider Start-->
-            <div class="stage01">
-              <div id="slider" class="flexslider">
-                <ul class="slides">
-						  <li class="flex-active-slide">
-							  <div class="stagetext stageleft" style="width:253px;">
-								  <div class="stagetopline">CropScience</div>
-								  <h1 class="stagehdln">Products</h1>
-								<div>
-									<p>Bayer’s broad product portfolio includes many world-famous brands which have shaped the iconic Bayer brand.</p>
-								  <a class="more" href="crp-product-details.php">more</a></div>
-							  </div>
-							  <img alt="" src="<?php echo $base_url;?>img/stage/stage800x253_nachhaltigkeit.jpg">
-						  </li>
-                </ul>
-              </div>
-            </div>
-            <!--Slider End-->
+
+            <?php echo $slider;?>
+            
+				<!--Slider End-->
             
              <?php echo $left_menu_content;?>

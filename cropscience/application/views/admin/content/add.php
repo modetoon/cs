@@ -56,6 +56,15 @@
                                             </div>
                                         </div>    
 
+                                        <div class="form-group" id="slider" style="display:none;">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Select Slider</label></div>
+                                                <div class="col-lg-9">
+														<?php echo $slider_dropdownlist;?>
+                                                </div>
+                                            </div>
+                                        </div>    
+
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Content Name (EN)</label></div>
@@ -239,14 +248,22 @@
 		var template = $('#TemplateID').val();
 		if(template == 3){
 				$('#product').show();
+				$('#slider').hide();
+		}else if(template == 2){
+				$('#product').hide();
+				$('#slider').show();
 		}
 
     $("#TemplateID").change(function(e) {
-
         if(this.value == 3 || template == 3){
 			$('#product').show();
+			$('#slider').hide();
+        }else if(this.value == 2 || template == 2){
+			$('#product').hide();
+			$('#slider').show();
 		}else{
 			$('#product').hide();
+			$('#slider').hide();
 		}
     });
 

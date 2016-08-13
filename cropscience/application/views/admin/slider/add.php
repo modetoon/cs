@@ -75,14 +75,33 @@
                                         </div> 		
 
                                         <div class="form-group">
-                                            <label>Status</label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="Status" id="Status1" value="1" checked>Active
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="Status" id="Status2" value="0" <?php 
-                                                    echo ((isset($result)) && ($result->Status == 0)) ? "checked": ""; ?>>UnActive
-                                            </label>
+											<div class="row">
+												<div class="col-lg-3"><label>Show on Homepage</label></div>
+												<div class="col-lg-9">
+														<label class="radio-inline">
+															<input type="radio" name="ShowHome" id="ShowHome1" value="1" checked>Yes
+														</label>
+														<label class="radio-inline">
+															<input type="radio" name="ShowHome" id="ShowHome2" value="0" <?php 
+																echo ((isset($result)) && ($result->ShowHome == 0)) ? "checked": ""; ?>>No
+														</label>
+												</div>
+											</div>
+                                        </div>
+
+                                        <div class="form-group">
+											<div class="row">
+												   <div class="col-lg-3"> <label>Status</label></div>
+													<div class="col-lg-9">
+															<label class="radio-inline">
+																<input type="radio" name="Status" id="Status1" value="1" checked>Active
+															</label>
+															<label class="radio-inline">
+																<input type="radio" name="Status" id="Status2" value="0" <?php 
+																	echo ((isset($result)) && ($result->Status == 0)) ? "checked": ""; ?>>UnActive
+															</label>
+													</div>
+											</div>
                                         </div>
 
                                         <button type="submit" class="btn btn-primary" id="btn-save">Save</button>
