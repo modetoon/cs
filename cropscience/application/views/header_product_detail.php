@@ -54,48 +54,10 @@ $base_url = str_replace('/cropscience','',$base_url);
     <!--##/nosearch##-->
       <div role="main" class="main">
         <div class="service">
-          <ul class="breadcrumb">
-             
+			
+			<?php echo $breadcrump;?>
 
-            <li><a href="index.php">Home</a></li>
-            <li><a title="Products" href="crp-product-list.php">Products</a></li>
-            <li><a title="Fungicides" href="crp-product-list.php">Fungicides</a></li>
-            <li class="last"><a title="Luna Experience" href="crp-product-details.php">Luna Experience</a></li>           
-
-          </ul>
-          <nav class="servicenav">
-            <ul class="nobulls">
-              <li><a href="#print">Print</a></li>
-              <li><a href="#share" class="last">Share</a></li>
-            </ul>
-          </nav>
         </div>
         <section>
             
 			<?php echo $left_menu_content;?>
-
-            <!-- <nav id="lefthand" class="unit size-col-a lfthnd">
-              <ul class="lfthndnavi">
-					  <li><a href="crp-product-list.php">Overview</a></li>
-					  <li class="selected"><a class="selected" href="crp-product-details.php"> Fungicides</a>
-								  <ul>
-									<li class="selected"><a class="sf-with-ul selected" href="crp-product-details.php">Luna Experience</a></li>
-									<li><a href="crp-product-details.php">Luna Sensation</a></li>
-									<li><a href="crp-product-details.php">Antracol</a></li>
-									<li><a href="crp-product-details.php">Nativo 75 WG</a></li>
-									<li><a href="crp-product-details.php">Profiler</a></li>
-									<li><a href="crp-product-details.php">Flint</a></li>
-									<li><a href="crp-product-details.php">Folicur 250 EW</a></li>
-									<li><a href="crp-product-details.php">Folicur 430 SC</a></li>
-									<li><a href="crp-product-details.php">Invento 66.8 WP</a></li>
-									<li><a href="crp-product-details.php">Aliette 80 WG</a></li>
-									<li><a href="crp-product-details.php">Ethrel 48 PGR</a></li>
-									<li><a href="crp-product-details.php">Ethrel 10 LS</a></li>
-								  </ul>
-					  </li>
-					  <li class="haschildren"><a href="crp-product-details.php"> Herbicides</a></li>
-					  <li class="haschildren"><a href="crp-product-details.php"> Insecticides</a></li>         
-					  <li class="haschildren"><a href="crp-product-details.php"> Seeds</a></li>         
-					  <li><a href="crp-product-details.php"> Compendium</a></li>        
-              </ul>
-            </nav> -->

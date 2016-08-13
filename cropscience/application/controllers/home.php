@@ -40,6 +40,8 @@ class Home extends CI_Controller {
 		}else{
 			$data['top_menu'] = top_menu($menu_slug);
 		}
+		$breadcrump = breadcrump($menu_slug);
+		$data['breadcrump'] = $breadcrump;
 		
 		$content_data = $this->Frontcontent_model->get_content($menu_data->MenuID);
 		$data['meta_keyword'] = $content_data->MetaKeywordEN;
@@ -74,6 +76,9 @@ class Home extends CI_Controller {
 		}else{
 			$data['top_menu'] = top_menu($menu_slug);
 		}
+
+		$breadcrump = breadcrump($menu_slug);
+		$data['breadcrump'] = $breadcrump;
 		
 		$content_data = $this->Frontcontent_model->get_content($menu_data->MenuID);
 		$data['meta_keyword'] = $content_data->MetaKeywordEN;
@@ -111,6 +116,9 @@ class Home extends CI_Controller {
 		}else{
 			$data['top_menu'] = top_menu($menu_slug);
 		}
+
+		$breadcrump = breadcrump($menu_slug);
+		$data['breadcrump'] = $breadcrump;
 		
 		$content_data = $this->Frontcontent_model->get_content($menu_data->MenuID);
 

@@ -1,5 +1,54 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+function breadcrump($menu_slug='') {
+	$ci =& get_instance();
+	$ci->load->database();
+
+	$li_str = '';
+
+	$menu_data = $ci->Frontcontent_model->get_menudata($menu_slug);
+	$menu_parent = $menu_data->Parent;
+	$menu_id = $menu_data->MenuID;
+	$menu_level = $menu_data->Level;
+	$menu_name = $menu_data->MenuNameEN;
+	$content_data = $ci->Frontcontent_model->get_content($menu_id);
+	
+	if($menu_parent == 0){
+		$li_str .= '<li><a title="" href="'.site_url($content_data->Url).'">'.$menu_name.'</a></li>';
+	}else{
+		if($menu_level == 3){
+
+			$parent_menu_data2 = $ci->Frontcontent_model->get_parentdata($menu_data->Parent);
+			$parent_content_data2 = $ci->Frontcontent_model->get_content($parent_menu_data2->MenuID);
+			$li_str .= '<li><a title="" href="'.site_url($parent_content_data2->Url).'">'.$parent_menu_data2->MenuNameEN.'</a></li>';
+
+			$parent_menu_data = $ci->Frontcontent_model->get_parentdata($menu_data->MenuID);
+			$parent_content_data = $ci->Frontcontent_model->get_content($parent_menu_data->MenuID);
+			$li_str .= '<li><a title="" href="'.site_url($parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
+		}else{
+			$parent_menu_data = $ci->Frontcontent_model->get_parentdata($menu_data->MenuID);
+			$parent_content_data = $ci->Frontcontent_model->get_content($parent_menu_data->MenuID);
+			$li_str .= '<li><a title="" href="'.site_url($parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
+		}
+		$li_str .= '<li class="last"><a title="" href="'.site_url($content_data->Url).'">'.$menu_name.'</a></li>';
+	}
+
+	$html = '';
+	$html .= '<ul class="breadcrumb">
+							<li><a href="'.site_url('').'">Home</a></li>';
+							//<li><a title="" href="#">Business Operations</a></li>
+							//<li class="last"><a title="" href="#">Crop Protections</a></li>        
+	$html .= $li_str;
+	$html .= '</ul>
+					  <nav class="servicenav">
+						<ul class="nobulls">
+						  <li><a href="#print">Print</a></li>
+						  <li><a href="#share" class="last">Share</a></li>
+						</ul>
+					  </nav>';
+	return $html;
+}
+
 function top_menu($menu_slug='') {
 			$ci =& get_instance();
 			$ci->load->database();

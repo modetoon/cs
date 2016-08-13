@@ -17,7 +17,6 @@ $base_url = str_replace('/cropscience','',$base_url);
 <meta name="robots" content="Index,Follow">
 <meta name="revisit-after" content="14 days">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<!--Version 4.0.2-->
 <title><?php echo $page_title;?></title>
 
 <link rel="stylesheet" type="text/css" href="//shared.bayer.com/api/402/bayer.css"/>
@@ -55,15 +54,7 @@ $base_url = str_replace('/cropscience','',$base_url);
     <!--##/nosearch##-->
       <div role="main" class="main">
         <div class="service">
-          <ul class="breadcrumb">
-				<li><a href="index.php">Home</a></li>
-				<li><a title="" href="#">Business Operations</a></li>
-				<li class="last"><a title="" href="#">Crop Protections</a></li>            
-          </ul>
-          <nav class="servicenav">
-            <ul class="nobulls">
-              <li><a href="#print">Print</a></li>
-              <li><a href="#share" class="last">Share</a></li>
-            </ul>
-          </nav>
+
+			<?php echo $breadcrump;?>
+
         </div>

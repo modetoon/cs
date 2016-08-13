@@ -55,20 +55,9 @@ $base_url = str_replace('/cropscience','',$base_url);
     <!--##/nosearch##-->
       <div role="main" class="main">
         <div class="service">
-          <ul class="breadcrumb">
-             
+			
+			 <?php echo $breadcrump;?>
 
-            <li><a href="index.php">Home</a></li>
-            <li><a title="Products" href="crp-product-list.php">Products</a></li>
-            <li class="last"><a title="Overview" href="crp-product-list.php">Overview</a></li>            
-
-          </ul>
-          <nav class="servicenav">
-            <ul class="nobulls">
-              <li><a href="#print">Print</a></li>
-              <li><a href="#share" class="last">Share</a></li>
-            </ul>
-          </nav>
         </div>
         <section>
 			 <!--Slider Start-->
