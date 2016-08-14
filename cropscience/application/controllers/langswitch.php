@@ -10,6 +10,7 @@ class LangSwitch extends CI_Controller
 
         $language = ($language != "") ? $language : "en";
         $this->session->set_userdata('site_lang', $language);
+        $this->session->set_userdata('site_lang_db', strtoupper($language));
         $this->session->set_userdata('site_lang_url', $language.'/');
         redirect(base_url());
 

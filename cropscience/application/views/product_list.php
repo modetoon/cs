@@ -71,9 +71,9 @@
         <li class="hide-lt1024"><a href="sitemap.php">Sitemap</a></li>
 		<?php
 		$site_lang = $this->session->userdata('site_lang');
-		$switch_to = ($site_lang == 'thai') ? 'english': 'thai';
+		$switch_to = ($site_lang == 'th') ? 'en': 'th';
 		?>
-        <li><a href="<?php echo site_url('langswitch/switchLanguage/'.$switch_to);?>" class="last"><?php echo ($site_lang == 'thai') ? 'English': 'Thai';?></a></li>
+        <li><a href="<?php echo site_url('langswitch/switchLanguage/'.$switch_to);?>" class="last"><?php echo ($site_lang == 'th') ? 'English': 'Thai';?></a></li>
       </ul>
     </nav>
     <!-- /Support Navigation --> 

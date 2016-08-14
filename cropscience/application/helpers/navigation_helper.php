@@ -6,6 +6,8 @@ function breadcrump($menu_slug='') {
 
 	$li_str = '';
 
+	$menuname_fld = 'MenuName'.$ci->session->userdata('site_lang_db');
+
 	$menu_data = $ci->Frontcontent_model->get_menudata($menu_slug);
 	$menu_parent = $menu_data->Parent;
 	$menu_id = $menu_data->MenuID;
@@ -20,15 +22,15 @@ function breadcrump($menu_slug='') {
 
 			$parent_menu_data2 = $ci->Frontcontent_model->get_parentdata($menu_data->Parent);
 			$parent_content_data2 = $ci->Frontcontent_model->get_content($parent_menu_data2->MenuID);
-			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data2->Url).'">'.$parent_menu_data2->MenuNameEN.'</a></li>';
+			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data2->Url).'">'.$parent_menu_data2->{$menuname_fld}.'</a></li>';
 
 			$parent_menu_data = $ci->Frontcontent_model->get_parentdata($menu_data->MenuID);
 			$parent_content_data = $ci->Frontcontent_model->get_content($parent_menu_data->MenuID);
-			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
+			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data->Url).'">'.$parent_menu_data->{$menuname_fld}.'</a></li>';
 		}else{
 			$parent_menu_data = $ci->Frontcontent_model->get_parentdata($menu_data->MenuID);
 			$parent_content_data = $ci->Frontcontent_model->get_content($parent_menu_data->MenuID);
-			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
+			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data->Url).'">'.$parent_menu_data->{$menuname_fld}.'</a></li>';
 		}
 		$li_str .= '<li class="last"><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$content_data->Url).'">'.$menu_name.'</a></li>';
 	}
