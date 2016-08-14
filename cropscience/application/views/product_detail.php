@@ -130,7 +130,11 @@ $base_url = str_replace('/cropscience','',$base_url);
         <li><a href="contact.php">Contact us</a></li>
         <li><a href="map.php">Map</a></li>
         <li class="hide-lt1024"><a href="sitemap.php">Sitemap</a></li>
-        <li><a href="#" class="last">Thai</a></li>
+		<?php
+		$site_lang = $this->session->userdata('site_lang');
+		$switch_to = ($site_lang == 'thai') ? 'english': 'thai';
+		?>
+        <li><a href="<?php echo site_url('langswitch/switchLanguage/'.$switch_to);?>" class="last"><?php echo ($site_lang == 'thai') ? 'English': 'Thai';?></a></li>
       </ul>
     </nav>
     <!-- /Support Navigation --> 

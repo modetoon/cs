@@ -78,7 +78,11 @@
         <li><a href="contact.php">Contact us</a></li>
         <li><a href="map.php">Map</a></li>
         <li class="hide-lt1024"><a href="sitemap.php">Sitemap</a></li>
-        <li><a href="#" class="last">Thai</a></li>
+		<?php
+		$site_lang = $this->session->userdata('site_lang');
+		$switch_to = ($site_lang == 'th') ? 'en': 'th';
+		?>
+        <li><a href="<?php echo site_url('langswitch/switchLanguage/'.$switch_to);?>" class="last"><?php echo ($site_lang == 'th') ? 'English': 'Thai';?></a></li>
       </ul>
     </nav>
     <!-- /Support Navigation --> 
@@ -86,9 +90,6 @@
 
   <nav id="fatfooter">
     <div class="shdw"></div>
-    <!-- <ul class="nvgtn fatfooter">
-			<li class="fctgry unit n2"><a href="subhomepage.php?ID=3" class="fhead">About Bayer</a><ul><li><a href="contentpage.php?ID=4">Company Profile</a></li><li><a href="contentpage.php?ID=5">Corporate Compliance policy</a></li><li><a href="contentpage.php?ID=6">Sustainability and Commitment</a></li><li><a href="contentpage.php?ID=7">Social Responsibility</a></li><li><a href="contentpage.php?ID=8">Milestones</a></li><li><a href="contentpage.php?ID=9">Organizational Structure</a></li><li><a href="contentpage.php?ID=10">Employees</a></li></ul></li><li class="fctgry unit n2"><a href="subhomepage.php?ID=17" class="fhead">Our Businesses</a><ul><li><a href="contentpage.php?ID=24">Pharmaceuticals</a></li><li><a href="contentpage.php?ID=18">Consumer Health</a></li><li><a href="contentpage.php?ID=25">Crop Science</a></li><li><a href="contentpage.php?ID=19">Animal Health</a></li></ul></li><li class="fctgry unit n2"><a href="subhomepage.php?ID=16" class="fhead">Production Site</a><ul><li><a href="contentpage.php?ID=14">Bangpoo Production Site</a></li></ul></li>
-    </ul> -->
     <div class="clear"></div>
   </nav>
 </div>

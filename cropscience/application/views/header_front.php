@@ -56,7 +56,7 @@ $base_url = str_replace('/cropscience','',$base_url);
     <div role="main" class="main">
       <div class="service">
         <ul class="breadcrumb">
-          <li class="last"><a title="Home" href="../index.php">Home</a></li>
+          <li class="last"><a title="Home" href="#">Home</a></li>
         </ul>
         <nav class="servicenav">
           <ul class="nobulls">

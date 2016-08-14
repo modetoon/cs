@@ -50,12 +50,11 @@
                                             }
                                         ?>
 
-
                            <?php echo form_open('login/check') ?>
                             
 							<fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="Username" type="text"  value="<?php echo set_value('Username');?>" autofocus>
+                                    <input class="form-control" placeholder="Username" name="Username" type="text"  value="<?php echo set_value('Username');?>" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="Password" type="password">

@@ -7,13 +7,15 @@ class Home extends CI_Controller {
         // Call the Model constructor
         parent::__construct();
 		$this->load->model('Frontcontent_model');
-
+		$this->lang->load("message", $this->session->userdata('site_lang')); // Load language
     }
 
 	public function index()
 	{
 		$this->load->helper('url');
+
 		$data['page_title'] = 'Homepage - Bayer';
+		//$data['page_title'] = 'Homepage - Bayer / '.$this->lang->line("business_operations");
 		$data['top_menu'] = top_menu('home');
 		$data['left_menu_home'] = left_menu_home();
 		$data['slider'] = slider('home');

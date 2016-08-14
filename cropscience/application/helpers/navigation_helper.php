@@ -14,28 +14,28 @@ function breadcrump($menu_slug='') {
 	$content_data = $ci->Frontcontent_model->get_content($menu_id);
 	
 	if($menu_parent == 0){
-		$li_str .= '<li><a title="" href="'.site_url($content_data->Url).'">'.$menu_name.'</a></li>';
+		$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$content_data->Url).'">'.$menu_name.'</a></li>';
 	}else{
 		if($menu_level == 3){
 
 			$parent_menu_data2 = $ci->Frontcontent_model->get_parentdata($menu_data->Parent);
 			$parent_content_data2 = $ci->Frontcontent_model->get_content($parent_menu_data2->MenuID);
-			$li_str .= '<li><a title="" href="'.site_url($parent_content_data2->Url).'">'.$parent_menu_data2->MenuNameEN.'</a></li>';
+			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data2->Url).'">'.$parent_menu_data2->MenuNameEN.'</a></li>';
 
 			$parent_menu_data = $ci->Frontcontent_model->get_parentdata($menu_data->MenuID);
 			$parent_content_data = $ci->Frontcontent_model->get_content($parent_menu_data->MenuID);
-			$li_str .= '<li><a title="" href="'.site_url($parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
+			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
 		}else{
 			$parent_menu_data = $ci->Frontcontent_model->get_parentdata($menu_data->MenuID);
 			$parent_content_data = $ci->Frontcontent_model->get_content($parent_menu_data->MenuID);
-			$li_str .= '<li><a title="" href="'.site_url($parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
+			$li_str .= '<li><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$parent_content_data->Url).'">'.$parent_menu_data->MenuNameEN.'</a></li>';
 		}
-		$li_str .= '<li class="last"><a title="" href="'.site_url($content_data->Url).'">'.$menu_name.'</a></li>';
+		$li_str .= '<li class="last"><a title="" href="'.site_url($ci->session->userdata('site_lang_url').$content_data->Url).'">'.$menu_name.'</a></li>';
 	}
 
 	$html = '';
 	$html .= '<ul class="breadcrumb">
-							<li><a href="'.site_url('').'">Home</a></li>';
+							<li><a href="'.site_url('').'">'.$ci->lang->line("home").'</a></li>';
 							//<li><a title="" href="#">Business Operations</a></li>
 							//<li class="last"><a title="" href="#">Crop Protections</a></li>        
 	$html .= $li_str;
@@ -74,20 +74,20 @@ function top_menu($menu_slug='') {
 			//$html .= '	<ul id="mega-menu-1" class="megamenu">';
 			$html .= '	<ul id="mega-menu" class="megamenu">';
 			$cls = ($menu_slug == 'home') ? 'class="selected"': '';
-			$html .= '		<li class="n1"><a href="'.site_url("/").'" '.$cls.'>Home</a></li>';
+			$html .= '		<li class="n1"><a href="'.site_url("/").'" '.$cls.' title="'.$ci->lang->line("home").'" alt="'.$ci->lang->line("home").'">Home</a></li>';
 
 					$query = $ci->db->query("SELECT DISTINCT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '0' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
 							   $cls = ((($menu_slug == $row->Slug) && ($row->Slug != '')) || ($top_menu == $row->MenuID)) ? ' selected': '';
 							   $html .= '		<li class="n2">
-																  <a class="haschild '.$cls.'" href="'.site_url($row->Url).'">'.$row->MenuNameEN.'</a>
+																  <a class="haschild '.$cls.'" href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'">'.$row->MenuNameEN.'</a>
 																  <ul class="newsub">
 																			<li class="megaTsrBx">
 																			  <h2 class="thdln">'.$row->MenuNameEN.'</h2>
-																			  <a href="'.site_url($row->Url).'"><img width="170" height="100" data-original="'.site_url('upload/'.$row->Image).'" alt="'.$row->MenuNameEN.'" src="'.site_url('upload/'.$row->Image).'" class="lazy"></a>
+																			  <a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'"><img width="170" height="100" data-original="'.site_url('upload/'.$row->Image).'" alt="'.$row->MenuNameEN.'" src="'.site_url('upload/'.$row->Image).'" class="lazy"></a>
 																				<p>'.$row->ImageCaption.'</p>
-																				<div class="lnk"><a href="'.site_url($row->Url).'">Overview</a></div>
+																				<div class="lnk"><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'">Overview</a></div>
 																			  </li>';
 
 																			  $query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1'  AND C.Status = '1' ORDER BY M.Position");
@@ -97,11 +97,11 @@ function top_menu($menu_slug='') {
 																						foreach ($query2->result() as $row2){
 																							$query3 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row2->MenuID."' AND M.Status = '1' AND C.Status = '1'  ORDER BY M.Position");
 																							$cls = ($query3->num_rows() > 0) ? ' class="haschild"': '';
-																							$html .= '	<li '.$cls.'><a href="'.site_url($row2->Url).'">'.$row2->MenuNameEN.'</a>';
+																							$html .= '	<li '.$cls.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'">'.$row2->MenuNameEN.'</a>';
 																							if ($query3->num_rows() > 0){
 																										$html .= '	<ul>';
 																										foreach ($query3->result() as $row3){
-																																$html .= '<li><a href="'.site_url($row3->Url).'">'.$row3->MenuNameEN.'</a></li>';
+																																$html .= '<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row3->Url).'">'.$row3->MenuNameEN.'</a></li>';
 																										}
 																										$html .= '	</ul>';
 																							}
@@ -149,7 +149,7 @@ if ( ! function_exists('slider')){
 															  <div style="width:275px;" class="stagetext stageright ">
 																  <div class="stagetopline">'.$row->SliderTopLine.'</div>
 																  <h1 class="stagehdln">'.$row->SliderHeadLine.'</h1>
-																<div><p>'.$row->SliderDetail.'</p><a href="'.site_url($row->SliderLink).'" class="more">more</a></div></div>
+																<div><p>'.$row->SliderDetail.'</p><a href="'.site_url($ci->session->userdata('site_lang_url').$row->SliderLink).'" class="more">more</a></div></div>
 															   <img src="'.site_url('upload/banner/'.$row->SliderImage).'" alt="'.$row->SliderHeadLine.'"> 
 												</li>  ';
 							}
@@ -233,12 +233,12 @@ if ( ! function_exists('left_menu_content')){
 								$cls_str = 'class="'.$cls_str.'"';
 
 								$cls_link = ($menu_id == $row->MenuID) ? 'class="selected"': '';
-							    $html .= '		<li '.$cls_str.'><a href="'.site_url($row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
+							    $html .= '		<li '.$cls_str.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
 																						foreach ($query2->result() as $row2){
-																							$html .= '	<li><a href="'.site_url($row2->Url).'">'.$row2->MenuNameEN.'</a></li>';
+																							$html .= '	<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'">'.$row2->MenuNameEN.'</a></li>';
 																						}
 																						$html .= '</ul>';
 																			  }
@@ -285,13 +285,13 @@ if ( ! function_exists('left_menu_productdetail')){
 								$cls_str = 'class="'.$cls_str.'"';
 
 								$cls_link = ($parent == $row->MenuID) ? 'class="selected"': '';
-							    $html .= '		<li '.$cls_str.'><a href="'.site_url($row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
+							    $html .= '		<li '.$cls_str.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
 																						foreach ($query2->result() as $row2){
 																							$cls_link = ($menu_id == $row2->MenuID) ? 'class="selected"': '';
-																							$html .= '	<li><a href="'.site_url($row2->Url).'" '.$cls_link.'>'.$row2->MenuNameEN.'</a></li>';
+																							$html .= '	<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'" '.$cls_link.'>'.$row2->MenuNameEN.'</a></li>';
 																						}
 																						$html .= '</ul>';
 																			  }
