@@ -178,8 +178,10 @@ class Home extends CI_Controller {
 		$data['Detail'] = $product_data->Detail;
 		$data['Contain'] = $product_data->Contain;
 		$data['Suggestion'] = $product_data->Suggestion;
+		$data['Benefit'] = $product_data->Benefit;
 		$data['Warning'] = $product_data->Warning;
 		$data['DangerousNo'] = $product_data->DangerousNo;
+		$data['Remark'] = $product_data->Remark;
 		$data['Image'] = $product_data->Image;
 		$data['BrandImage'] = $product_data->BrandImage;
 
@@ -190,5 +192,3 @@ class Home extends CI_Controller {
 
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

@@ -45,10 +45,24 @@ $base_url = str_replace('/cropscience','',$base_url);
                         <td><strong>คำแนะนำ:</strong></td>
                         <td><em>(Keep it for some product)</em></td>
                       </tr> -->
+					  <?php if($Suggestion != ''){?>
+                      <tr>
+                        <td><strong>คำแนะนำ:</strong></td>
+                        <td><?php echo $Suggestion;?></td>
+                      </tr>
+					  <?php }?>
+
 					  <?php if($Warning != ''){?>
                       <tr>
                         <td class="warning"><strong>คำเตือน:</strong></td>
-                        <td class="warning"><em>(Keep it for some product)</em></td>
+                        <td class="warning"><?php echo $Warning;?></td>
+                      </tr>
+					  <?php }?>
+
+					  <?php if($Remark != ''){?>
+                      <tr>
+                        <td><strong>หมายเหตุ:</strong></td>
+                        <td><?php echo $Remark;?></td>
                       </tr>
 					  <?php }?>
 
@@ -61,8 +75,8 @@ $base_url = str_replace('/cropscience','',$base_url);
               </div>
 
               <div class="spacer"></div>              
-				  <p><b>คำแนะนำ</b></p>
-				  <div id="suggestion"><?php echo $Suggestion;?></div>
+
+				  <div id="suggestion"><?php echo $Benefit;?></div>
     
               <div class="spacer"></div>
 			  <?php if($DangerousNo != ''){?>

@@ -89,6 +89,22 @@
                                                     echo (isset($result)) ? $result->Contain: set_value('Contain'); ?>"></div>
                                             </div>
                                         </div> 
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Suggestion</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="Suggestion" value="<?php 
+                                                    echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?>"></div>
+                                            </div>
+                                        </div> 
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Warning</label></div>
+                                                <div class="col-lg-9"><textarea class="form-control" name="Warning" rows="5"><?php 
+                                                    echo (isset($result)) ? $result->Warning: set_value('Warning'); ?></textarea></div>
+                                            </div>
+                                        </div>       
 										
                                         <div class="form-group">
                                             <div class="row">
@@ -100,7 +116,7 @@
 
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-lg-9"><label>Suggestion</label></div>
+                                                <div class="col-lg-9"><label>Benefit</label></div>
                                             </div>
                                         </div> 
                                         <div class="form-group">
@@ -108,41 +124,56 @@
                                                 <div class="col-lg-12">
 													<!-- <textarea class="form-control" name="Suggestion" rows="5"><?php 
                                                     echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?></textarea> -->
-														<textarea name="content" class="editor" id="editor2"><?php echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?></textarea>
-														<input type="hidden" name="Suggestion" id="Suggestion">
+														<textarea name="content" class="editor" id="editor2"><?php echo (isset($result)) ? $result->Benefit: set_value('Benefit'); ?></textarea>
+														<input type="hidden" name="Benefit" id="Benefit">
 											</div>
                                             </div>
                                         </div>         
+
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-lg-3"><label>Warning</label></div>
-                                                <div class="col-lg-9"><textarea class="form-control" name="Warning" rows="5"><?php 
-                                                    echo (isset($result)) ? $result->Warning: set_value('Warning'); ?></textarea></div>
+                                                <div class="col-lg-3"><label>Remark</label></div>
+                                                <div class="col-lg-9"><input class="form-control" name="Remark" value="<?php 
+                                                    echo (isset($result)) ? $result->Remark: set_value('Remark'); ?>"></div>
                                             </div>
-                                        </div>       
+                                        </div> 
+
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Product Image</label></div>
-                                                <div class="col-lg-9"><input type="file" name="image" size="20" /></div>
+                                                <div class="col-lg-9"><input type="file" name="image" size="20" />
+													<br />
+													<?php if((isset($result)) && ($result->Image != '')){?>
+														<img src="<?php echo site_url('upload/'.$result->Image);?>" width="20%">
+													<?php }?>
+												</div>
                                             </div>
                                         </div> 		
 										
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Brand Image</label></div>
-                                                <div class="col-lg-9"><input type="file" name="brandimage" size="20" /></div>
+                                                <div class="col-lg-9"><input type="file" name="brandimage" size="20" />
+													<br />
+													<?php if((isset($result)) && ($result->BrandImage != '')){?>
+														<img src="<?php echo site_url('upload/'.$result->BrandImage);?>" width="20%">
+													<?php }?>												
+												</div>
                                             </div>
                                         </div> 			
 
                                         <div class="form-group">
-                                            <label>Status</label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="Status" id="Status1" value="1" checked>Active
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="Status" id="Status2" value="0" <?php 
-                                                    echo ((isset($result)) && ($result->Status == 0)) ? "checked": ""; ?>>UnActive
-                                            </label>
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Status</label></div>
+												<div class="col-lg-3">
+														<label class="radio-inline">
+															<input type="radio" name="Status" id="Status1" value="1" checked>Active
+														</label>
+														<label class="radio-inline">
+															<input type="radio" name="Status" id="Status2" value="0" <?php 
+																echo ((isset($result)) && ($result->Status == 0)) ? "checked": ""; ?>>UnActive
+														</label>
+												</div>
                                         </div>
 
                                         <button type="submit" class="btn btn-primary" id="btn-save">Save</button>
@@ -191,7 +222,7 @@
 		var myContent = CKEDITOR.instances.editor.getData();
 		var myContent2 = CKEDITOR.instances.editor2.getData();
 		$('#Detail').val(myContent);
-		$('#Suggestion').val(myContent2);
+		$('#Benefit').val(myContent2);
 	});
 
 		initSample();
