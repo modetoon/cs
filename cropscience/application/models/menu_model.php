@@ -14,9 +14,13 @@ class Menu_model extends CI_Model {
 
     }
     
-    function get_menu()
+    function get_menu($parent='')
     {
-        $sql = "SELECT M2.MenuNameEN as ParentMenuName, M1.MenuID, M1.Parent, M1.MenuNameEN as MenuName FROM ".$this->table_name." M1 LEFT JOIN ".$this->table_name." M2 ON M1.Parent = M2.MenuID ORDER BY M1.Parent, M1.Position"; 
+		$sqlExt = "";
+		if($parent != ''){
+			$sqlExt .= " WHERE M1.Parent = '".$parent."' ";
+		}
+        $sql = "SELECT M2.MenuNameEN as ParentMenuName, M1.MenuID, M1.Parent, M1.MenuNameEN as MenuName FROM ".$this->table_name." M1 LEFT JOIN ".$this->table_name." M2 ON M1.Parent = M2.MenuID ".$sqlExt." ORDER BY M1.Parent, M1.Position"; 
         $query = $this->db->query($sql);        
         return $query->result();
     }
@@ -44,6 +48,7 @@ class Menu_model extends CI_Model {
     }
 
     function get_menu_structure($selected=''){
+		
         //$this->db->where('parent',$parent);
         $this->db->order_by('Level','asc');
         $this->db->select('*')->from($this->table_name);
@@ -61,10 +66,11 @@ class Menu_model extends CI_Model {
         static $i = 1;
         $path = '';
         if (array_key_exists($parent, $category)) {
-            $menu = ($parent != 0) ? '': '<select class="form-control" name="Parent"><option value="0">Please select';
+			
+            $menu = ($parent != 0) ? '': '<select class="form-control" name="Parent" id="Parent"><option value="0">= Please select menu =';
             $i++;
             foreach ($category[$parent] as $r) {
-                $child = $this->build_menu($category, $r->MenuID);
+                $child = $this->build_menu($category, $r->MenuID,$selected);
                 $level_str = "";
                 if($parent != 0){
                     $level_str = str_repeat("&nbsp;&nbsp;",$r->Level);

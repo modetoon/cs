@@ -237,6 +237,7 @@
     <script src="<?php echo base_url();?>resource/ckeditor/ckeditor.js"></script>
     <script src="<?php echo base_url();?>resource/ckeditor/samples/js/sample.js"></script>
     <script>
+	
 
     $("#btn-save").click(function(e) {
         var myContent = CKEDITOR.instances.editor.getData();

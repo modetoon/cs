@@ -30,9 +30,13 @@ class Content_model extends CI_Model {
         return $query->result();
     } 
 
-    function get_list()
+    function get_list($menu_id='')
     {
-        $sql = "SELECT C.*, M.MenuNameEN as MenuName FROM ".$this->table_name." C LEFT JOIN ".$this->table_menu_name." M ON C.MenuID = M.MenuID ORDER BY C.ContentID"; 
+		$sqlExt = "";
+		if($menu_id != ''){
+			$sqlExt .= " WHERE C.MenuID = '".$menu_id."' ";
+		}
+        $sql = "SELECT C.*, M.MenuNameEN as MenuName FROM ".$this->table_name." C LEFT JOIN ".$this->table_menu_name." M ON C.MenuID = M.MenuID ".$sqlExt." ORDER BY C.ContentID"; 
         $query = $this->db->query($sql);        
         return $query->result();
     }  
@@ -68,7 +72,7 @@ class Content_model extends CI_Model {
         static $i = 1;
         $path = '';
         if (array_key_exists($parent, $category)) {
-            $menu = ($parent != 0) ? '': '<select class="form-control" name="MenuID"><option value="">Please select';
+            $menu = ($parent != 0) ? '': '<select class="form-control" name="MenuID" id="MenuID"><option value="">= Please select menu =';
             $i++;
             foreach ($category[$parent] as $r) {
                 $child = $this->build_menu($category, $r->MenuID, $selected);

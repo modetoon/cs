@@ -8,7 +8,10 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-12 right">
+				<div class="col-lg-3">
+					<?php echo $menu_dropdownlist;?>
+				</div>
+				<div class="col-lg-9 right">
                     <p class="text-right"><button type="button" class="btn btn-success text-right" onclick="window.location.href='<?php echo site_url('admin/content_add');?>';">Add Content</button></p>
                 </div>
             </div>
@@ -94,6 +97,11 @@
         $('#ListTable').DataTable({
                 responsive: true
         });
+
+		$("#MenuID").change(function(e) {
+				var menu_id =  $("#MenuID").val();
+				window.location.href='<?php echo site_url("admin/content_lists/'+menu_id+'");?>';
+		});
         
     });
     </script>

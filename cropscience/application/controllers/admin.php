@@ -40,12 +40,15 @@ class Admin extends CI_Controller {
 		redirect(site_url('login'));
 	}
 
-	public function menu_lists(){
+	public function menu_lists($filter=''){
 		$this->load->model('Menu_model');
 		$data['title'] = 'Menu List';
 
-		$res = $this->Menu_model->get_menu();
+		$res = $this->Menu_model->get_menu($filter);
 		$data['result'] = $res;
+
+		$main_menu = $this->Menu_model->get_menu_structure($filter);
+		$data['menu_dropdownlist'] = $main_menu;	
 
 		$this->load->view('header', $data);
 		$this->load->view('admin/menu/lists', $data);
@@ -346,13 +349,16 @@ class Admin extends CI_Controller {
 
 	// ---------------------- Content Controller -------------------------- //
 
-	public function content_lists()
+	public function content_lists($filter='')
 	{
 		$this->load->model('Content_model');
 		$data['title'] = 'Content List';
 
-		$res = $this->Content_model->get_list();
+		$res = $this->Content_model->get_list($filter);
 		$data['result'] = $res;
+		
+		$main_menu = $this->Content_model->get_menu_structure($filter);
+		$data['menu_dropdownlist'] = $main_menu;	
 
 		$this->load->view('header', $data);
 		$this->load->view('admin/content/lists', $data);
