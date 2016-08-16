@@ -10,7 +10,6 @@ class Frontcontent_model extends CI_Model {
         // Call the Model constructor
         parent::__construct();
 		$this->load->database();
-
     }
     
     function get_list()
@@ -89,7 +88,7 @@ class Frontcontent_model extends CI_Model {
 								if ($query_sub->num_rows() > 0){
 									$html .= '<ul class="prd-list">';
 									foreach($arr_sub as $row_sub){
-										$html .= '<li><a href="'.site_url($row_sub->Url).'">'.$row_sub->MenuNameEN.'</a></li>';
+										$html .= '<li><a href="'.site_url($this->session->userdata('site_lang_url').$row_sub->Url).'">'.$row_sub->MenuNameEN.'</a></li>';
 									}
 									$html .= '</ul>';
 									$html .= '	<div class="spacer">&nbsp;</div>';
@@ -113,7 +112,7 @@ class Frontcontent_model extends CI_Model {
 								if ($query_sub->num_rows() > 0){
 									$html .= '<ul class="prd-list">';
 									foreach($arr_sub as $row_sub){
-										$html .= '<li><a href="'.site_url($row_sub->Url).'">'.$row_sub->MenuNameEN.'</a></li>';
+										$html .= '<li><a href="'.site_url($this->session->userdata('site_lang_url').$row_sub->Url).'">'.$row_sub->MenuNameEN.'</a></li>';
 									}
 									$html .= '</ul>';
 									$html .= '	<div class="spacer">&nbsp;</div>';

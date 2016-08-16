@@ -184,12 +184,12 @@ if ( ! function_exists('left_menu_home')){
 							foreach ($query->result() as $row){
 								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
 								$cls = ($query2->num_rows() > 0) ? 'class="haschildren"': '';
-							    $html .= '		<li '.$cls.'><a href="index.php"> '.$row->MenuNameEN.'</a>';
+							    $html .= '		<li '.$cls.'><a href="'.$ci->session->userdata('site_lang_url').$row->Url.'"> '.$row->MenuNameEN.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
 																						foreach ($query2->result() as $row2){
-																							$html .= '	<li><a href="'.$row2->Url.'">'.$row2->MenuNameEN.'</a></li>';
+																							$html .= '	<li><a href="'.$ci->session->userdata('site_lang_url').$row2->Url.'">'.$row2->MenuNameEN.'</a></li>';
 																						}
 																						$html .= '</ul>';
 																			  }

@@ -7,6 +7,13 @@ class Home extends CI_Controller {
         // Call the Model constructor
         parent::__construct();
 		$this->load->model('Frontcontent_model');
+		if($this->session->userdata('site_lang') == ''){
+			$language = "en";
+			$this->session->set_userdata('site_lang', $language);
+			$this->session->set_userdata('site_lang_db', strtoupper($language));
+			$this->session->set_userdata('site_lang_url', $language.'/');
+		}
+		//echo $this->session->userdata('site_lang');die;
 		//$this->lang->load("message", $this->session->userdata('site_lang')); // Load language
     }
 

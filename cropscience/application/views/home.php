@@ -14,7 +14,7 @@
                   <div class="unit size-col-a">
                     <h2 class="colhead">Experts in Pest Control</h2>
                     <article class="media">
-                      <div class="img"><a href="crp-content.php"><img src="../img/content/coping-with-caterpillars-318.ashx.jpg" alt="" height="100" width="170"></a></div>
+                      <div class="img"><a href="crp-content.php"><img src="upload/coping-with-caterpillars-318.ashx.jpg" alt="" height="100" width="170"></a></div>
                       <div class="bd plntxt">
                         <div>
                           <h3 class="hdln"><a href="crp-content.php">Coping with  Caterpillars</a></h3>
@@ -42,7 +42,7 @@
                   <div class="unit size-col-a last">
                     <h2 class="colhead">Tomatoes for the global market</h2>
                       <article class="media">
-                      <div class="img"><a href="crp-content.php"><img src="../img/content/tomato-a-fruity-success-story-318.ashx.jpg" alt="" height="100" width="170"></a></div>
+                      <div class="img"><a href="crp-content.php"><img src="upload/tomato-a-fruity-success-story-318.ashx.jpg" alt="" height="100" width="170"></a></div>
                       <div class="bd plntxt">
                         <div>
                           <h3 class="hdln"><a href="crp-content.php">A Fruity  Success Story</a></h3>
