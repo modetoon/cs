@@ -59,7 +59,12 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Image</label></div>
-                                                <div class="col-lg-9"><input type="file" name="image" size="20" /></div>
+                                                <div class="col-lg-9"><input type="file" name="image" size="20" />
+													<br />
+													<?php if((isset($result)) && ($result->Image != '')){?>
+														<img src="<?php echo site_url('upload/'.$result->Image);?>" width="30%">
+													<?php }?>												
+												</div>
                                             </div>
                                         </div> 		
 

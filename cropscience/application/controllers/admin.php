@@ -16,14 +16,10 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('Menu_model');
-		$data['title'] = 'Menu List';
-
-		$res = $this->Menu_model->get_menu();
-		$data['result'] = $res;
-
+		$this->load->helper('url');
+		$data = array('title'=> 'Home');
 		$this->load->view('header', $data);
-		$this->load->view('admin/menu/lists', $data);
+		$this->load->view('dashboard');
 	}
 
 	public function logoff()
@@ -99,7 +95,6 @@ class Admin extends CI_Controller {
 			}
 			else
 			{
-
 				$data = array('upload_data' => $this->upload->data());
 				$Image = $data['upload_data']['file_name'];
 			}
@@ -112,11 +107,15 @@ class Admin extends CI_Controller {
 				'Level' => $next_level,
 				'MenuNameEN' => $this->input->post('MenuNameEN'),
 				'MenuNameTH' => $this->input->post('MenuNameTH'),
-				'Image' => $Image,
+				//'Image' => $Image,
 				'ImageCaption' => $this->input->post('ImageCaption'),
 				'Position' => $this->input->post('Position'),
 				'Status' => $this->input->post('Status')
 			);
+			if((isset($Image)) && ($Image != '')){
+					$data_insert['Image'] = $Image;
+			}
+
 			if($this->input->post('ID') == '')
 			{
 				$main_menu = $this->Menu_model->insert_data($data_insert);
@@ -246,7 +245,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('Formula', 'Formula', 'required|min_length[1]');
 		$this->form_validation->set_rules('Detail', 'Detail', 'required|min_length[1]');
 		$this->form_validation->set_rules('Contain', 'Contain', 'required|min_length[1]');
-		//$this->form_validation->set_rules('Suggestion', 'Suggestion', 'required|min_length[1]');
+		$this->form_validation->set_rules('Suggestion', 'Suggestion', 'required|min_length[1]');
 
 		if ($this->form_validation->run() === FALSE)
 		{
@@ -262,7 +261,7 @@ class Admin extends CI_Controller {
 
 			$config['upload_path'] = 'upload/';
 			$config['allowed_types'] = 'jpg|png';
-			$config['max_size']	= '1000';
+			$config['max_size']	= '500';
 
 			$this->load->library('upload', $config);
 
@@ -273,9 +272,9 @@ class Admin extends CI_Controller {
 			}
 			else
 			{
+
 				$data = array('upload_data' => $this->upload->data());
 				$Image = $data['upload_data']['file_name'];
-				
 			}
 			
 			/* ---------------- Upload Brand Image ------------------- */
@@ -298,11 +297,9 @@ class Admin extends CI_Controller {
 					'Formula' => $this->input->post('Formula'),
 					'Detail' => $this->input->post('Detail'),
 					'Contain' => $this->input->post('Contain'),
-					'Benefit' => $this->input->post('Benefit'),
 					'Suggestion' => $this->input->post('Suggestion'),
 					'Warning' => $this->input->post('Warning'),
 					'DangerousNo' => $this->input->post('DangerousNo'),
-					'Remark' => $this->input->post('Remark'),
 					'Image' => $Image,
 					'BrandImage' => $BrandImage,
 					'Status' => $this->input->post('Status')
@@ -318,10 +315,8 @@ class Admin extends CI_Controller {
 					'Formula' => $this->input->post('Formula'),
 					'Detail' => $this->input->post('Detail'),
 					'Contain' => $this->input->post('Contain'),
-					'Benefit' => $this->input->post('Benefit'),
 					'Suggestion' => $this->input->post('Suggestion'),
 					'Warning' => $this->input->post('Warning'),
-					'Remark' => $this->input->post('Remark'),
 					'DangerousNo' => $this->input->post('DangerousNo'),
 					'Status' => $this->input->post('Status')
 				);
