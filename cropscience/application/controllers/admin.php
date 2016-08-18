@@ -245,7 +245,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('Formula', 'Formula', 'required|min_length[1]');
 		$this->form_validation->set_rules('Detail', 'Detail', 'required|min_length[1]');
 		$this->form_validation->set_rules('Contain', 'Contain', 'required|min_length[1]');
-		$this->form_validation->set_rules('Suggestion', 'Suggestion', 'required|min_length[1]');
+		//$this->form_validation->set_rules('Suggestion', 'Suggestion', 'required|min_length[1]');
 
 		if ($this->form_validation->run() === FALSE)
 		{
@@ -299,6 +299,7 @@ class Admin extends CI_Controller {
 					'Contain' => $this->input->post('Contain'),
 					'Suggestion' => $this->input->post('Suggestion'),
 					'Warning' => $this->input->post('Warning'),
+					'Benefit' => $this->input->post('Benefit'),
 					'DangerousNo' => $this->input->post('DangerousNo'),
 					'Image' => $Image,
 					'BrandImage' => $BrandImage,
@@ -317,6 +318,7 @@ class Admin extends CI_Controller {
 					'Contain' => $this->input->post('Contain'),
 					'Suggestion' => $this->input->post('Suggestion'),
 					'Warning' => $this->input->post('Warning'),
+					'Benefit' => $this->input->post('Benefit'),
 					'DangerousNo' => $this->input->post('DangerousNo'),
 					'Status' => $this->input->post('Status')
 				);
