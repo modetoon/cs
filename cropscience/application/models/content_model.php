@@ -131,6 +131,20 @@ class Content_model extends CI_Model {
         return $menu;
     }
 
+    function get_cropcalendar_dropdownlist($cropcalendar=''){
+        $menu = '';
+        $sql = "SELECT * FROM crop_calendar ORDER BY Position"; 
+        $query = $this->db->query($sql);        
+        $row = $query->result();
+        $menu .= '<select class="form-control" name="CalendarID"><option value="">Please select';
+        foreach($row as $r){
+            $cls = ($r->CalendarID == $cropcalendar) ? 'selected': '';
+            $menu .= '<option value="'.$r->CalendarID.'" '.$cls.'>'.$r->CalendarName;
+        }
+        $menu .= '</select>';
+        return $menu;
+    }
+
     function get_slider_dropdownlist($slider_id=''){
         $menu = '';
         $sql = "SELECT * FROM slider ORDER BY SliderID"; 

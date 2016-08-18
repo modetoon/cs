@@ -123,6 +123,20 @@ class Frontcontent_model extends CI_Model {
 			
 		}
     } 
+
+	function get_content_cropcalendar_ul(){
+			$html = '';
+			$sql = "SELECT CR.*, C.Slug, C.Url FROM crop_calendar CR LEFT JOIN content C ON CR.CalendarID = C.CalendarID WHERE CR.Status = '1' ORDER BY CR.Position"; 
+			$query = $this->db->query($sql);        
+			$arr =  $query->result();
+			$html .= '<ul class="crd-list">';
+			foreach($arr as $row){
+					$html .= '<li><a href="'.site_url($this->session->userdata('site_lang_url').$row->Url).'"><img width="120" height="120" alt="" src="'.site_url('upload/cropcalendar/'.$row->Image).'"><br/>
+                  '.$row->CalendarName.'</a></li>';
+			}
+			$html .= '</ul>';
+			return  $html;
+	}
 	
     function get_view($view_id='')
     {

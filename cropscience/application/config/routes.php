@@ -59,10 +59,14 @@ $route['admin/slider/delete/(:any)'] = 'admin/slider_delete/$1';
 $route['th/content/(:any)'] = 'home/content/$1/th';
 $route['th/product_list/(:any)'] = 'home/product_list/$1/th';
 $route['th/product_detail/(:any)'] = 'home/product_detail/$1/th';
+$route['th/cropcalendar/(:any)'] = 'home/cropcalendar/$1/th';
+$route['th/cropcalendar_detail/(:any)'] = 'home/cropcalendar_detail/$1/th';
 
 $route['en/content/(:any)'] = 'home/content/$1/en';
 $route['en/product_list/(:any)'] = 'home/product_list/$1/en';
 $route['en/product_detail/(:any)'] = 'home/product_detail/$1/en';
+$route['en/cropcalendar_list/(:any)'] = 'home/cropcalendar_list/$1/en';
+$route['en/cropcalendar_detail/(:any)'] = 'home/cropcalendar_detail/$1/en';
 
 
 $route['default_controller'] = "home";

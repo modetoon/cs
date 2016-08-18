@@ -56,6 +56,15 @@
                                             </div>
                                         </div>    
 
+                                        <div class="form-group" id="cropcalendar" style="display:none;">
+                                            <div class="row">
+                                                <div class="col-lg-3"><label>Select Crop Calendar</label></div>
+                                                <div class="col-lg-9">
+														<?php echo $cropcalendar_dropdownlist;?>
+                                                </div>
+                                            </div>
+                                        </div>    
+
                                         <div class="form-group" id="slider" style="display:none;">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Select Slider</label></div>
@@ -64,6 +73,7 @@
                                                 </div>
                                             </div>
                                         </div>    
+
 
                                         <div class="form-group">
                                             <div class="row">
@@ -250,7 +260,13 @@
 		if(template == 3){
 				$('#product').show();
 				$('#slider').hide();
+				$('#cropcalendar').hide();
+		}else if(template == 5){
+				$('#cropcalendar').show();
+				$('#product').hide();
+				$('#slider').hide();
 		}else if(template == 2){
+				$('#cropcalendar').hide();
 				$('#product').hide();
 				$('#slider').show();
 		}
@@ -259,12 +275,19 @@
         if(this.value == 3 || template == 3){
 			$('#product').show();
 			$('#slider').hide();
+			$('#cropcalendar').hide();
         }else if(this.value == 2 || template == 2){
 			$('#product').hide();
 			$('#slider').show();
+			$('#cropcalendar').hide();
+        }else if(this.value == 5 || template == 5){
+			$('#cropcalendar').show();
+			$('#product').hide();
+			$('#slider').hide();
 		}else{
 			$('#product').hide();
 			$('#slider').hide();
+			$('#cropcalendar').hide();
 		}
     });
 

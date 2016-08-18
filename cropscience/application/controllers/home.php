@@ -197,5 +197,60 @@ class Home extends CI_Controller {
 	}
 
 
+	public function cropcalendar_list($menu_slug='', $lang)
+	{
+
+		$this->load->helper('url');
+
+		$this->lang->load("message", $lang); // Load language
+        $language = ($lang != "") ? $lang : "en";
+        $this->session->set_userdata('site_lang', $language);
+        $this->session->set_userdata('site_lang_db', strtoupper($language));
+        $this->session->set_userdata('site_lang_url', $language.'/');
+
+		$meta_fld = 'MetaKeyword'.$this->session->userdata('site_lang_db');
+		$pagetitle_fld = 'PageTitle'.$this->session->userdata('site_lang_db');
+		$meta_description_fld = 'MetaDescription'.$this->session->userdata('site_lang_db');
+		$page_headline_fld = 'PageHeadline'.$this->session->userdata('site_lang_db');
+		$content_fld = 'Content'.$this->session->userdata('site_lang_db');
+
+		$menu_data = $this->Frontcontent_model->get_menudata($menu_slug);
+		
+		$data['left_menu_content'] = left_menu_content($menu_data->MenuID,$menu_data->Level,$menu_data->Parent);
+		$data['slider'] = slider($menu_slug);
+		
+		$parent_data = $this->Frontcontent_model->get_content($menu_data->Parent);
+		$parent_menu_data = $this->Frontcontent_model->get_menu($menu_data->Parent);
+		$data['page_parent_headline'] = '';
+		if(count($parent_data) > 0){
+			$data['page_parent_headline'] = $parent_data->{$pagetitle_fld};
+			if(count($parent_menu_data) > 0){
+				$data['top_menu'] = top_menu($parent_menu_data->Slug);
+			}else{
+				$data['top_menu'] = top_menu($parent_menu_data->Slug);
+			}
+		}else{
+			$data['top_menu'] = top_menu($menu_slug);
+		}
+
+		$breadcrump = breadcrump($menu_slug);
+		$data['breadcrump'] = $breadcrump;
+		
+		$content_data = $this->Frontcontent_model->get_content($menu_data->MenuID);
+		$data['meta_keyword'] = $content_data->{$meta_fld};
+		$data['meta_description'] = $content_data->{$meta_description_fld};
+		$data['page_title'] = 'Bayer - '.$content_data->{$pagetitle_fld};
+		$data['page_headline'] = $content_data->{$page_headline_fld};
+		$view_data = $this->Frontcontent_model->get_view($content_data->TemplateID);
+
+		$data['content_abstract'] = $content_data->{$content_fld};
+		$data['content'] = $this->Frontcontent_model->get_content_cropcalendar_ul($menu_data->MenuID,$menu_data->Parent);
+		
+		$this->load->view('header_cropcalendar_list.php',$data);
+		$this->load->view($view_data->ViewName);
+	}
+
+
+
 }
 

@@ -370,6 +370,7 @@ class Admin extends CI_Controller {
 		$selected2 = '';
 		$selected3 = '';
 		$selected4 = '';
+		$selected5 = '';
 		if($id!=''){
 			$result = $this->Content_model->get_data($id);
 			$data['result'] = $result;
@@ -377,6 +378,7 @@ class Admin extends CI_Controller {
 			$selected2 = $result->TemplateID;
 			$selected3 = $result->ProductID;
 			$selected4 = $result->SliderID;
+			$selected5 = $result->CalendarID;
 		}
 
 		$main_menu = $this->Content_model->get_menu_structure($selected);
@@ -387,6 +389,9 @@ class Admin extends CI_Controller {
 
 		$product = $this->Content_model->get_product_dropdownlist($selected3);
 		$data['product_dropdownlist'] = $product;
+		
+		$cropcalendar = $this->Content_model->get_cropcalendar_dropdownlist($selected5);
+		$data['cropcalendar_dropdownlist'] = $cropcalendar;
 
 		$slider = $this->Content_model->get_slider_dropdownlist($selected4);
 		$data['slider_dropdownlist'] = $slider;
@@ -409,7 +414,7 @@ class Admin extends CI_Controller {
 		//$this->form_validation->set_rules('Slug', 'Slug', 'required|min_length[1]|is_unique[content.Slug]');										
 		$this->form_validation->set_rules('Slug', 'Slug', 'required|min_length[1]');										
 		//$this->form_validation->set_rules('Url', 'Url', 'required|min_length[1]');										
-
+		
 		if ($this->form_validation->run() === FALSE)
 		{
 
@@ -426,6 +431,7 @@ class Admin extends CI_Controller {
 				'MenuID' => $this->input->post('MenuID'),
 				'TemplateID' => $this->input->post('TemplateID'),
 				'ProductID' => $this->input->post('ProductID'),
+				'CalendarID' => $this->input->post('CalendarID'),
 				'SliderID' => $this->input->post('SliderID'),
 				'ContentNameTH' => $this->input->post('ContentNameTH'),
 				'ContentNameEN' => $this->input->post('ContentNameEN'),
@@ -444,6 +450,7 @@ class Admin extends CI_Controller {
 				'ShowLeftMenu' => $this->input->post('ShowLeftMenu'),
 				'Status' => $this->input->post('Status')
 			);
+
 			if($this->input->post('ID') == '')
 			{
 				$main_menu = $this->Content_model->insert_data($data_insert);
