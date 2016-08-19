@@ -20,6 +20,7 @@ var initSample = ( function() {
 	return function() {
 		var editorElement = CKEDITOR.document.getById( 'editor' );
 		var editorElement2 = CKEDITOR.document.getById( 'editor2' );
+		var editorElement3 = CKEDITOR.document.getById( 'editor3' );
 
 		// :(((
 		if ( isBBCodeBuiltIn ) {
@@ -37,10 +38,12 @@ var initSample = ( function() {
 		if ( wysiwygareaAvailable ) {
 			CKEDITOR.replace( 'editor' );
 			CKEDITOR.replace( 'editor2' );
+			CKEDITOR.replace( 'editor3' );
 		} else {
 			editorElement.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'editor' );
 			CKEDITOR.inline( 'editor2' );
+			CKEDITOR.inline( 'editor3' );
 
 			// TODO we can consider displaying some info box that
 			// without wysiwygarea the classic editor may not work.

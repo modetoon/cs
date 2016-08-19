@@ -90,13 +90,28 @@
                                             </div>
                                         </div> 
 
-                                        <div class="form-group">
+                                       <!--  <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Suggestion</label></div>
                                                 <div class="col-lg-9"><input class="form-control" name="Suggestion" value="<?php 
                                                     echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?>"></div>
                                             </div>
+                                        </div>  -->
+
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-9"><label>Suggestion</label></div>
+                                            </div>
                                         </div> 
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+														<textarea name="content" class="editor" id="editor3"><?php echo (isset($result)) ? $result->Suggestion: set_value('Suggestion'); ?></textarea>
+														<input type="hidden" name="Suggestion" id="Suggestion">
+											</div>
+                                            </div>
+                                        </div>         
+
 
                                         <div class="form-group">
                                             <div class="row">
@@ -221,13 +236,16 @@
 	$("#btn-save").click(function(e) {
 		var myContent = CKEDITOR.instances.editor.getData();
 		var myContent2 = CKEDITOR.instances.editor2.getData();
+		var myContent3 = CKEDITOR.instances.editor3.getData();
 		$('#Detail').val(myContent);
 		$('#Benefit').val(myContent2);
+		$('#Suggestion').val(myContent3);
 	});
 
 		initSample();
 		var data = CKEDITOR.instances.editor.getData();
 		var data2 = CKEDITOR.instances.editor2.getData();
+		var data3 = CKEDITOR.instances.editor3.getData();
 	</script>
 	<!-- CKEditor -->
 
