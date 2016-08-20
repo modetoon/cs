@@ -2,87 +2,73 @@
 $base_url = base_url();
 $base_url = str_replace('/cropscience','',$base_url);
 ?>
-            
-            <!--##/center##--> 
             <div class="unit size-col-d">
-              
-              <div class="topline"><?php echo $Category;?></div>
-              <h1><?php echo $TradeName;?></h1>
-				
-              <div class="media">
-                  <figure class="img standardwidth-prod">
-                    <img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$BrandImage);?>" title="<?php echo $TradeName;?>">
-                    <img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$Image);?>" title="<?php echo $TradeName;?>" class="prod-package">
-                  </figure>
 
-                  <table class="table-prod">
-                    <col class="col-left">
-                    <col style="width:auto;" class="pullout-box">                  
+              <div class="topline">Crop Calendar</div>
+              <h1><?php echo $page_headline;?></h1>
+                         
+
+                  <table class="table-calendar-hd kborder2">
+                    <thead>
+                      <tr>
+                        <th class="title">ระยะการเจริญเติบโต ผลิตภัณฑ์ที่แนะนำ</th>
+                        <th><img alt="" src="<?php echo $base_url;?>img/crop-calendar/Soybean_Hd.jpg"></th>
+                        <th class="title-qu1">อัตราการใช้ต่อน้ำ 20 ลิตร</th>
+                      </tr>
+                    </thead> 
+
                     <tbody>
                       <tr>
-                        <td ><strong>ชื่อการค้า:</strong></td>
-                        <td><?php echo $TradeName;?></td>
+                        <td colspan="3" class="spacer-td"></td>
                       </tr>
-                      <tr>
-                        <td><strong>ชื่อสามัญ:</strong></td>
-                        <td><?php echo $CommonName;?></td>
-                      </tr>
-                      <tr>
-                        <td><strong>สูตร:</strong></td>
-                        <td><?php echo $Formula;?></td>
-                      </tr> 
-                      <tr>
-                        <td><strong>คุณสมบัติ:</strong></td>
-                        <td>
-                          <?php echo $Detail;?>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td><strong>ขนาดบรรจุ:</strong></td>
-                        <td><?php echo $Contain;?></td>
-                      </tr> 
-                      <!-- <tr>
-                        <td><strong>คำแนะนำ:</strong></td>
-                        <td><em>(Keep it for some product)</em></td>
-                      </tr> -->
-					  <?php if($Suggestion != ''){?>
-                      <tr>
-                        <td><strong>คำแนะนำ:</strong></td>
-                        <td><?php echo $Suggestion;?></td>
-                      </tr>
-					  <?php }?>
 
-					  <?php if($Warning != ''){?>
                       <tr>
-                        <td class="warning"><strong>คำเตือน:</strong></td>
-                        <td class="warning"><?php echo $Warning;?></td>
+                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-kao-show.jpg"></td>
+                        <td class="blue-c"><div class="percent-blue" style="width:18%"><span>แมลงปากดูด</span></div></td>
+                        <td class="title-qu2">5 กรัมต่อเมล็ด 1 กิโลกรัม</td>
                       </tr>
-					  <?php }?>
 
-					  <?php if($Remark != ''){?>
                       <tr>
-                        <td><strong>หมายเหตุ:</strong></td>
-                        <td><?php echo $Remark;?></td>
+                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-pro-va-do.jpg"></td>
+                        <td><div class="percent-blue" style="margin-left: 18%; width: 25%;"><span>เพลี้ยอ่อน/เพลี้ยจั๊กจั่น/เพลี้ยไฟ</span></div></td>
+                        <td class="title-qu2">4 กรัม</td>
                       </tr>
-					  <?php }?>
+
+                      <tr>
+                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-pro-va-do.jpg"></td>
+                        <td class="blue-c"><div class="percent-blue" style="margin-left: 18%; width: 25%;"><span>แมลงหวี่ขาว</span></div></td>
+                        <td class="title-qu2">6 กรัม</td>
+                      </tr> 
+
+                      <tr>
+                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-seg-kor.jpg"></td>
+                        <td><div class="percent-orange" style="width:18%"><span>คุมวัชพืชทั่วไป</span></div></td>
+                        <td class="title-qu2">120 กรัม ต่อไร่</td>
+                      </tr>
+
+                      <tr>
+                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-bi-po-lan.jpg"></td>
+                        <td class="blue-c"><div class="percent-violet" style="width:50%"><span>เร่งการเจริญเติบโต</span></div></td>
+                        <td class="title-qu2">50 ซีซี</td>
+                      </tr>
 
                     </tbody>
-                  </table>
 
-                  <div class="bd plntxt">
-                    <p></p>
-                  </div>
-              </div>
+                  </table>                            
 
-              <div class="spacer"></div>              
-
-				  <div id="suggestion"><?php echo $Benefit;?></div>
+                  <table class="table-calendar-hd kborder2">
+                    <tbody>
+                      <tr>
+                        <td colspan="3" class="spacer-td"></td>
+                      </tr>                        
+                      <tr>
+                        <td class="title-logo"></td>
+                        <td><img alt="" src="<?php echo $base_url;?>img/crop-calendar/scale-bottom.png"></td>
+                        <td class="title-qu2"></td>
+                      </tr>                                                                                                                             
+                    </tbody>
+                  </table>  
     
-              <div class="spacer"></div>
-			  <?php if($DangerousNo != ''){?>
-              <h2 class="warning"><strong><?php echo $DangerousNo;?></strong></h2>
-			  <?php }?>
-
               <div class="spacer"></div>
 
             </div>
@@ -174,7 +160,6 @@ $base_url = str_replace('/cropscience','',$base_url);
 $base_url = base_url();
 $base_url = str_replace('/cropscience','',$base_url);
 ?>
-
 <script src="<?php echo $base_url;?>js_b/bayer.js"></script>
 <script src="<?php echo $base_url;?>js_b/custom.js"></script>
 <script src="<?php echo $base_url;?>js_b/bayerworldwide.js"></script>
@@ -182,6 +167,5 @@ $base_url = str_replace('/cropscience','',$base_url);
 <script>
 	//add page specific JS here
 </script>
-
 </body>
 </html>

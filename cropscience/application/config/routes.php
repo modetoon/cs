@@ -56,6 +56,11 @@ $route['admin/user/delete/(:any)'] = 'admin/user_delete/$1';
 $route['admin/slider/edit/(:any)'] = 'admin/slider_add/$1';
 $route['admin/slider/delete/(:any)'] = 'admin/slider_delete/$1';
 
+$route['admin/cropcalendar/edit/(:any)'] = 'admin/cropcalendar_add/$1';
+$route['admin/cropcalendar/edit_chart/(:any)'] = 'admin/chart_add/$1';
+$route['admin/cropcalendar/delete/(:any)'] = 'admin/cropcalendar_delete/$1';
+$route['admin/cropcalendar/delete_chart/(:any)'] = 'admin/cropcalendar_delete_chart/$1';
+
 $route['th/content/(:any)'] = 'home/content/$1/th';
 $route['th/product_list/(:any)'] = 'home/product_list/$1/th';
 $route['th/product_detail/(:any)'] = 'home/product_detail/$1/th';

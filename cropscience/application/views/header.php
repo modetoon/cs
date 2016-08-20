@@ -107,6 +107,9 @@
                             <a href="<?php echo site_url('admin/product_lists') ?>"><i class="fa fa-tags"></i> Product Management<!-- <span class="fa arrow"></span> --></a>
                         </li>
                         <li class="active">
+                            <a href="<?php echo site_url('admin/cropcalendar_lists') ?>"><i class="fa fa-image"></i> Crop Calendar Management</a>
+                        </li>
+                        <li class="active">
                             <a href="<?php echo site_url('admin/slider_lists') ?>"><i class="fa fa-image"></i> Slider Management</a>
                         </li>
                         <li class="active">

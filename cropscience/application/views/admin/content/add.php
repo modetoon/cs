@@ -261,6 +261,10 @@
 				$('#product').show();
 				$('#slider').hide();
 				$('#cropcalendar').hide();
+		}else if(template == 4){
+				$('#cropcalendar').hide();
+				$('#product').hide();
+				$('#slider').show();
 		}else if(template == 5){
 				$('#cropcalendar').show();
 				$('#product').hide();
@@ -280,6 +284,10 @@
 			$('#product').hide();
 			$('#slider').show();
 			$('#cropcalendar').hide();
+		}else if(this.value == 4 || template == 4){
+			$('#cropcalendar').hide();
+			$('#product').hide();
+			$('#slider').show();
         }else if(this.value == 5 || template == 5){
 			$('#cropcalendar').show();
 			$('#product').hide();

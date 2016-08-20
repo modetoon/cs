@@ -29,7 +29,7 @@ $base_url = str_replace('/cropscience','',$base_url);
 <body class="subhm en lt-ie9"> 
 <![endif]-->
 <!--[if gt IE 8]><!-->
-<body class="subhm crop en">
+<body class="contnt crop en crop-calendar">
 <!--<![endif]-->
 
 <!--##nosearch##-->
@@ -49,7 +49,7 @@ $base_url = str_replace('/cropscience','',$base_url);
       </a>
     </header>
 
-    <?php echo $top_menu;?>
+   <?php echo $top_menu;?>
 
     <!--##/nosearch##-->
       <div role="main" class="main">
@@ -59,12 +59,7 @@ $base_url = str_replace('/cropscience','',$base_url);
 
         </div>
         <section>
-			 <!--Slider Start-->
-             <?php echo $slider;?>
-            <!--Slider End-->
             
-            <!--##nosearch##-->
-
             <?php echo $left_menu_content;?>
 
             <!--##/nosearch##--> 

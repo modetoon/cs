@@ -662,4 +662,227 @@ class Admin extends CI_Controller {
 	}
 
 
+		// ---------------------- Crop Calendar Controller -------------------------- //
+
+	public function cropcalendar_lists()
+	{
+		$this->load->model('Cropcalendar_model');
+		$data['title'] = 'Cropcalendar List';
+
+		$res = $this->Cropcalendar_model->get_lists();
+		$data['result'] = $res;
+
+		$this->load->view('header', $data);
+		$this->load->view('admin/cropcalendar/lists', $data);
+	}
+
+	public function cropcalendar_add($id='')
+	{
+		$this->load->model('Cropcalendar_model');
+		$data['title'] = 'Add Cropcalendar';
+
+		$selected = '';
+		if($id!=''){
+			$result = $this->Cropcalendar_model->get_data($id);
+			$data['result'] = $result;
+		}
+
+
+		$this->form_validation->set_rules('CalendarName', 'Calendar Name', 'required|min_length[2]');
+		$this->form_validation->set_rules('TextLeft', 'Text Left', 'required|min_length[2]');
+		$this->form_validation->set_rules('TextRight', 'Text Right', 'required|min_length[2]');
+		$this->form_validation->set_rules('Position', 'Position', 'required|min_length[1]');
+
+		if ($this->form_validation->run() === FALSE)
+		{
+
+			$this->load->view('header', $data);
+			$this->load->view('admin/cropcalendar/add', $data);
+
+		}
+		else
+		{
+			
+			/* ---------------- Upload Image ------------------- */
+
+			$config['upload_path'] = 'upload/cropcalendar/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size']	= '500';
+
+			$this->load->library('upload', $config);
+
+			/* ---------------- Upload Image ------------------- */
+			if ( ! $this->upload->do_upload('headerimage'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$HeaderImage = $data['upload_data']['file_name'];
+			}
+
+			if ( ! $this->upload->do_upload('image'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$Image = $data['upload_data']['file_name'];
+			}
+			
+			if($this->input->post('ID') == '')
+			{
+				$data_insert = array(
+					'CalendarName' => $this->input->post('CalendarName'),
+					'TextLeft' => $this->input->post('TextLeft'),
+					'TextRight' => $this->input->post('TextRight'),
+					'Position' => $this->input->post('Position'),
+					'Status' => $this->input->post('Status')
+				);
+				if((isset($HeaderImage)) && ($HeaderImage != '')){
+					$data_insert['HeaderImage'] = $HeaderImage;
+				}
+				if((isset($Image)) && ($Image != '')){
+					$data_insert['Image'] = $Image;
+				}
+				$main_menu = $this->Cropcalendar_model->insert_data($data_insert);
+			}
+			else
+			{
+				$data_insert = array(
+					'CalendarName' => $this->input->post('CalendarName'),
+					'TextLeft' => $this->input->post('TextLeft'),
+					'TextRight' => $this->input->post('TextRight'),
+					'Position' => $this->input->post('Position'),
+					'Status' => $this->input->post('Status')
+				);
+				if((isset($HeaderImage)) && ($HeaderImage != '')){
+					$data_insert['HeaderImage'] = $HeaderImage;
+				}
+				if((isset($Image)) && ($Image != '')){
+					$data_insert['Image'] = $Image;
+				}
+				
+				$main_menu = $this->Cropcalendar_model->update_data($data_insert,$this->input->post('ID'));
+			}
+			redirect(site_url('admin/cropcalendar_lists'), 'refresh');
+		}
+
+	}	
+
+	public function cropcalendar_sub_lists()
+	{
+		$this->load->model('Cropcalendar_model');
+		$data['title'] = 'Chart List';
+
+		$res = $this->Cropcalendar_model->get_sub_lists();
+		$data['result'] = $res;
+
+		$this->load->view('header', $data);
+		$this->load->view('admin/cropcalendar/chart_lists', $data);
+	}
+
+	public function chart_add($id='')
+	{
+		$this->load->model('Cropcalendar_model');
+		$data['title'] = 'Add/Edit Chart';
+
+		$selected = '';
+		if($id !=''){
+			$result = $this->Cropcalendar_model->get_sub_data($id);
+			$data['result'] = $result;
+			$cropcalendar_name = $this->Cropcalendar_model->get_data($id);
+			$data['cropcalendar_name'] = $cropcalendar_name->CalendarName;
+		}
+
+		$this->form_validation->set_rules('BarTitleName', 'Bar Title Name', 'required|min_length[2]');
+		$this->form_validation->set_rules('BarColorClass', 'Color Class', 'required');
+		$this->form_validation->set_rules('BarMarginLeft', 'Margin Left', 'required');
+		$this->form_validation->set_rules('BarWidth', 'Bar Width', 'required');
+		$this->form_validation->set_rules('Position', 'Position', 'required');
+
+		if ($this->form_validation->run() === FALSE)
+		{
+
+			$this->load->view('header', $data);
+			$this->load->view('admin/cropcalendar/chart_add', $data);
+
+		}
+		else
+		{
+			
+			/* ---------------- Upload Image ------------------- */
+
+			$config['upload_path'] = 'upload/cropcalendar/';
+			$config['allowed_types'] = 'jpg|png|gif';
+			$config['max_size']	= '500';
+
+			$this->load->library('upload', $config);
+
+			/* ---------------- Upload Image ------------------- */
+			if ( ! $this->upload->do_upload('brandimage'))
+			{
+				$error = array('upload_error' => $this->upload->display_errors());
+			}
+			else
+			{
+				$data = array('upload_data' => $this->upload->data());
+				$BrandImage = $data['upload_data']['file_name'];
+			}
+
+			if($this->input->post('ID') == '')
+			{
+				$data_insert = array(
+					'BarTitleName' => $this->input->post('BarTitleName'),
+					'BarColorClass' => $this->input->post('BarColorClass'),
+					'BarMarginLeft' => $this->input->post('BarMarginLeft'),
+					'BarWidth' => $this->input->post('BarWidth'),
+					'Position' => $this->input->post('Position'),
+					'Status' => $this->input->post('Status')
+				);
+				if((isset($BrandImage)) && ($BrandImage != '')){
+					$data_insert['BrandImage'] = $BrandImage;
+				}
+				$main_menu = $this->Cropcalendar_model->insert_sub_data($data_insert);
+			}
+			else
+			{
+				$data_insert = array(
+					'BarTitleName' => $this->input->post('BarTitleName'),
+					'BarColorClass' => $this->input->post('BarColorClass'),
+					'BarMarginLeft' => $this->input->post('BarMarginLeft'),
+					'BarWidth' => $this->input->post('BarWidth'),
+					'Position' => $this->input->post('Position'),
+					'Status' => $this->input->post('Status')
+				);
+				if((isset($BrandImage)) && ($BrandImage != '')){
+					$data_insert['BrandImage'] = $BrandImage;
+				}
+				
+				$main_menu = $this->Cropcalendar_model->update_chart_data($data_insert,$this->input->post('ID'));
+			}
+			redirect(site_url('admin/cropcalendar_sub_lists/'.$this->input->post('ID')), 'refresh');
+		}
+
+	}	
+
+
+	public function cropcalendar_delete($id='')
+	{
+		$this->load->model('Cropcalendar_model');
+		$this->Cropcalendar_model->delete($id);
+		redirect(site_url('admin/cropcalendar_lists'), 'refresh');
+	}
+	
+	public function cropcalendar_delete_chart($id='')
+	{
+		$this->load->model('Cropcalendar_model');
+		$this->Cropcalendar_model->delete_chart($id);
+		redirect(site_url('admin/cropcalendar_lists'), 'refresh');
+	}
+
+
+
 }
