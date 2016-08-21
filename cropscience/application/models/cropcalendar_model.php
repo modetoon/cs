@@ -22,9 +22,9 @@ class Cropcalendar_model extends CI_Model {
         return $query->result();
     }
 	
-    function get_sub_lists()
+    function get_sub_lists($calendar_id='')
     {
-        $sql = "SELECT * FROM ".$this->table_name_sub." ORDER BY ".$this->primary_key_sub; 
+        $sql = "SELECT * FROM ".$this->table_name_sub." WHERE CalendarID = '".$calendar_id."' ORDER BY ".$this->primary_key_sub; 
         $query = $this->db->query($sql);        
         return $query->result();
     }

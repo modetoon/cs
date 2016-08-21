@@ -772,19 +772,21 @@ class Admin extends CI_Controller {
 
 	}	
 
-	public function cropcalendar_sub_lists()
+	public function cropcalendar_sub_lists($calendar_id='')
 	{
 		$this->load->model('Cropcalendar_model');
 		$data['title'] = 'Chart List';
 
-		$res = $this->Cropcalendar_model->get_sub_lists();
+		$res = $this->Cropcalendar_model->get_sub_lists($calendar_id);
 		$data['result'] = $res;
+
+		$data['calendar_id'] = $calendar_id;
 
 		$this->load->view('header', $data);
 		$this->load->view('admin/cropcalendar/chart_lists', $data);
 	}
 
-	public function chart_add($id='')
+	public function chart_add($calendar_id='',$id='')
 	{
 		$this->load->model('Cropcalendar_model');
 		$data['title'] = 'Add/Edit Chart';
@@ -793,8 +795,15 @@ class Admin extends CI_Controller {
 		if($id !=''){
 			$result = $this->Cropcalendar_model->get_sub_data($id);
 			$data['result'] = $result;
-			$cropcalendar_name = $this->Cropcalendar_model->get_data($id);
+			$cropcalendar_name = $this->Cropcalendar_model->get_data($result->CalendarID);
 			$data['cropcalendar_name'] = $cropcalendar_name->CalendarName;
+			$data['CalendarID'] = $result->CalendarID;
+		}else{
+			if($calendar_id != ''){
+					$cropcalendar_name = $this->Cropcalendar_model->get_data($calendar_id);
+					$data['cropcalendar_name'] = $cropcalendar_name->CalendarName;
+					$data['CalendarID'] = $calendar_id;
+			}
 		}
 
 		$this->form_validation->set_rules('BarTitleName', 'Bar Title Name', 'required|min_length[2]');
@@ -802,7 +811,6 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('BarMarginLeft', 'Margin Left', 'required');
 		$this->form_validation->set_rules('BarWidth', 'Bar Width', 'required');
 		$this->form_validation->set_rules('Position', 'Position', 'required');
-
 		if ($this->form_validation->run() === FALSE)
 		{
 
@@ -835,7 +843,9 @@ class Admin extends CI_Controller {
 			if($this->input->post('ID') == '')
 			{
 				$data_insert = array(
+					'CalendarID' => $this->input->post('CalendarID'),
 					'BarTitleName' => $this->input->post('BarTitleName'),
+					'BarTagName' => $this->input->post('BarTagName'),
 					'BarColorClass' => $this->input->post('BarColorClass'),
 					'BarMarginLeft' => $this->input->post('BarMarginLeft'),
 					'BarWidth' => $this->input->post('BarWidth'),
@@ -850,7 +860,9 @@ class Admin extends CI_Controller {
 			else
 			{
 				$data_insert = array(
+					'CalendarID' => $this->input->post('CalendarID'),
 					'BarTitleName' => $this->input->post('BarTitleName'),
+					'BarTagName' => $this->input->post('BarTagName'),
 					'BarColorClass' => $this->input->post('BarColorClass'),
 					'BarMarginLeft' => $this->input->post('BarMarginLeft'),
 					'BarWidth' => $this->input->post('BarWidth'),
@@ -863,7 +875,7 @@ class Admin extends CI_Controller {
 				
 				$main_menu = $this->Cropcalendar_model->update_chart_data($data_insert,$this->input->post('ID'));
 			}
-			redirect(site_url('admin/cropcalendar_sub_lists/'.$this->input->post('ID')), 'refresh');
+			redirect(site_url('admin/cropcalendar_sub_lists/'.$this->input->post('CalendarID')), 'refresh');
 		}
 
 	}	
@@ -876,11 +888,11 @@ class Admin extends CI_Controller {
 		redirect(site_url('admin/cropcalendar_lists'), 'refresh');
 	}
 	
-	public function cropcalendar_delete_chart($id='')
+	public function cropcalendar_delete_chart($calendar_id='',$id='')
 	{
 		$this->load->model('Cropcalendar_model');
 		$this->Cropcalendar_model->delete_chart($id);
-		redirect(site_url('admin/cropcalendar_lists'), 'refresh');
+		redirect(site_url('admin/cropcalendar_sub_lists/'.$calendar_id), 'refresh');
 	}
 
 

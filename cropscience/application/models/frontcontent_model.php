@@ -138,6 +138,59 @@ class Frontcontent_model extends CI_Model {
 			return  $html;
 	}
 	
+	function get_content_cropcalendar_detail($menu_slug){
+			$html = '';
+			$base_url = base_url();
+			$base_url = str_replace('/cropscience','',$base_url);
+			$sql = "SELECT CR.* FROM crop_calendar CR LEFT JOIN content C ON CR.CalendarID = C.CalendarID WHERE C.Slug = '".$menu_slug."' AND CR.Status = '1'"; 
+			$query = $this->db->query($sql);        
+			$arr =  $query->result();
+			foreach($arr as $row){
+					$html .= '<table class="table-calendar-hd kborder2">';
+					$html .= '<thead>
+							  <tr>
+								<th class="title">'.$row->TextLeft.'</th>
+								<th><img alt="'.$row->CalendarName.'" src="'.site_url('upload/cropcalendar/'.$row->HeaderImage).'"></th>
+								<th class="title-qu1">'.$row->TextRight.'</th>
+							  </tr>
+							</thead> 
+							<tbody>
+							<tr>
+								<td colspan="3" class="spacer-td"></td>
+							  </tr>';
+								$sql_sub = "SELECT * FROM crop_calendar_sub WHERE CalendarID = '".$row->CalendarID."' AND Status = '1'"; 
+								$query_sub = $this->db->query($sql_sub);        
+								$arr_sub =  $query_sub->result();
+								$sub=1;
+								foreach($arr_sub as $row_sub){
+										$cls = ($sub % 2 == 1) ? ' class="blue-c"': '';
+										$html .= '<tr>
+																<td class="title-logo"><img alt="'.$row_sub->BarTitleName.'" src="'.site_url('upload/cropcalendar/'.$row_sub->BrandImage).'"</td>
+																<td'.$cls.'><div class="'.$row_sub->BarColorClass.'" style="margin-left: '.$row_sub->BarMarginLeft.'%; width: '.$row_sub->BarWidth.'%;"><span>'.$row_sub->BarTitleName.'</span></div></td>
+																<td class="title-qu2">'.$row_sub->BarTagName.'</td>
+														</tr>';
+														$sub++;
+								}
+					$html .= '</tbody>';
+					$html .= '</table>';
+			}
+
+
+			$html .= '<table class="table-calendar-hd kborder2">
+                    <tbody>
+                      <tr>
+                        <td colspan="3" class="spacer-td"></td>
+                      </tr>                        
+                      <tr>
+                        <td class="title-logo"></td>
+                        <td><img alt="" src="'.$base_url.'img/crop-calendar/scale-bottom.png"></td>
+                        <td class="title-qu2"></td>
+                      </tr>                                                                                                                             
+                    </tbody>
+</table>';
+			return  $html;
+	}
+	
     function get_view($view_id='')
     {
         $this->db->where("TemplateID", $view_id);

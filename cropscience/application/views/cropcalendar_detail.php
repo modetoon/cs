@@ -8,66 +8,7 @@ $base_url = str_replace('/cropscience','',$base_url);
               <h1><?php echo $page_headline;?></h1>
                          
 
-                  <table class="table-calendar-hd kborder2">
-                    <thead>
-                      <tr>
-                        <th class="title">ระยะการเจริญเติบโต ผลิตภัณฑ์ที่แนะนำ</th>
-                        <th><img alt="" src="<?php echo $base_url;?>img/crop-calendar/Soybean_Hd.jpg"></th>
-                        <th class="title-qu1">อัตราการใช้ต่อน้ำ 20 ลิตร</th>
-                      </tr>
-                    </thead> 
-
-                    <tbody>
-                      <tr>
-                        <td colspan="3" class="spacer-td"></td>
-                      </tr>
-
-                      <tr>
-                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-kao-show.jpg"></td>
-                        <td class="blue-c"><div class="percent-blue" style="width:18%"><span>แมลงปากดูด</span></div></td>
-                        <td class="title-qu2">5 กรัมต่อเมล็ด 1 กิโลกรัม</td>
-                      </tr>
-
-                      <tr>
-                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-pro-va-do.jpg"></td>
-                        <td><div class="percent-blue" style="margin-left: 18%; width: 25%;"><span>เพลี้ยอ่อน/เพลี้ยจั๊กจั่น/เพลี้ยไฟ</span></div></td>
-                        <td class="title-qu2">4 กรัม</td>
-                      </tr>
-
-                      <tr>
-                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-pro-va-do.jpg"></td>
-                        <td class="blue-c"><div class="percent-blue" style="margin-left: 18%; width: 25%;"><span>แมลงหวี่ขาว</span></div></td>
-                        <td class="title-qu2">6 กรัม</td>
-                      </tr> 
-
-                      <tr>
-                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-seg-kor.jpg"></td>
-                        <td><div class="percent-orange" style="width:18%"><span>คุมวัชพืชทั่วไป</span></div></td>
-                        <td class="title-qu2">120 กรัม ต่อไร่</td>
-                      </tr>
-
-                      <tr>
-                        <td class="title-logo"><img alt="" src="<?php echo $base_url;?>img/crop-calendar/prd-bi-po-lan.jpg"></td>
-                        <td class="blue-c"><div class="percent-violet" style="width:50%"><span>เร่งการเจริญเติบโต</span></div></td>
-                        <td class="title-qu2">50 ซีซี</td>
-                      </tr>
-
-                    </tbody>
-
-                  </table>                            
-
-                  <table class="table-calendar-hd kborder2">
-                    <tbody>
-                      <tr>
-                        <td colspan="3" class="spacer-td"></td>
-                      </tr>                        
-                      <tr>
-                        <td class="title-logo"></td>
-                        <td><img alt="" src="<?php echo $base_url;?>img/crop-calendar/scale-bottom.png"></td>
-                        <td class="title-qu2"></td>
-                      </tr>                                                                                                                             
-                    </tbody>
-                  </table>  
+                  <?php echo $content;?>  
     
               <div class="spacer"></div>
 

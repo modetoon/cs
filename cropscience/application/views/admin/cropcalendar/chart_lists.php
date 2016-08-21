@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-lg-12 right">
-					<p class="text-right"><button type="button" class="btn btn-info text-right" onclick="window.location.href='<?php echo site_url('admin/cropcalendar_lists/');?>';">Back to  Cropcalendar</button> <button type="button" class="btn btn-success text-right" onclick="window.location.href='<?php echo site_url('admin/cropcalendar_add');?>';">Add Cropcalendar</button></p>
+					<p class="text-right"><button type="button" class="btn btn-info text-right" onclick="window.location.href='<?php echo site_url('admin/cropcalendar_lists/');?>';">Back to  Cropcalendar</button> <button type="button" class="btn btn-success text-right" onclick="window.location.href='<?php echo site_url('admin/chart_add/'.$calendar_id);?>';">Add Chart Table</button></p>
                 </div>
             </div>
 
@@ -47,8 +47,8 @@
                                                 <td>'.$r->BarWidth.' %</td>
                                                 <td>'.$r->Position.' </td>
                                                 <td class="center">
-                                                    <a href="'.site_url("admin/cropcalendar/edit_chart/$r->SubCalendarID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
-                                                    <a href="'.site_url("admin/cropcalendar/delete_chart/$r->SubCalendarID").'" class="btn btn-danger btn-xs">Delete</a>
+                                                    <a href="'.site_url("admin/cropcalendar/edit_chart/$r->CalendarID/$r->SubCalendarID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
+                                                    <a href="'.site_url("admin/cropcalendar/delete_chart/$r->CalendarID/$r->SubCalendarID").'" class="btn btn-danger btn-xs">Delete</a>
                                                 </td>
                                             </tr>';                                       
                                         }

@@ -271,7 +271,6 @@ class Home extends CI_Controller {
 		$menu_data = $this->Frontcontent_model->get_menudata($menu_slug);
 		
 		$data['left_menu_content'] = left_menu_content($menu_data->MenuID,'',$menu_data->Parent);
-		$data['slider'] = slider($menu_slug);
 		
 		$parent_data = $this->Frontcontent_model->get_content($menu_data->Parent);
 		$parent_menu_data = $this->Frontcontent_model->get_menu($menu_data->Parent);
@@ -286,7 +285,7 @@ class Home extends CI_Controller {
 		}else{
 			$data['top_menu'] = top_menu($menu_slug);
 		}
-
+	
 		$breadcrump = breadcrump($menu_slug);
 		$data['breadcrump'] = $breadcrump;
 		
@@ -297,8 +296,7 @@ class Home extends CI_Controller {
 		$data['page_headline'] = $content_data->{$page_headline_fld};
 		$view_data = $this->Frontcontent_model->get_view($content_data->TemplateID);
 
-		$data['content_abstract'] = $content_data->{$content_fld};
-		$data['content'] = $this->Frontcontent_model->get_content_cropcalendar_ul($menu_data->MenuID,$menu_data->Parent);
+		$data['content'] = $this->Frontcontent_model->get_content_cropcalendar_detail($menu_slug);
 
 		$this->load->view('header_cropcalendar_detail.php',$data);
 		$this->load->view($view_data->ViewName);

@@ -30,11 +30,14 @@
 										<?php echo form_open_multipart('admin/chart_add');?>
 
                                         <input type="hidden" name="ID" value="<?php echo (isset($result)) ? $result->SubCalendarID: ''; ?>">
-
+										
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-lg-3"><label>Crop Calendar</label></div>
-                                                <div class="col-lg-9"><?php echo $cropcalendar_name;?></div>
+                                                <div class="col-lg-9">
+														<?php echo $cropcalendar_name;?>
+														 <input type="hidden" name="CalendarID" value="<?php echo $CalendarID; ?>">
+												 </div>
                                             </div>
                                         </div> 
 
