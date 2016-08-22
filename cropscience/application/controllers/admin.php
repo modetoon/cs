@@ -14,12 +14,19 @@ class Admin extends CI_Controller {
 
     }
 
-	public function index()
+	public function index($filter='')
 	{
-		$this->load->helper('url');
-		$data = array('title'=> 'Home');
+		$this->load->model('Menu_model');
+		$data['title'] = 'Menu List';
+
+		$res = $this->Menu_model->get_menu($filter);
+		$data['result'] = $res;
+
+		$main_menu = $this->Menu_model->get_menu_structure($filter);
+		$data['menu_dropdownlist'] = $main_menu;	
+
 		$this->load->view('header', $data);
-		$this->load->view('dashboard');
+		$this->load->view('admin/menu/lists', $data);
 	}
 
 	public function logoff()
@@ -300,9 +307,8 @@ class Admin extends CI_Controller {
 					'Suggestion' => $this->input->post('Suggestion'),
 					'Warning' => $this->input->post('Warning'),
 					'Benefit' => $this->input->post('Benefit'),
+					'Remark' => $this->input->post('Remark'),
 					'DangerousNo' => $this->input->post('DangerousNo'),
-					'Image' => $Image,
-					'BrandImage' => $BrandImage,
 					'Status' => $this->input->post('Status')
 				);
 				$main_menu = $this->Product_model->insert_data($data_insert);
@@ -318,6 +324,7 @@ class Admin extends CI_Controller {
 					'Contain' => $this->input->post('Contain'),
 					'Suggestion' => $this->input->post('Suggestion'),
 					'Warning' => $this->input->post('Warning'),
+					'Remark' => $this->input->post('Remark'),
 					'Benefit' => $this->input->post('Benefit'),
 					'DangerousNo' => $this->input->post('DangerousNo'),
 					'Status' => $this->input->post('Status')

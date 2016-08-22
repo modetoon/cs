@@ -64,6 +64,7 @@
 															<option value="percent-blue" <?php echo (isset($result) && $result->BarColorClass == 'percent-blue') ? 'selected': '' ; ?>>Blue
 															<option value="percent-orange" <?php echo (isset($result) && $result->BarColorClass == 'percent-orange') ? 'selected': '' ; ?>>Orange
 															<option value="percent-violet" <?php echo (isset($result) && $result->BarColorClass == 'percent-violet') ? 'selected': '' ; ?>>Violet
+															<option value="percent-green" <?php echo (isset($result) && $result->BarColorClass == 'percent-green') ? 'selected': '' ; ?>>Green
 													</select>
 												</div>
                                             </div>
