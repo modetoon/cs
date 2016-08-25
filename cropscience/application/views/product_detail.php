@@ -11,8 +11,12 @@ $base_url = str_replace('/cropscience','',$base_url);
 				
               <div class="media">
                   <figure class="img standardwidth-prod">
-                    <img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$BrandImage);?>" title="<?php echo $TradeName;?>">
-                    <img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$Image);?>" title="<?php echo $TradeName;?>" class="prod-package">
+					<?php if($BrandImage != ''){?>
+							<img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$BrandImage);?>" title="<?php echo $TradeName;?>">
+					<?php }?>
+					<?php if($Image != ''){?>
+							<img alt="<?php echo $TradeName;?>" src="<?php echo site_url('upload/'.$Image);?>" title="<?php echo $TradeName;?>" class="prod-package">
+					<?php }?>
                   </figure>
 
                   <table class="table-prod">
