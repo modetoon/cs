@@ -414,10 +414,10 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('PageHeadlineEN', 'Page eadline (EN)', 'required|min_length[1]');
 		//$this->form_validation->set_rules('ContentTH', 'Content (TH)', 'required|min_length[1]');
 		//$this->form_validation->set_rules('ContentEN', 'Content (EN)', 'required|min_length[1]');
-		$this->form_validation->set_rules('MetaKeywordTH', 'Meta Keyword (TH)', 'required|min_length[1]');
-		$this->form_validation->set_rules('MetaKeywordEN', 'Meta Keyword (EN)', 'required|min_length[1]');	
-		$this->form_validation->set_rules('MetaDescriptionTH', 'Meta Description (TH)', 'required|min_length[1]');
-		$this->form_validation->set_rules('MetaDescriptionEN', 'Meta Description (EN)', 'required|min_length[1]');										
+		//$this->form_validation->set_rules('MetaKeywordTH', 'Meta Keyword (TH)', 'required|min_length[1]');
+		//$this->form_validation->set_rules('MetaKeywordEN', 'Meta Keyword (EN)', 'required|min_length[1]');	
+		//$this->form_validation->set_rules('MetaDescriptionTH', 'Meta Description (TH)', 'required|min_length[1]');
+		//$this->form_validation->set_rules('MetaDescriptionEN', 'Meta Description (EN)', 'required|min_length[1]');										
 		//$this->form_validation->set_rules('Slug', 'Slug', 'required|min_length[1]|is_unique[content.Slug]');										
 		$this->form_validation->set_rules('Slug', 'Slug', 'required|min_length[1]');										
 		//$this->form_validation->set_rules('Url', 'Url', 'required|min_length[1]');										
