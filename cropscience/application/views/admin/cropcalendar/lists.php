@@ -27,8 +27,9 @@
                                 <table class="table table-striped table-bordered table-hover" id="ListTable">
                                     <thead>
                                         <tr>
-                                            <th width="15%">Slider Image</th>
+                                            <th width="12%">Slider Image</th>
                                             <th>Slider HeadLine</th>
+                                            <th width="10%">Position</th>
                                             <th width="20%">Action</th>
                                         </tr>
                                     </thead>
@@ -36,8 +37,9 @@
                                     <?php
                                         foreach($result as $r){
                                             echo '<tr>
-                                                <td><img src="'. site_url('upload/cropcalendar/'.$r->Image).'" width="90%"></td>
+                                                <td><img src="'. site_url('upload/cropcalendar/'.$r->Image).'" width="120"></td>
                                                 <td>'.$r->CalendarName.'</td>
+                                                <td>'.$r->Position.'</td>
                                                 <td class="center">
                                                     <a href="'.site_url("admin/cropcalendar/edit/$r->CalendarID").'" class="btn btn-warning btn-xs">Edit</a>&nbsp;
                                                     <a href="'.site_url("admin/cropcalendar_sub_lists/$r->CalendarID").'" class="btn btn-info btn-xs">Edit Chart</a>&nbsp;
