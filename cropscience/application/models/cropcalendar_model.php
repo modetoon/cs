@@ -61,6 +61,7 @@ class Cropcalendar_model extends CI_Model {
 	
     function insert_sub_data($data){
         $this->db->insert($this->table_name_sub, $data);
+		return $this->db->insert_id();
     }
     
     function update_data($data,$id){

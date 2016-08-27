@@ -195,7 +195,7 @@ img.prod-package {
     font-weight: bold;
     padding: 5px;
     text-align: left;
-    line-height: 1.5em;
-    white-space: pre;
+    line-height: 1.0em;
+    /*white-space: pre;*/
   }
 

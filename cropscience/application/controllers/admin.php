@@ -862,7 +862,7 @@ class Admin extends CI_Controller {
 				if((isset($BrandImage)) && ($BrandImage != '')){
 					$data_insert['BrandImage'] = $BrandImage;
 				}
-				$main_menu = $this->Cropcalendar_model->insert_sub_data($data_insert);
+				$insert_id = $this->Cropcalendar_model->insert_sub_data($data_insert);
 			}
 			else
 			{
@@ -882,12 +882,16 @@ class Admin extends CI_Controller {
 				
 				$main_menu = $this->Cropcalendar_model->update_chart_data($data_insert,$this->input->post('ID'));
 			}
-			redirect(site_url('admin/cropcalendar_sub_lists/'.$this->input->post('CalendarID')), 'refresh');
+			if($_POST['ID'] != ''){
+				redirect(site_url('admin/cropcalendar/edit_chart/'.$this->input->post('CalendarID').'/'.$_POST['ID']), 'refresh');
+			}else{
+				redirect(site_url('admin/cropcalendar/edit_chart/'.$this->input->post('CalendarID').'/'.$insert_id), 'refresh');
+			}
+			//redirect(site_url('admin/cropcalendar_sub_lists/'.$this->input->post('CalendarID')), 'refresh');
 		}
 
-	}	
-
-
+	}
+	
 	public function cropcalendar_delete($id='')
 	{
 		$this->load->model('Cropcalendar_model');

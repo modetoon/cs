@@ -75,7 +75,7 @@ $base_url = str_replace('/cropscience','',$base_url);
 		$site_lang = $this->session->userdata('site_lang');
 		$switch_to = ($site_lang == 'th') ? 'en': 'th';
 		?>
-        <li><a href="<?php echo site_url('langswitch/switchLanguage/'.$switch_to);?>" class="last"><?php echo ($site_lang == 'th') ? 'English': 'Thai';?></a></li>
+        <li><a href="<?php echo site_url('langswitch/switchLanguage/'.$switch_to);?>" class="last"><?php echo ($site_lang == 'th') ? '<img src="'.site_url('resource/img/flag_en.jpg').'" width="20">': '<img src="'.site_url('resource/img/flag_th.jpg').'" width="20">';?></a></li>
       </ul>
     </nav>
     <!-- /Support Navigation --> 

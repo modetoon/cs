@@ -121,6 +121,7 @@
                                         </div>
 
                                         <button type="submit" class="btn btn-primary" id="btn-save">Save</button>
+                                        <button type="button" class="btn btn-info" onclick="window.location.href='<?php echo site_url('admin/cropcalendar_sub_lists/'.$CalendarID);?>';">Back</button>
                                         <button type="reset" class="btn btn-default">Reset</button>
                                     <?php echo form_close(); ?>
                                 </div>
