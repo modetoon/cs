@@ -58,8 +58,8 @@ $base_url = str_replace('/cropscience','',$base_url);
 
 					  <?php if($Warning != ''){?>
                       <tr>
-                        <td class="warning"><strong>คำเตือน:</strong></td>
-                        <td class="warning"><?php echo $Warning;?></td>
+                        <td><strong>คำเตือน:</strong></td>
+                        <td><?php echo $Warning;?></td>
                       </tr>
 					  <?php }?>
 
@@ -84,7 +84,7 @@ $base_url = str_replace('/cropscience','',$base_url);
     
               <div class="spacer"></div>
 			  <?php if($DangerousNo != ''){?>
-              <h2 class="warning"><strong><?php echo $DangerousNo;?></strong></h2>
+              <h2 style="color:#000000;"><?php echo $DangerousNo;?></h2>
 			  <?php }?>
 
               <div class="spacer"></div>

@@ -72,6 +72,7 @@ class Frontcontent_model extends CI_Model {
 
     function get_content_product_ul($menu_id='',$parent='')
     {
+		$menuname_fld = 'MenuName'.$this->session->userdata('site_lang_db');
 		$html = '';
         if($parent == 0){
 
@@ -79,16 +80,16 @@ class Frontcontent_model extends CI_Model {
 			$query = $this->db->query($sql);        
 			$arr =  $query->result();
 			foreach($arr as $row){
-				$html .= '<h2>'.$row->MenuNameEN.'</h2> 
+				$html .= '<h2>'.$row->{$menuname_fld}.'</h2> 
 								<hr>';
 
-								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.Position"; 
+								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.".$menuname_fld; 
 								$query_sub = $this->db->query($sql_sub);        
 								$arr_sub =  $query_sub->result();
 								if ($query_sub->num_rows() > 0){
 									$html .= '<ul class="prd-list">';
 									foreach($arr_sub as $row_sub){
-										$html .= '<li><a href="'.site_url($this->session->userdata('site_lang_url').$row_sub->Url).'">'.$row_sub->MenuNameEN.'</a></li>';
+										$html .= '<li><a href="'.site_url($this->session->userdata('site_lang_url').$row_sub->Url).'">'.$row_sub->{$menuname_fld}.'</a></li>';
 									}
 									$html .= '</ul>';
 									$html .= '	<div class="spacer">&nbsp;</div>';
@@ -103,16 +104,16 @@ class Frontcontent_model extends CI_Model {
 			$query = $this->db->query($sql);        
 			$arr =  $query->result();
 			foreach($arr as $row){
-				$html .= '<h2>'.$row->MenuNameEN.'</h2> 
+				$html .= '<h2>'.$row->{$menuname_fld}.'</h2> 
 								<hr>';
 
-								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.Position"; 
+								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.".$menuname_fld; 
 								$query_sub = $this->db->query($sql_sub);        
 								$arr_sub =  $query_sub->result();
 								if ($query_sub->num_rows() > 0){
 									$html .= '<ul class="prd-list">';
 									foreach($arr_sub as $row_sub){
-										$html .= '<li><a href="'.site_url($this->session->userdata('site_lang_url').$row_sub->Url).'">'.$row_sub->MenuNameEN.'</a></li>';
+										$html .= '<li><a href="'.site_url($this->session->userdata('site_lang_url').$row_sub->Url).'">'.$row_sub->{$menuname_fld}.'</a></li>';
 									}
 									$html .= '</ul>';
 									$html .= '	<div class="spacer">&nbsp;</div>';

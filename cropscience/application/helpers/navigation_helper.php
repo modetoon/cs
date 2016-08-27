@@ -54,6 +54,8 @@ function breadcrump($menu_slug='') {
 function top_menu($menu_slug='') {
 			$ci =& get_instance();
 			$ci->load->database();
+
+			$menuname_fld = 'MenuName'.$ci->session->userdata('site_lang_db');
 			
 			$top_menu = 0;
 			if($menu_slug != 'home'){
@@ -83,11 +85,11 @@ function top_menu($menu_slug='') {
 							foreach ($query->result() as $row){
 							   $cls = ((($menu_slug == $row->Slug) && ($row->Slug != '')) || ($top_menu == $row->MenuID)) ? ' selected': '';
 							   $html .= '		<li class="n2">
-																  <a class="haschild '.$cls.'" href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'">'.$row->MenuNameEN.'</a>
+																  <a class="haschild '.$cls.'" href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'">'.$row->{$menuname_fld}.'</a>
 																  <ul class="newsub">
 																			<li class="megaTsrBx">
-																			  <h2 class="thdln">'.$row->MenuNameEN.'</h2>
-																			  <a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'"><img width="170" height="100" data-original="'.site_url('upload/'.$row->Image).'" alt="'.$row->MenuNameEN.'" src="'.site_url('upload/'.$row->Image).'" class="lazy"></a>
+																			  <h2 class="thdln">'.$row->{$menuname_fld}.'</h2>
+																			  <a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'"><img width="170" height="100" data-original="'.site_url('upload/'.$row->Image).'" alt="'.$row->{$menuname_fld}.'" src="'.site_url('upload/'.$row->Image).'" class="lazy"></a>
 																				<p>'.$row->ImageCaption.'</p>
 																				<div class="lnk"><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'">Overview</a></div>
 																			  </li>';
@@ -97,13 +99,13 @@ function top_menu($menu_slug='') {
 																						$html .= '<li class="newlevel2">';
 																						$html .= '	<ul>';
 																						foreach ($query2->result() as $row2){
-																							$query3 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row2->MenuID."' AND M.Status = '1' AND C.Status = '1'  ORDER BY M.Position");
+																							$query3 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row2->MenuID."' AND M.Status = '1' AND C.Status = '1'  ORDER BY M.".$menuname_fld);
 																							$cls = ($query3->num_rows() > 0) ? ' class="haschild"': '';
-																							$html .= '	<li '.$cls.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'">'.$row2->MenuNameEN.'</a>';
+																							$html .= '	<li '.$cls.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'">'.$row2->{$menuname_fld}.'</a>';
 																							if ($query3->num_rows() > 0){
 																										$html .= '	<ul>';
 																										foreach ($query3->result() as $row3){
-																																$html .= '<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row3->Url).'">'.$row3->MenuNameEN.'</a></li>';
+																																$html .= '<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row3->Url).'">'.$row3->{$menuname_fld}.'</a></li>';
 																										}
 																										$html .= '	</ul>';
 																							}
@@ -211,7 +213,8 @@ if ( ! function_exists('left_menu_content')){
 		function left_menu_content($menu_id='',$level='',$parent='') {
 			$ci =& get_instance();
 			$ci->load->database();
-			
+			$menuname_fld = 'MenuName'.$ci->session->userdata('site_lang_db');
+
 			$product_detail_level = false;
 			$html = '';
 			$html .= '<nav id="lefthand" class="unit size-col-a lfthnd">';
@@ -227,7 +230,7 @@ if ( ! function_exists('left_menu_content')){
 					}
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
-								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
+								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.".$menuname_fld);
 								$cls = array();
 								$cls[] = ($query2->num_rows() > 0) ? 'haschildren': '';
 								$cls[] = ($menu_id == $row->MenuID) ? 'selected': '';
@@ -235,12 +238,12 @@ if ( ! function_exists('left_menu_content')){
 								$cls_str = 'class="'.$cls_str.'"';
 
 								$cls_link = ($menu_id == $row->MenuID) ? 'class="selected"': '';
-							    $html .= '		<li '.$cls_str.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
+							    $html .= '		<li '.$cls_str.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'" '.$cls_link.'> '.$row->{$menuname_fld}.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
 																						foreach ($query2->result() as $row2){
-																							$html .= '	<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'">'.$row2->MenuNameEN.'</a></li>';
+																							$html .= '	<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'">'.$row2->{$menuname_fld}.'</a></li>';
 																						}
 																						$html .= '</ul>';
 																			  }
@@ -262,6 +265,7 @@ if ( ! function_exists('left_menu_productdetail')){
 		function left_menu_productdetail($menu_id='',$parent='',$top_parent='') {
 			$ci =& get_instance();
 			$ci->load->database();
+			$menuname_fld = 'MenuName'.$ci->session->userdata('site_lang_db');
 
 			$product_detail_level = false;
 			$html = '';
@@ -275,7 +279,7 @@ if ( ! function_exists('left_menu_productdetail')){
 
 					if ($query->num_rows() > 0){
 							foreach ($query->result() as $row){
-								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.Position");
+								$query2 = $ci->db->query("SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' AND C.Status = '1' ORDER BY M.".$menuname_fld);
 								$arrSubMenu = array();
 								foreach ($query2->result() as $row_sub){
 										$arrSubMenu[] = $row_sub->MenuID;
@@ -287,13 +291,13 @@ if ( ! function_exists('left_menu_productdetail')){
 								$cls_str = 'class="'.$cls_str.'"';
 
 								$cls_link = ($parent == $row->MenuID) ? 'class="selected"': '';
-							    $html .= '		<li '.$cls_str.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'" '.$cls_link.'> '.$row->MenuNameEN.'</a>';
+							    $html .= '		<li '.$cls_str.'><a href="'.site_url($ci->session->userdata('site_lang_url').$row->Url).'" '.$cls_link.'> '.$row->{$menuname_fld}.'</a>';
 																			  
 																			  if ($query2->num_rows() > 0){
 																						$html .= '<ul>';
 																						foreach ($query2->result() as $row2){
 																							$cls_link = ($menu_id == $row2->MenuID) ? 'class="selected"': '';
-																							$html .= '	<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'" '.$cls_link.'>'.$row2->MenuNameEN.'</a></li>';
+																							$html .= '	<li><a href="'.site_url($ci->session->userdata('site_lang_url').$row2->Url).'" '.$cls_link.'>'.$row2->{$menuname_fld}.'</a></li>';
 																						}
 																						$html .= '</ul>';
 																			  }
