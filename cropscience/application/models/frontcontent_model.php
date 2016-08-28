@@ -76,14 +76,14 @@ class Frontcontent_model extends CI_Model {
 		$html = '';
         if($parent == 0){
 
-			$sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$menu_id."' ORDER BY M.Position"; 
+			$sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$menu_id."' AND M.Status = '1' ORDER BY M.Position"; 
 			$query = $this->db->query($sql);        
 			$arr =  $query->result();
 			foreach($arr as $row){
 				$html .= '<h2>'.$row->{$menuname_fld}.'</h2> 
 								<hr>';
 
-								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.".$menuname_fld; 
+								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' ORDER BY M.".$menuname_fld; 
 								$query_sub = $this->db->query($sql_sub);        
 								$arr_sub =  $query_sub->result();
 								if ($query_sub->num_rows() > 0){
@@ -100,14 +100,14 @@ class Frontcontent_model extends CI_Model {
 
 		}else{
 
-			$sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.MenuID = '".$menu_id."' ORDER BY M.Position"; 
+			$sql = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.MenuID = '".$menu_id."' AND M.Status = '1' ORDER BY M.Position"; 
 			$query = $this->db->query($sql);        
 			$arr =  $query->result();
 			foreach($arr as $row){
 				$html .= '<h2>'.$row->{$menuname_fld}.'</h2> 
 								<hr>';
 
-								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' ORDER BY M.".$menuname_fld; 
+								$sql_sub = "SELECT M.*, C.Slug, C.Url FROM menu M LEFT JOIN content C ON M.MenuID = C.MenuID WHERE M.Parent = '".$row->MenuID."' AND M.Status = '1' ORDER BY M.".$menuname_fld; 
 								$query_sub = $this->db->query($sql_sub);        
 								$arr_sub =  $query_sub->result();
 								if ($query_sub->num_rows() > 0){
